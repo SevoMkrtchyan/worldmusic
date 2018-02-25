@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Remix</title>
+    <title>User Page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <!-- Seo Meta -->
@@ -26,22 +26,13 @@
     <script src="../http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/icons/font-awesome-ie7.min.css"/>
     <![endif]-->
-
-    <!--Slayder-->
-    <link rel="stylesheet" href="../slayder/css/style.css">
-    <script type="text/javascript" src="../slayder/js/jssor.slider.min.js"></script>
-    <!--END Slayder-->
-</head>
-
-
+        <% User user = (User) session.getAttribute("user"); %>
 <body id="fluidGridSystem">
 <div id="layout" class="full">
     <header id="header" class="glue">
         <div class="row clearfix">
             <div class="little-head">
-                <a href="/loginPage">
-                    <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign In</span></div>
-                </a>
+                <a href="/logout"><div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign out</span></div></a>
                 <div class="social social-head">
                     <a href="http://twitter.com/behzadg1" class="bottomtip" title="Follow us on Twitter"
                        target="_blank"><i class="icon-twitter"></i></a>
@@ -80,7 +71,7 @@
         <div class="headdown">
             <div class="row clearfix">
                 <div class="logo bottomtip" title="Best and Most Popular Musics">
-                    <a href="index.html#"><img src="../images/logo.png" alt="Best and Most Popular Musics"></a>
+                    <a href="index.html#"><img src="images/logo.png" alt="Best and Most Popular Musics"></a>
                 </div><!-- end logo -->
 
                 <nav>
@@ -121,147 +112,156 @@
 
     <!-- Start Revolution Slider -->
 
-            <script>
-                jssor_slider1_init = function () {
+    <!--&lt;!&ndash; LAYERS &ndash;&gt;-->
+    <!--<div class="tp-caption fade"-->
+    <!--data-x="566"-->
+    <!--data-y="306"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="800"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11"><img src="images/slides/slide1-cap1.png" alt=""></div>-->
 
-                    var options = {
-                        $SlideDuration: 800,                    //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
-                        $DragOrientation: 3,                    //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $Cols is greater than 1, or parking position is not 0)
-                        $AutoPlay: 1,                           //[Optional] Auto play or not, to enable slideshow, this option must be set to greater than 0. Default value is 0. 0: no auto play, 1: continuously, 2: stop at last slide, 4: stop on click, 8: stop on user navigation (by arrow/bullet/thumbnail/drag/arrow key navigation)
-                        $Idle: 1500,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+    <!--<div class="tp-caption lfb"-->
+    <!--data-x="566"-->
+    <!--data-y="305"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="1200"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11"><img src="images/slides/slide1-cap2.png" alt=""></div>-->
 
-                        $BulletNavigatorOptions: {              //[Optional] Options to specify and enable navigator or not
-                            $Class: $JssorBulletNavigator$,     //[Required] Class to create navigator instance
-                            $ChanceToShow: 2,                   //[Required] 0 Never, 1 Mouse Over, 2 Always
-                            $Steps: 1,                          //[Optional] Steps to go for each navigation request, default value is 1
-                            $Rows: 1,                           //[Optional] Specify lanes to arrange items, default value is 1
-                            $SpacingX: 10,                      //[Optional] Horizontal space between each item in pixel, default value is 0
-                            $SpacingY: 10,                      //[Optional] Vertical space between each item in pixel, default value is 0
-                            $Orientation: 1                     //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
-                        },
+    <!--<div class="tp-caption lft"-->
+    <!--data-x="741"-->
+    <!--data-y="305"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="1200"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11"><img src="images/slides/slide1-cap3.png" alt=""></div>-->
 
-                        $ArrowNavigatorOptions: {
-                            $Class: $JssorArrowNavigator$,      //[Requried] Class to create arrow navigator instance
-                            $ChanceToShow: 2                    //[Required] 0 Never, 1 Mouse Over, 2 Always
-                        }
-                    };
+    <!--<div class="tp-caption lfb"-->
+    <!--data-x="711"-->
+    <!--data-y="374"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="2000"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11"><img src="images/slides/slide1-cap4.png" alt=""></div>-->
 
-                    var jssor_slider1 = new $JssorSlider$('slider1_container', options);
-                    //make sure to clear margin of the slider container element
-                    jssor_slider1.$Elmt.style.margin = "";
+    <!--<div class="tp-caption lft"-->
+    <!--data-x="714"-->
+    <!--data-y="374"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="2000"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11"><img src="images/slides/slide1-cap5.png" alt=""></div>-->
+    <!--</li>-->
 
-                    //#region responsive code begin
-                    //the following code is to place slider in the center of parent container with no scale
-                    function ScaleSlider() {
+    <!--&lt;!&ndash; SLIDE  &ndash;&gt;-->
+    <!--<li data-transition="random" data-slotamount="7" data-masterspeed="5000">-->
+    <!-- MAIN IMAGE -->
+    <!--<img src="images/slides/slider9.jpg" alt="slidebg1" data-bgfit="cover"-->
+    <!--data-bgposition="left top" data-bgrepeat="no-repeat">-->
+    <!-- LAYERS -->
+    <!--<div class="tp-caption modern_big_bluebg randomrotate"-->
+    <!--data-x="603"-->
+    <!--data-y="384"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="1200"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11">Responsive Design-->
+    <!--</div>-->
 
-                        var containerElement = jssor_slider1.$Elmt.parentNode;
-                        var containerWidth = containerElement.clientWidth;
+    <!--<div class="tp-caption modern_big_redbg randomrotate"-->
+    <!--data-x="701"-->
+    <!--data-y="328"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="1700"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11">Retina Ready-->
+    <!--</div>-->
+    <!--</li>-->
 
-                        if (containerWidth) {
-                            var expectedWidth = Math.min(containerWidth, jssor_slider1.$OriginalWidth());
+    <!-- SLIDE  -->
+    <!--<li data-transition="random" data-slotamount="7" data-masterspeed="5000">-->
+    <!--&lt;!&ndash; MAIN IMAGE &ndash;&gt;-->
+    <!--<img src="images/slides/slider3.jpg" alt="slidebg1" data-bgfit="cover"-->
+    <!--data-bgposition="left top" data-bgrepeat="no-repeat">-->
+    <!-- LAYERS -->
+    <!--<div class="tp-caption modern_big_redbg randomrotate"-->
+    <!--data-x="560"-->
+    <!--data-y="253"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="1000"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11">Revolution Slider-->
+    <!--</div>-->
 
-                            //scale the slider to original height with no change
-                            jssor_slider1.$ScaleSize(expectedWidth, jssor_slider1.$OriginalHeight());
+    <!--<div class="tp-caption modern_m_bluebg randomrotate"-->
+    <!--data-x="560"-->
+    <!--data-y="310"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="1500"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11">Awesome MusicPlayer-->
+    <!--</div>-->
 
-                            jssor_slider1.$Elmt.style.left = ((containerWidth - expectedWidth) / 2) + "px";
-                        }
-                        else {
-                            window.setTimeout(ScaleSlider, 30);
-                        }
-                    }
+    <!--<div class="tp-caption modern_m_bluebg randomrotate"-->
+    <!--data-x="560"-->
+    <!--data-y="355"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="2000"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11">Wonderful Gallery-->
+    <!--</div>-->
 
-                    ScaleSlider();
+    <!--<div class="tp-caption modern_m_bluebg randomrotate"-->
+    <!--data-x="560"-->
+    <!--data-y="400"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="2500"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11">Seo Optimized-->
+    <!--</div>-->
 
-                    $Jssor$.$AddEvent(window, "load", ScaleSlider);
-                    $Jssor$.$AddEvent(window, "resize", ScaleSlider);
-                    $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
-                    //#endregion responsive code end
-                };
+    <!--<div class="tp-caption modern_m_bluebg randomrotate"-->
+    <!--data-x="560"-->
+    <!--data-y="445"-->
+    <!--data-hoffset="0"-->
+    <!--data-speed="700"-->
+    <!--data-start="3000"-->
+    <!--data-easing="Back.easeInOut"-->
+    <!--data-endspeed="300"-->
+    <!--style="z-index: 11">and Much More ...-->
+    <!--</div>-->
+    <!--</li>-->
 
-            </script>
-
-            <!-- make a div with 100% width, place jssor slider in the div -->
-            <div style="position:relative;top:0;left:0;width:100%;overflow:hidden;">
-
-                <!--#region Jssor Slider Begin -->
-                <div id="slider1_container"
-                     style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1600px; height: 800px;">
-                    <!-- Loading Screen -->
-                    <div data-u="loading" class="jssorl-009-spin"
-                         style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                        <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;"
-                             src="svg/loading/static-svg/spin.svg"/>
-                    </div>
-
-                    <!-- Slides Container -->
-                    <div u="slides"
-                         style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1600px;  height: 800px; overflow: hidden;">
-                        <div>
-                            <img data-u="image" src="../images/slides/slider1.jpg"/>
-                        </div>
-                        <div>
-                            <img data-u="image" src="../images/slides/slider2.jpg"/>
-                        </div>
-                        <div>
-                            <img data-u="image" src="../images/slides/slider3.jpg"/>
-                        </div>
-                        <div>
-                            <img data-u="image" src="../images/slides/slider4.jpg"/>
-                        </div>
-                        <div>
-                            <img data-u="image" src="../images/slides/slider7.jpg"/>
-                        </div>
-                        <div>
-                            <img data-u="image" src="../images/slides/slider8.jpg"/>
-                        </div>
-                        <div>
-                            <img data-u="image" src="../images/slides/slider9.jpg"/>
-                        </div>
-
-                    </div>
-
-                    <!--#region Bullet Navigator Skin Begin -->
-                    <!-- Help: https://www.jssor.com/development/slider-with-bullet-navigator.html -->
-                    <div data-u="navigator" class="jssorb051" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1"
-                         data-scale="0.5" data-scale-bottom="0.75">
-                        <div data-u="prototype" class="i" style="width:16px;height:16px;">
-                            <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                                <circle class="b" cx="8000" cy="8000" r="5800"></circle>
-                            </svg>
-                        </div>
-                    </div>
-                    <!--#endregion Bullet Navigator Skin End -->
-
-                    <!--#region Arrow Navigator Skin Begin -->
-                    <!-- Help: https://www.jssor.com/development/slider-with-arrow-navigator.html -->
-
-                    <div data-u="arrowleft" class="jssora051" style="width:55px;height:55px;top:0px;left:25px;" data-autocenter="2"
-                         data-scale="0.75" data-scale-left="0.75">
-                        <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                            <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
-                        </svg>
-                    </div>
-                    <div data-u="arrowright" class="jssora051" style="width:55px;height:55px;top:0px;right:25px;"
-                         data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
-                        <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                            <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
-                        </svg>
-                    </div>
-                    <!--#endregion Arrow Navigator Skin End -->
-
-                </div>
-
-            </div>
-
-            <!-- Trigger -->
-            <script>
-                jssor_slider1_init();
-            </script>
-            <!--#endregion Jssor Slider End -->
-<!-- End Slides -->
-
-        <!--&lt;!&ndash; End Revolution Slider &ndash;&gt;-->
-
+    <!--</ul>&lt;!&ndash; End Slides &ndash;&gt;-->
+    <!--<div class="tp-bannertimer"></div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; End Revolution Slider &ndash;&gt;-->
+    <img src="images/adad.jpg">
     <div class="page-content">
         <div class="row clearfix mbf">
             <div class="music-player-list"></div>
