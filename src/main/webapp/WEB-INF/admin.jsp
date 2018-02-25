@@ -5,7 +5,6 @@
 <html>
 <head>
     <title>Admin Page</title>
-
 </head>
 <body>
 <div style="width: 100%">

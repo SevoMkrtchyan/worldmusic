@@ -44,7 +44,7 @@ public class MainController {
         map.addAttribute("album", new Album());
         map.addAttribute("genre", new Genre());
         map.addAttribute("artist", new Artist());
-        return "index";
+        return "player";
     }
 
     @GetMapping("/user")
