@@ -6,7 +6,6 @@ import com.worldmusic.worldmusic.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,9 +27,11 @@ public class AdminController {
     @Autowired
     private AlbumRepository albumRepository;
     @Autowired
-    private MusicGenreRepository musicGenreRepository;
+    private GenreRepository genreRepository;
     @Autowired
     private ArtistRepository artistRepository;
+    @Autowired
+    private NewsRepository newsRepository;
     @Value("${worldmusic.product.upload.path}")
     private String imageUploadPath;
 
@@ -41,19 +42,21 @@ public class AdminController {
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("albums", albumRepository.findAll());
-        map.addAttribute("genres", musicGenreRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("newsis",newsRepository.findAll());
         map.addAttribute("user", new User());
         map.addAttribute("music", new Music());
         map.addAttribute("album", new Album());
         map.addAttribute("genre", new Genre());
         map.addAttribute("artist", new Artist());
+        map.addAttribute("news", new News());
         return "admin";
     }
 
     @GetMapping(value = "/addGenre")
     public String saveGenre(@ModelAttribute("genre") Genre genre) {
-        musicGenreRepository.save(genre);
+        genreRepository.save(genre);
         return "redirect:/admin";
     }
 
@@ -84,6 +87,16 @@ public class AdminController {
         music.setPicture(picName);
         music.setMusic(musicPath);
         musicRepository.save(music);
+        return "redirect:/admin";
+    }
+
+    @PostMapping(value = "/addNews")
+    public String saveNews(@ModelAttribute("news") News news, @RequestParam("newsImg") MultipartFile multipartFile) throws IOException {
+        String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
+        File file = new File(imageUploadPath + picName);
+        multipartFile.transferTo(file);
+        news.setNewsImage(picName);
+        newsRepository.save(news);
         return "redirect:/admin";
     }
 }

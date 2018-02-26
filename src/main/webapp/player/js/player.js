@@ -1,283 +1,232 @@
-// html5media enables <video> and <audio> tags in all major browsers
-// External File: https://api.html5media.info/1.1.8/html5media.min.js
+// HTML5 audio player + playlist controls
+var jsPlayer = document.querySelector('.player-wrap');
+if (jsPlayer) {
+    jsPlayer = {
+        wrap: jsPlayer,
+        player: (jsPlayer.querySelector('audio') || { play: function(){}, pause: function(){} }),
+        play: (jsPlayer.querySelector('.play') || {}),
+        pause: (jsPlayer.querySelector('.pause') || {}),
+        seek: (jsPlayer.querySelector('.seek') || {}),
+        prev: (jsPlayer.querySelector('.prev') || {}),
+        next: (jsPlayer.querySelector('.next') || {}),
+        button: (jsPlayer.querySelector('.button') || { style: {} }),
+        wrapList: (document.querySelector('.playlist-wrap') || {}),
+        action: (jsPlayer.querySelector('.action') || {}),
+        title: (jsPlayer.querySelector('.title') || {}),
+        current: (jsPlayer.querySelector('.current') || {}),
+        duration: (jsPlayer.querySelector('.duration') || {}),
+        trackCount: 0,
+        seeking: null,
+        playing: false,
+        tracks: [],
+        track: [],
+        idx: 0
+    };
 
-
-// Add user agent as an attribute on the <html> tag...
-// Inspiration: https://css-tricks.com/ie-10-specific-styles/
-var b = document.documentElement;
-b.setAttribute('data-useragent', navigator.userAgent);
-b.setAttribute('data-platform', navigator.platform);
-
-
-// HTML5 audio player + playlist controls...
-// Inspiration: http://jonhall.info/how_to/create_a_playlist_for_html5_audio
-// Mythium Archive: https://archive.org/details/mythium/
-
-jQuery(function (${music}) {
-    var supportsAudio = !!document.createElement('audio').canPlayType;
-    if (supportsAudio) {
-        var index = 0,
-            playing = false,
-            mediaPath = 'https://archive.org/download/mythium/',
-            extension = '',
-            tracks = [
-                {
-                "track": 1,
-                "name": "All This Is - Joe L.'s Studio",
-                "length": "2:46",
-                "file": "JLS_ATI"
-            }, {
-                "track": 2,
-                "name": "The Forsaken - Broadwing Studio (Final Mix)",
-                "length": "8:31",
-                "file": "BS_TF"
-            }, {
-                "track": 3,
-                "name": "All The King's Men - Broadwing Studio (Final Mix)",
-                "length": "5:02",
-                "file": "BS_ATKM"
-            }, {
-                "track": 4,
-                "name": "The Forsaken - Broadwing Studio (First Mix)",
-                "length": "8:32",
-                "file": "BSFM_TF"
-            }, {
-                "track": 5,
-                "name": "All The King's Men - Broadwing Studio (First Mix)",
-                "length": "5:05",
-                "file": "BSFM_ATKM"
-            }, {
-                "track": 6,
-                "name": "All This Is - Alternate Cuts",
-                "length": "2:49",
-                "file": "AC_ATI"
-            }, {
-                "track": 7,
-                "name": "All The King's Men (Take 1) - Alternate Cuts",
-                "length": "5:45",
-                "file": "AC_ATKMTake_1"
-            }, {
-                "track": 8,
-                "name": "All The King's Men (Take 2) - Alternate Cuts",
-                "length": "5:27",
-                "file": "AC_ATKMTake_2"
-            }, {
-                "track": 9,
-                "name": "Magus - Alternate Cuts",
-                "length": "5:46",
-                "file": "AC_M"
-            }, {
-                "track": 10,
-                "name": "The State Of Wearing Address (fucked up) - Alternate Cuts",
-                "length": "5:25",
-                "file": "AC_TSOWAfucked_up"
-            }, {
-                "track": 11,
-                "name": "Magus - Popeye's (New Years '04 - '05)",
-                "length": "5:54",
-                "file": "PNY04-05_M"
-            }, {
-                "track": 12,
-                "name": "On The Waterfront - Popeye's (New Years '04 - '05)",
-                "length": "4:41",
-                "file": "PNY04-05_OTW"
-            }, {
-                "track": 13,
-                "name": "Trance - Popeye's (New Years '04 - '05)",
-                "length": "13:17",
-                "file": "PNY04-05_T"
-            }, {
-                "track": 14,
-                "name": "The Forsaken - Popeye's (New Years '04 - '05)",
-                "length": "8:13",
-                "file": "PNY04-05_TF"
-            }, {
-                "track": 15,
-                "name": "The State Of Wearing Address - Popeye's (New Years '04 - '05)",
-                "length": "7:03",
-                "file": "PNY04-05_TSOWA"
-            }, {
-                "track": 16,
-                "name": "Magus - Popeye's (Valentine's Day '05)",
-                "length": "5:44",
-                "file": "PVD_M"
-            }, {
-                "track": 17,
-                "name": "Trance - Popeye's (Valentine's Day '05)",
-                "length": "10:47",
-                "file": "PVD_T"
-            }, {
-                "track": 18,
-                "name": "The State Of Wearing Address - Popeye's (Valentine's Day '05)",
-                "length": "5:37",
-                "file": "PVD_TSOWA"
-            }, {
-                "track": 19,
-                "name": "All This Is - Smith St. Basement (01/08/04)",
-                "length": "2:49",
-                "file": "SSB01_08_04_ATI"
-            }, {
-                "track": 20,
-                "name": "Magus - Smith St. Basement (01/08/04)",
-                "length": "5:46",
-                "file": "SSB01_08_04_M"
-            }, {
-                "track": 21,
-                "name": "Beneath The Painted Eye - Smith St. Basement (06/06/03)",
-                "length": "13:08",
-                "file": "SSB06_06_03_BTPE"
-            }, {
-                "track": 22,
-                "name": "Innocence - Smith St. Basement (06/06/03)",
-                "length": "5:16",
-                "file": "SSB06_06_03_I"
-            }, {
-                "track": 23,
-                "name": "Magus - Smith St. Basement (06/06/03)",
-                "length": "5:47",
-                "file": "SSB06_06_03_M"
-            }, {
-                "track": 24,
-                "name": "Madness Explored - Smith St. Basement (06/06/03)",
-                "length": "4:52",
-                "file": "SSB06_06_03_ME"
-            }, {
-                "track": 25,
-                "name": "The Forsaken - Smith St. Basement (06/06/03)",
-                "length": "8:44",
-                "file": "SSB06_06_03_TF"
-            }, {
-                "track": 26,
-                "name": "All This Is - Smith St. Basement (12/28/03)",
-                "length": "3:01",
-                "file": "SSB12_28_03_ATI"
-            }, {
-                "track": 27,
-                "name": "Magus - Smith St. Basement (12/28/03)",
-                "length": "6:10",
-                "file": "SSB12_28_03_M"
-            }, {
-                "track": 28,
-                "name": "Madness Explored - Smith St. Basement (12/28/03)",
-                "length": "5:06",
-                "file": "SSB12_28_03_ME"
-            }, {
-                "track": 29,
-                "name": "Trance - Smith St. Basement (12/28/03)",
-                "length": "12:33",
-                "file": "SSB12_28_03_T"
-            }, {
-                "track": 30,
-                "name": "The Forsaken - Smith St. Basement (12/28/03)",
-                "length": "8:57",
-                "file": "SSB12_28_03_TF"
-            }, {
-                "track": 31,
-                "name": "All This Is (Take 1) - Smith St. Basement (Nov. '03)",
-                "length": "4:55",
-                "file": "SSB___11_03_ATITake_1"
-            }, {
-                "track": 32,
-                "name": "All This Is (Take 2) - Smith St. Basement (Nov. '03)",
-                "length": "5:46",
-                "file": "SSB___11_03_ATITake_2"
-            }, {
-                "track": 33,
-                "name": "Beneath The Painted Eye (Take 1) - Smith St. Basement (Nov. '03)",
-                "length": "14:06",
-                "file": "SSB___11_03_BTPETake_1"
-            }, {
-                "track": 34,
-                "name": "Beneath The Painted Eye (Take 2) - Smith St. Basement (Nov. '03)",
-                "length": "13:26",
-                "file": "SSB___11_03_BTPETake_2"
-            }, {
-                "track": 35,
-                "name": "The Forsaken (Take 1) - Smith St. Basement (Nov. '03)",
-                "length": "8:38",
-                "file": "SSB___11_03_TFTake_1"
-            }, {
-                "track": 36,
-                "name": "The Forsaken (Take 2) - Smith St. Basement (Nov. '03)",
-                "length": "8:37",
-                "file": "SSB___11_03_TFTake_2"
-            }],
-            buildPlaylist = $.each(tracks, function(key, value) {
-                var trackNumber = value.track,
-                    trackName = value.name,
-                    trackLength = value.length;
-                if (trackNumber.toString().length === 1) {
-                    trackNumber = '0' + trackNumber;
+    jsPlayer.playClicked = function jsPlayerPlayClicked(){
+        jsPlayer.button.style.visibility = 'hidden';
+        jsPlayer.pause.style.display = 'block';
+        jsPlayer.play.style.display = 'none';
+        jsPlayer.playing = true;
+        jsPlayer.action.innerHTML = 'Now Playing&hellip;';
+        jsPlayer.player.play();
+        jsPlayer.updateSeek();
+    };
+    jsPlayer.pauseClicked = function jsPlayerPauseClicked(){
+        jsPlayer.play.style.display = 'block';
+        jsPlayer.pause.style.display = 'none';
+        clearTimeout(jsPlayer.seeking);
+        jsPlayer.playing = false;
+        jsPlayer.action.innerHTML = 'Paused&hellip;';
+        jsPlayer.player.pause();
+    };
+    jsPlayer.loadPlaylist = function jaPlayerLoadPlaylist(){
+        jsPlayer.playlist = jsPlayer.wrapList? jsPlayer.wrapList.querySelectorAll('ol > li') : [];
+        var len = jsPlayer.playlist.length,
+            tmp, i;
+        for (i = 0; i < len; i++) {
+            if (!jsPlayer.playlist[i].dataset) {
+                jsPlayer.playlist[i].dataset = {};
+            }
+            tmp = jsPlayer.playlist[i].querySelector('a');
+            if (tmp && !jsPlayer.playlist[i].dataset.idx) {
+                jsPlayer.playlist[i].dataset.idx = i + 1;
+                jsPlayer.trackCount++;
+                jsPlayer.tracks.push({
+                    "file": tmp.href,
+                    "name": (tmp.textContent || tmp.innerText).replace(/^\s+|\s+$/g, ''),
+                    "track": i + 1
+                });
+            }
+        }
+    };
+    jsPlayer.loadTrack = function jsPlayerLoadTrack(idx){
+        var len = jsPlayer.playlist.length,
+            i;
+        for (i=0; i < len; i++) {
+            if (jsPlayer.playlist[i].classList) {
+                if (i === idx) {
+                    jsPlayer.playlist[i].classList.add('sel');
                 } else {
-                    trackNumber = '' + trackNumber;
+                    jsPlayer.playlist[i].classList.remove('sel');
                 }
-                $('#plList').append('<li><div class="plItem"><div class="plNum">' + trackNumber + '.</div><div class="plTitle">' + trackName + '</div><div class="plLength">' + trackLength + '</div></div></li>');
-            }),
-            trackCount = tracks.length,
-            npAction = $('#npAction'),
-            npTitle = $('#npTitle'),
-            audio = $('#audio1').bind('play', function () {
-                playing = true;
-                npAction.text('Now Playing...');
-            }).bind('pause', function () {
-                playing = false;
-                npAction.text('Paused...');
-            }).bind('ended', function () {
-                npAction.text('Paused...');
-                if ((index + 1) < trackCount) {
-                    index++;
-                    loadTrack(index);
-                    audio.play();
-                } else {
-                    audio.pause();
-                    index = 0;
-                    loadTrack(index);
+            }
+        }
+        jsPlayer.title.innerHTML = jsPlayer.tracks[idx].name;
+        jsPlayer.player.src = jsPlayer.tracks[idx].file + '.mp3';
+    };
+    jsPlayer.playTrack = function jsPlayerPlayTrack(idx){
+        jsPlayer.loadTrack(idx);
+        jsPlayer.playing = true;
+        jsPlayer.playClicked();
+    };
+    jsPlayer.init = function jsPlayerInit(){
+        var track = (jsPlayer.wrap && jsPlayer.wrap.dataset && jsPlayer.wrap.dataset.url)? jsPlayer.wrap : null,
+            tmp, i;
+        if (!!document.createElement('audio').canPlayType('audio/mpeg')) {
+            if (jsPlayer.wrapList && jsPlayer.wrapList.querySelectorAll('ol > li').length > 0) {
+                jsPlayer.loadPlaylist();
+            } else if (track) {
+                jsPlayer.tracks = [{
+                    "file": track.dataset.url,
+                    "name": (track.dataset.title || ''),
+                    "track": 1
+                }];
+            }
+            if (jsPlayer.tracks.length > 0) {
+                if (jsPlayer.player) {
+                    jsPlayer.player.addEventListener('ended', function playerEnded(){
+                        if (jsPlayer.idx + 1 < jsPlayer.trackCount) {
+                            jsPlayer.idx++;
+                            jsPlayer.playTrack(jsPlayer.idx);
+                        } else {
+                            jsPlayer.action.innerHTML = 'Paused&hellip;';
+                            jsPlayer.player.pause();
+                            jsPlayer.idx = 0;
+                            jsPlayer.loadTrack(jsPlayer.idx);
+                        }
+                    }, true);
+                    jsPlayer.player.addEventListener('loadeddata', function playerLoadeddata(){
+                        jsPlayer.setDuration();
+                    }, true);
                 }
-            }).get(0),
-            btnPrev = $('#btnPrev').click(function () {
-                if ((index - 1) > -1) {
-                    index--;
-                    loadTrack(index);
-                    if (playing) {
-                        audio.play();
+                if (jsPlayer.play) {
+                    jsPlayer.play.addEventListener('click', jsPlayer.playClicked, true);
+                }
+                if (jsPlayer.pause) {
+                    jsPlayer.pause.addEventListener('click', jsPlayer.pauseClicked, true);
+                }
+                if (jsPlayer.button) {
+                    jsPlayer.button.addEventListener('click', function buttonClicked(event){
+                        event.preventDefault();
+                        jsPlayer.playClicked();
+                    }, true);
+                }
+                if (jsPlayer.prev) {
+                    jsPlayer.prev.addEventListener('click', function prevClicked(event){
+                        event.preventDefault();
+                        if (jsPlayer.idx - 1 > -1) {
+                            jsPlayer.idx--;
+                            jsPlayer.loadTrack(jsPlayer.idx);
+                            if (jsPlayer.playing) {
+                                jsPlayer.action.innerHTML = 'Now Playing&hellip;';
+                                jsPlayer.player.play();
+                            }
+                        } else {
+                            jsPlayer.action.innerHTML = 'Paused&hellip;';
+                            jsPlayer.playing = false;
+                            jsPlayer.player.pause();
+                            jsPlayer.idx = 0;
+                            jsPlayer.loadTrack(jsPlayer.idx);
+                        }
+                    }, true);
+                }
+                if (jsPlayer.next) {
+                    jsPlayer.next.addEventListener('click', function nextClicked(event){
+                        event.preventDefault();
+                        if (jsPlayer.idx + 1 < jsPlayer.trackCount) {
+                            jsPlayer.idx++;
+                            jsPlayer.loadTrack(jsPlayer.idx);
+                            if (jsPlayer.playing) {
+                                jsPlayer.action.innerHTML = 'Now Playing&hellip;';
+                                jsPlayer.player.play();
+                            }
+                        } else {
+                            jsPlayer.action.innerHTML = 'Paused&hellip;';
+                            jsPlayer.playing = false;
+                            jsPlayer.player.pause();
+                            jsPlayer.idx = 0;
+                            jsPlayer.loadTrack(jsPlayer.idx);
+                        }
+                    }, true);
+                }
+                if (jsPlayer.seek) {
+                    jsPlayer.seek.addEventListener('mousedown', function seekClicked(){
+                        clearTimeout(jsPlayer.seeking);
+                        jsPlayer.action.innerHTML = 'Paused&hellip;';
+                        jsPlayer.player.pause();
+                    }, true);
+                    jsPlayer.seek.addEventListener('mouseup', function seekReleased(){
+                        jsPlayer.player.currentTime = jsPlayer.seek.value * jsPlayer.player.duration / 100;
+                        jsPlayer.updateSeek();
+                        if (jsPlayer.playing) {
+                            jsPlayer.action.innerHTML = 'Now Playing&hellip;';
+                            jsPlayer.player.play();
+                        }
+                    }, true);
+                }
+                if (jsPlayer.wrapList) {
+                    jsPlayer.wrapList.addEventListener('click', function listClicked(event){
+                        var parent = event.target.parentNode;
+                        if (parent.parentNode.tagName.toLowerCase() === 'ol') {
+                            event.preventDefault();
+                            var len = jsPlayer.playlist.length,
+                                i;
+                            for (i = 0; i < len; i++) {
+                                if (parent.dataset.idx == i + 1) {
+                                    jsPlayer.idx = i;
+                                    jsPlayer.playTrack(jsPlayer.idx);
+                                    i = len;
+                                }
+                            }
+                        }
+                    }, true);
+                }
+                jsPlayer.setDuration = function setDuration() {
+                    jsPlayer.duration.innerHTML = jsPlayer.formatTime(jsPlayer.player.duration);
+                    jsPlayer.current.innerHTML = jsPlayer.formatTime(jsPlayer.player.currentTime);
+                    jsPlayer.seek.value = jsPlayer.player.currentTime / jsPlayer.player.duration;
+                };
+                jsPlayer.updateSeek = function updateSeek() {
+                    jsPlayer.seek.value = 100 * jsPlayer.player.currentTime / jsPlayer.player.duration;
+                    jsPlayer.current.innerHTML = jsPlayer.formatTime(jsPlayer.player.currentTime);
+                    if (jsPlayer.playing) {
+                        jsPlayer.seeking = setTimeout(jsPlayer.updateSeek, 500);
                     }
-                } else {
-                    audio.pause();
-                    index = 0;
-                    loadTrack(index);
-                }
-            }),
-            btnNext = $('#btnNext').click(function () {
-                if ((index + 1) < trackCount) {
-                    index++;
-                    loadTrack(index);
-                    if (playing) {
-                        audio.play();
+                };
+                jsPlayer.formatTime = function formatTime(val) {
+                    var h = 0, m = 0, s;
+                    val = parseInt(val, 10);
+                    if (val > 60 * 60) {
+                        h = parseInt(val / (60 * 60), 10);
+                        val -= h * 60 * 60;
                     }
-                } else {
-                    audio.pause();
-                    index = 0;
-                    loadTrack(index);
-                }
-            }),
-            li = $('#plList li').click(function () {
-                var id = parseInt($(this).index());
-                if (id !== index) {
-                    playTrack(id);
-                }
-            }),
-            loadTrack = function (id) {
-                $('.plSel').removeClass('plSel');
-                $('#plList li:eq(' + id + ')').addClass('plSel');
-                npTitle.text(tracks[id].name);
-                index = id;
-                audio.src = mediaPath + tracks[id].file + extension;
-            },
-            playTrack = function (id) {
-                loadTrack(id);
-                audio.play();
-            };
-        extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
-        loadTrack(index);
-    }
-});
+                    if (val > 60) {
+                        m = parseInt(val / 60, 10);
+                        val -= m * 60;
+                    }
+                    s = val;
+                    val = (h > 0)? h + ':' : '';
+                    val += (m > 0)? ((m < 10 && h > 0)? '0' : '') + m + ':' : '0:';
+                    val += ((s < 10)? '0' : '') + s;
+                    return val;
+                };
+            }
+        }
+        if (jsPlayer.tracks.length > 0) {
+            jsPlayer.wrap.className += ' enabled';
+            jsPlayer.loadTrack(jsPlayer.idx);
+        }
+    };
+    jsPlayer.init();
+}

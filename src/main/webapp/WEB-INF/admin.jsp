@@ -61,6 +61,22 @@
     <br>
     <br>
     <br>
+    <div style="width: 30%; float: left">
+        <span>Add News </span>
+        <spring:form action="/addNews" modelAttribute="news" method="post" enctype="multipart/form-data">
+            <spring:input path="name" title="name"/><br>
+            <spring:textarea path="description" title="description"/><br>
+            <input type="file" name="newsImg">
+            <input type="submit" value="Save"/>
+        </spring:form>
+        <br>
+        <br>
+        <c:forEach items="${newsis}" var="news">
+            <p><img src="image?fileName=${news.newsImage}" style="width: 100px ;height: 120px"/></p>
+            <p>${news.name}</p>
+            <p>${news.description}</p>
+        </c:forEach>
+    </div>
     <div style="width: 25% ;float:left;">
         <span>Add Music</span>
         <spring:form action="/addMusic" modelAttribute="music" method="post" enctype="multipart/form-data">
