@@ -23,5 +23,6 @@ public class News {
     private String description;
     @Column(name = "news_image")
     private String newsImage;
-
+    @Column
+    private String timestamp;
 }

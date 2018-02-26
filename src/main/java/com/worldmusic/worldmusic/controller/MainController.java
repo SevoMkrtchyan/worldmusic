@@ -27,7 +27,8 @@ public class MainController {
     private GenreRepository genreRepository;
     @Autowired
     private ArtistRepository artistRepository;
-
+    @Autowired
+    private NewsRepository newsRepository;
     @Value("${worldmusic.product.upload.path}")
     private String imageUploadPath;
 
@@ -39,6 +40,7 @@ public class MainController {
         map.addAttribute("albums", albumRepository.findAll());
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("newsis", newsRepository.findAll());
         map.addAttribute("user", new User());
         map.addAttribute("music", new Music());
         map.addAttribute("album", new Album());
@@ -74,7 +76,6 @@ public class MainController {
         response.setContentType(MediaType.IMAGE_JPEG_VALUE);
         IOUtils.copy(in, response.getOutputStream());
     }
-
 
 
 }
