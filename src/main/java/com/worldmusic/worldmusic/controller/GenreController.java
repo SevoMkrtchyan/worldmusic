@@ -1,16 +1,14 @@
 package com.worldmusic.worldmusic.controller;
 
-import com.worldmusic.worldmusic.model.Genre;
-import com.worldmusic.worldmusic.model.Music;
+import com.worldmusic.worldmusic.model.*;
 import com.worldmusic.worldmusic.repository.GenreRepository;
 import com.worldmusic.worldmusic.repository.MusicRepository;
+import com.worldmusic.worldmusic.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,15 +19,23 @@ public class GenreController {
     @Autowired
     private MusicRepository musicRepository;
 
-    @RequestMapping(value = "/genreView", method = RequestMethod.POST)
+    @PostMapping("/genreView")
     public String genreView() {
-        return "redirect:/home";
+        return "redirect:/allGenre";
     }
-
-    @GetMapping("/genre")
+    @GetMapping("/allGenre")
     public String genrePage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
+        map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("genres", genreRepository.findAll());
-        return "genre";
+        map.addAttribute("user", new User());
+        map.addAttribute("music", new Music());
+        map.addAttribute("album", new Album());
+        map.addAttribute("genre", new Genre());
+        map.addAttribute("artist", new Artist());
+        map.addAttribute("news", new News());
+        return "allgenres";
     }
 
     @GetMapping("/genreSingle")

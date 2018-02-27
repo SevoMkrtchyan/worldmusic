@@ -54,11 +54,33 @@ public class AdminController {
         return "admin";
     }
 
-    @GetMapping(value = "/addGenre")
+
+//    --ADD GENRE--
+    @GetMapping("/addGenre")
+    public String genrePage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
+        map.addAttribute("users", userRepository.findAll());
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("newsis",newsRepository.findAll());
+        map.addAttribute("user", new User());
+        map.addAttribute("music", new Music());
+        map.addAttribute("album", new Album());
+        map.addAttribute("genre", new Genre());
+        map.addAttribute("artist", new Artist());
+        map.addAttribute("news", new News());
+        return "addgenre";
+    }
+
+    @GetMapping(value = "/saveGenre")
     public String saveGenre(@ModelAttribute("genre") Genre genre) {
         genreRepository.save(genre);
-        return "redirect:/admin";
+        return "redirect:/addGenre";
     }
+//    --END ADD GENRE--
 
     @PostMapping(value = "/addArtist")
     public String saveArtist(@Valid @ModelAttribute("artist") Artist artist, @RequestParam("image") MultipartFile multipartFile) throws IOException {
