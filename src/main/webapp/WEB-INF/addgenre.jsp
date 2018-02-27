@@ -185,16 +185,14 @@
                     <ul class="sub-menu" style='display:block;'>
                         <li>
                             <a class=""
-                               href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-genres.html">All
-                                Genres</a>
+                               href="/allGenre">All Genres</a>
                         </li>
                         <li>
                             <a class="active" href="mus-genre-add.html">Add Genre</a>
                         </li>
                         <li>
                             <a class=""
-                               href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-genre-edit.html">Delete
-                                Genre</a>
+                               href="/genreDelete">Delete Genre</a>
                         </li>
                     </ul>
                 </li>

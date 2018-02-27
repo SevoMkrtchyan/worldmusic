@@ -23,19 +23,24 @@ public class GenreController {
     public String genreView() {
         return "redirect:/allGenre";
     }
+
     @GetMapping("/allGenre")
     public String genrePage(ModelMap map) {
-        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        map.addAttribute("currentUser", principal);
-        map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("genres", genreRepository.findAll());
-        map.addAttribute("user", new User());
-        map.addAttribute("music", new Music());
-        map.addAttribute("album", new Album());
-        map.addAttribute("genre", new Genre());
-        map.addAttribute("artist", new Artist());
-        map.addAttribute("news", new News());
         return "allgenres";
+    }
+
+    @GetMapping("/genreDelete")
+    public String genreDelete(ModelMap map) {
+        map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("genre", new Genre());
+        return "deleteGenre";
+    }
+
+    @GetMapping("/deleteGenre")
+    public String deleteUser(@RequestParam("id") int id) {
+        genreRepository.delete(id);
+        return "redirect:/genreDelete";
     }
 
     @GetMapping("/genreSingle")

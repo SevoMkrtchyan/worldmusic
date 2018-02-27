@@ -180,7 +180,7 @@
                             <a class="" href="/addGenre" >Add Genre</a>
                         </li>
                         <li>
-                            <a class="" href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-genre-edit.html" >Delete Genre</a>
+                            <a class="" href="/genreDelete" >Delete Genre</a>
                         </li>
                     </ul>
                 </li>

@@ -1,3 +1,5 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: vahan
@@ -179,13 +181,13 @@
                     </a>
                     <ul class="sub-menu" style='display:block;'>
                         <li>
-                            <a class="" href="mus-genres.html" >All Genres</a>
+                            <a class="" href="/allGenre" >All Genres</a>
                         </li>
                         <li>
-                            <a class="" href="mus-genre-add.html" >Add Genre</a>
+                            <a class="" href="/addGenre" >Add Genre</a>
                         </li>
                         <li>
-                            <a class="active" href="mus-genre-delete.html" >Delete Genre</a>
+                            <a class="active" href="/allGenre" >Delete Genre</a>
                         </li>
                     </ul></li>
                 <li class="">
@@ -214,13 +216,13 @@
                     </a>
                     <ul class="sub-menu" >
                         <li>
-                            <a class="" href="mus-artists.html" >All Artists</a>
+                            <a class="" href="/allArtist" >All Artists</a>
                         </li>
                         <li>
-                            <a class="" href="mus-artist-add.html" >Add Artist</a>
+                            <a class="" href="/addArtist" >Add Artist</a>
                         </li>
                         <li>
-                            <a class="" href="mus-artist-edit.html" >Delete Artist</a>
+                            <a class="" href="/genreArtist" >Delete Artist</a>
                         </li>
                     </ul>
                 </li>
@@ -256,10 +258,7 @@
                             <a class="" href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-playlist-add.html" >Add News</a>
                         </li>
                         <li>
-                            <a class="" href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-playlist-edit.html" >Edit News</a>
-                        </li>
-                        <li>
-                            <a class="" href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-playlist-view.html" >View News</a>
+                            <a class="" href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-playlist-edit.html" >Delete News</a>
                         </li>
                     </ul>
                 </li>
@@ -327,22 +326,20 @@
                     </header>
                     <div class="content-body">
                         <div class="row">
-                            <form action ="mus-genre-delete.html#" method="post">
                                 <div class="col-xs-12 col-sm-9 col-md-8">
                                     <div class="form-group">
-                                        <label class="form-label" for="field-126377">Genre Name</label>
-                                        <span class="desc"></span>
+                                        <label class="form-label" >Genre Name</label>
+
                                         <div class="controls">
-                                            <input type="text" class="form-control" id="field-126377">
+                                            <ul>
+                                                <c:forEach items="${genres}" var="genre">
+                                                    <li>${genre.name} &nbsp; <a href="/deleteGenre?id=${genre.id}"><button type="button" class="btn btn-primary">Delete</button></a>
+                                                    </li>
+                                                </c:forEach>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
-                                        <div class="text-left">
-                                            <button type="button" class="btn btn-primary">Delete</button>
-                                            <button type="button" class="btn">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div></form>
+                                </div>
                         </div>
 
 
