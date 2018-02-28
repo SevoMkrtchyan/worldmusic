@@ -24,7 +24,7 @@
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EmulateIE8; IE=EDGE"/>
     <script src="../http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <link rel="stylesheet" type="text/css" href="../styles/icons/font-awesome-ie7.min.css"/>
+    <link href="../adminpage/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
     <![endif]-->
 
     <!--Slayder-->
@@ -414,5 +414,6 @@
         });
         /* ]]> */
     </script>
-</body>
+
+</div></body>
 </html>
