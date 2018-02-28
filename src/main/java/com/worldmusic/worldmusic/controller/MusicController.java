@@ -5,9 +5,7 @@ import com.worldmusic.worldmusic.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MusicController {
@@ -39,8 +37,33 @@ public class MusicController {
         map.addAttribute("artist", new Artist());
         return "player";
     }
-    @RequestMapping(value = "/musicView", method = RequestMethod.POST)
+
+    @PostMapping("/viewMusic")
     public String genreView() {
         return "redirect:/mp3";
+    }
+
+    @GetMapping("/musicAll")
+    public String allMusicPage(ModelMap map) {
+        map.addAttribute("musics", musicRepository.findAll());
+        return "allMusic";
+    }
+
+    @PostMapping("/musicView")
+    public String albumView() {
+        return "redirect:/allArtists";
+    }
+
+    @GetMapping("/deleteMusic")
+    public String genreDelete(ModelMap map) {
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("music", new Music());
+        return "deleteMusic";
+    }
+
+    @GetMapping("/musicDelete")
+    public String deleteMusic(@RequestParam("musicId") int id) {
+        artistRepository.delete(id);
+        return "redirect:/deleteMusic";
     }
 }

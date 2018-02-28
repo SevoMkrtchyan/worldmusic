@@ -254,12 +254,11 @@
                         </li>
                         <li>
                             <a class=""
-                               href="/addNews">AddNews</a>
+                               href="/addNews">Add News</a>
                         </li>
                         <li>
                             <a class=""
-                               href="/deleteNews">Delete
-                                News</a>
+                               href="/deleteNews">Delete News</a>
                         </li>
                     </ul>
                 </li>

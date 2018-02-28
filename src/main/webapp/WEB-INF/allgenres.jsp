@@ -226,7 +226,7 @@
                             <a class="" href="/addArtist">Add Artist</a>
                         </li>
                         <li>
-                            <a class="" href="/genreArtist">Delete Artist</a>
+                            <a class="" href="/deleteArtist">Delete Artist</a>
                         </li>
                     </ul>
                 </li>

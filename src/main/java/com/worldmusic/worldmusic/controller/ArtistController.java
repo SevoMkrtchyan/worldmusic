@@ -2,8 +2,6 @@ package com.worldmusic.worldmusic.controller;
 
 import com.worldmusic.worldmusic.model.Album;
 import com.worldmusic.worldmusic.model.Artist;
-import com.worldmusic.worldmusic.model.Genre;
-import com.worldmusic.worldmusic.repository.AlbumRepository;
 import com.worldmusic.worldmusic.repository.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,34 +11,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class AlbumController {
-    @Autowired
-    private AlbumRepository albumRepository;
+public class ArtistController {
     @Autowired
     private ArtistRepository artistRepository;
 
-    @GetMapping("/allAlbum")
+    @GetMapping("/allArtist")
     public String genrePage(ModelMap map) {
-        map.addAttribute("albums", albumRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
-        return "allAlbums";
+        return "allArtists";
     }
-    @PostMapping("/albumView")
+    @PostMapping("/artistView")
     public String albumView() {
-        return "redirect:/allAlbum";
+        return "redirect:/allArtists";
     }
-    @GetMapping("/deleteAlbum")
+    @GetMapping("/deleteArtist")
     public String genreDelete(ModelMap map) {
-        map.addAttribute("albums", albumRepository.findAll());
-        map.addAttribute("album", new Album());
-        return "deleteAlbum";
+        map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("artist", new Artist());
+        return "deleteArtist";
     }
-    @GetMapping("/albumDelete")
-    public String deleteAlbum(@RequestParam("albumId") int id) {
-        albumRepository.delete(id);
-        return "redirect:/deleteAlbum";
+    @GetMapping("/artistDelete")
+    public String deleteArtist(@RequestParam("artistId") int id) {
+        artistRepository.delete(id);
+        return "redirect:/deleteArtist";
     }
-
-
-
 }

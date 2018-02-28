@@ -227,7 +227,7 @@
                             <a class="" href="/addArtist">Add Artist</a>
                         </li>
                         <li>
-                            <a class="" href="/genreArtist">Delete Artist</a>
+                            <a class="" href="/deleteArtist">Delete Artist</a>
                         </li>
                     </ul>
                 </li>
@@ -248,7 +248,7 @@
                         </li>
                         <li>
                             <a class=""
-                               href="allMusic">View Song</a>
+                               href="/allMusic">View Song</a>
                         </li>
                     </ul>
                 </li>
@@ -305,7 +305,7 @@
                 <div class="page-title">
 
                     <div class="pull-left">
-                        <!-- PAGE HEADING TAG - START --><h1 class="title">Delete Genre</h1>
+                        <!-- PAGE HEADING TAG - START --><h1 class="title">Delete Album</h1>
                         <!-- PAGE HEADING TAG - END -->                            </div>
 
                     <div class="pull-right hidden-xs">
@@ -314,10 +314,10 @@
                                 <a href="index.html"><i class="fa fa-home"></i>Home</a>
                             </li>
                             <li>
-                                <a href="mus-genres.html">Genres</a>
+                                <a href="mus-genres.html">Album</a>
                             </li>
                             <li class="active">
-                                <strong>Edit Genre</strong>
+                                <strong>Delete Album</strong>
                             </li>
                         </ol>
                     </div>
@@ -346,7 +346,7 @@
                                     <div class="controls">
                                         <ul>
                                             <c:forEach items="${albums}" var="album">
-                                                <li><img class="img-responsive" src="image?fileName=${album.albumImg}">
+                                                <li><img width="170" height="240" class="img-responsive" src="image?fileName=${album.albumImg}">
                                                 ${album.name} &nbsp; <a href="/albumDelete?albumId=${album.id}">
                                                     <button type="button" class="btn btn-primary">Delete</button>
                                                 </a>

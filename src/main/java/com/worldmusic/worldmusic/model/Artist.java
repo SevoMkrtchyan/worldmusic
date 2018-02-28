@@ -23,6 +23,9 @@ public class Artist {
     private String surname;
     @Column
     private int age;
+    @Enumerated(EnumType.STRING)
+    @Column
+    private Gender gender;
     @Column
     private String country;
     @Column

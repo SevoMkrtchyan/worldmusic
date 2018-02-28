@@ -38,7 +38,7 @@ public class GenreController {
     }
 
     @GetMapping("/deleteGenre")
-    public String deleteUser(@RequestParam("id") int id) {
+    public String deleteGenre(@RequestParam("id") int id) {
         genreRepository.delete(id);
         return "redirect:/genreDelete";
     }
