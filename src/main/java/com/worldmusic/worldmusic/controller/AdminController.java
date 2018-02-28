@@ -170,13 +170,23 @@ public String addMusicPage(ModelMap map) {
     }
 //    --END ADD MUSIC
 
-    @PostMapping(value = "/addNews")
+//    --ADD NEWS--
+@GetMapping("/addNews")
+public String addNewsPage(ModelMap map) {
+    CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    map.addAttribute("currentUser", principal);
+    map.addAttribute("newsis", newsRepository.findAll());
+    map.addAttribute("news", new News());
+    return "addNews";
+}
+    @PostMapping(value = "/saveNews")
     public String saveNews(@ModelAttribute("news") News news, @RequestParam("newsImg") MultipartFile multipartFile) throws IOException {
         String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
         File file = new File(imageUploadPath + picName);
         multipartFile.transferTo(file);
         news.setNewsImage(picName);
         newsRepository.save(news);
-        return "redirect:/admin";
+        return "redirect:/addNews";
     }
+//    --END ADD NEWS--
 }

@@ -273,15 +273,14 @@
                     <spring:form action="/viewNews" enctype="multipart/form-data" method="post">
                         <c:forEach items="${newsis}" var="news">
                             <div class="news row-fluid animtt" data-gen="fadeUp" style="opacity:100;">
-                                <div class="span5"><img width="240" height="260" class="four-radius"
-                                                        src="/image?fileName=${news.newsImage}" alt="#">
+                                <div class="span5"><img width="240" height="260" class="four-radius" src="/image?fileName=${news.newsImage}" alt="#">
                                 </div>
                                 <div class="span7">
                                     <h3 class="news-title"><a href="news_single.html">${news.name}</a>
                                     </h3>
                                     <p>${news.description}</p>
                                     <div class="meta">
-                                        <span> <i class="icon-time mi"></i> </span> | <span> <a
+                                    <span> <i class="icon-time mi"></i> </span> | <span> <a
                                             href="index.html#"><i
                                             class="icon-comments-alt"></i> ${news.timestamp}</a> </span>
                                     </div><!-- meta -->

@@ -1,8 +1,6 @@
 package com.worldmusic.worldmusic.controller;
 
 import com.worldmusic.worldmusic.model.Album;
-import com.worldmusic.worldmusic.model.Artist;
-import com.worldmusic.worldmusic.model.Genre;
 import com.worldmusic.worldmusic.repository.AlbumRepository;
 import com.worldmusic.worldmusic.repository.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
