@@ -17,21 +17,24 @@
      * @Version: 2.2
      * This file is part of Complete Admin Theme.
     -->
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta charset="utf-8"/>
     <title>Complete Admin : Edit Genre</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta content="" name="description" />
-    <meta content="" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
-    <link rel="shortcut icon" href="../adminpage/assets/images/favicon.png" type="image/x-icon" />    <!-- Favicon -->
-    <link rel="apple-touch-icon-precomposed" href="../adminpage/assets/images/apple-touch-icon-57-precomposed.png">	<!-- For iPhone -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../adminpage/assets/images/apple-touch-icon-114-precomposed.png">    <!-- For iPhone 4 Retina display -->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../adminpage/assets/images/apple-touch-icon-72-precomposed.png">    <!-- For iPad -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../adminpage/assets/images/apple-touch-icon-144-precomposed.png">    <!-- For iPad Retina display -->
-
-
+    <link rel="shortcut icon" href="../adminpage/assets/images/favicon.png" type="image/x-icon"/>    <!-- Favicon -->
+    <link rel="apple-touch-icon-precomposed" href="../adminpage/assets/images/apple-touch-icon-57-precomposed.png">
+    <!-- For iPhone -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="../adminpage/assets/images/apple-touch-icon-114-precomposed.png">
+    <!-- For iPhone 4 Retina display -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+          href="../adminpage/assets/images/apple-touch-icon-72-precomposed.png">    <!-- For iPad -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="../adminpage/assets/images/apple-touch-icon-144-precomposed.png">    <!-- For iPad Retina display -->
 
 
     <!-- CORE CSS FRAMEWORK - START -->
@@ -46,7 +49,8 @@
     <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - START -->
 
 
-    <link href="../adminpage/assets/plugins/datepicker/css/datepicker.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="../adminpage/assets/plugins/datepicker/css/datepicker.css" rel="stylesheet" type="text/css"
+          media="screen"/>
 
     <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
@@ -91,7 +95,8 @@
             <ul class="info-menu right-links list-inline list-unstyled">
                 <li class="profile">
                     <a href="index-music.html#" data-toggle="dropdown" class="toggle">
-                        <img src="../adminpage/data/profile/profile-music.jpg" alt="user-image" class="img-circle img-inline">
+                        <img src="../adminpage/data/profile/profile-music.jpg" alt="user-image"
+                             class="img-circle img-inline">
                         <span>Alan Wilson <i class="fa fa-angle-down"></i></span>
                     </a>
                     <ul class="dropdown-menu profile animated fadeIn">
@@ -162,7 +167,6 @@
             <!-- USER INFO - END -->
 
 
-
             <ul class='wraplist'>
 
 
@@ -181,30 +185,31 @@
                     </a>
                     <ul class="sub-menu" style='display:block;'>
                         <li>
-                            <a class="" href="/allGenre" >All Genres</a>
+                            <a class="" href="/allGenre">All Genres</a>
                         </li>
                         <li>
-                            <a class="" href="/addGenre" >Add Genre</a>
+                            <a class="" href="/addGenre">Add Genre</a>
                         </li>
                         <li>
-                            <a class="active" href="/allGenre" >Delete Genre</a>
+                            <a class="active" href="/allGenre">Delete Genre</a>
                         </li>
-                    </ul></li>
+                    </ul>
+                </li>
                 <li class="">
                     <a href="javascript:;">
                         <i class="fa fa-microphone"></i>
                         <span class="title">Albums</span>
                         <span class="arrow "></span>
                     </a>
-                    <ul class="sub-menu" >
+                    <ul class="sub-menu">
                         <li>
-                            <a class="" href="mus-albums.html" >All Albums</a>
+                            <a class="" href="/allAlbum">All Albums</a>
                         </li>
                         <li>
-                            <a class="" href="mus-album-add.html" >Add Album</a>
+                            <a class="" href="/addAlbum">Add Album</a>
                         </li>
                         <li>
-                            <a class="" href="mus-album-edit.html" >Edit Album</a>
+                            <a class="" href="/deleteAlbum">Delete Album</a>
                         </li>
                     </ul>
                 </li>
@@ -214,15 +219,15 @@
                         <span class="title">Artists</span>
                         <span class="arrow "></span>
                     </a>
-                    <ul class="sub-menu" >
+                    <ul class="sub-menu">
                         <li>
-                            <a class="" href="/allArtist" >All Artists</a>
+                            <a class="" href="/allArtist">All Artists</a>
                         </li>
                         <li>
-                            <a class="" href="/addArtist" >Add Artist</a>
+                            <a class="" href="/addArtist">Add Artist</a>
                         </li>
                         <li>
-                            <a class="" href="/genreArtist" >Delete Artist</a>
+                            <a class="" href="/genreArtist">Delete Artist</a>
                         </li>
                     </ul>
                 </li>
@@ -232,15 +237,18 @@
                         <span class="title">Songs</span>
                         <span class="arrow "></span>
                     </a>
-                    <ul class="sub-menu" >
+                    <ul class="sub-menu">
                         <li>
-                            <a class="" href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-add.html" >Add Song</a>
+                            <a class=""
+                               href="/addMusic">Add Song</a>
                         </li>
                         <li>
-                            <a class="" href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-edit.html" >Edit Song</a>
+                            <a class=""
+                               href="/deleteMusic">Edit Song</a>
                         </li>
                         <li>
-                            <a class="" href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html" >View Song</a>
+                            <a class=""
+                               href="allMusic">View Song</a>
                         </li>
                     </ul>
                 </li>
@@ -250,38 +258,41 @@
                         <span class="title">News</span>
                         <span class="arrow "></span>
                     </a>
-                    <ul class="sub-menu" >
+                    <ul class="sub-menu">
                         <li>
-                            <a class="" href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-playlists.html" >All News</a>
+                            <a class=""
+                               href="/allNews">All News</a>
                         </li>
                         <li>
-                            <a class="" href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-playlist-add.html" >Add News</a>
+                            <a class=""
+                               href="/addNews">Add News</a>
                         </li>
                         <li>
-                            <a class="" href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-playlist-edit.html" >Delete News</a>
+                            <a class=""
+                               href="/deleteNews">Delete News</a>
                         </li>
                     </ul>
                 </li>
             </ul>
 
 
-
             <div class="menustats">
                 <h5>Project Progress</h5>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50"
+                         aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
                     </div>
                 </div>
                 <h5>Target Achieved</h5>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-accent" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                    <div class="progress-bar progress-bar-accent" role="progressbar" aria-valuenow="70"
+                         aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
                     </div>
                 </div>
             </div>
 
         </div>
         <!-- MAIN MENU - END -->
-
 
 
     </div>
@@ -294,7 +305,8 @@
                 <div class="page-title">
 
                     <div class="pull-left">
-                        <!-- PAGE HEADING TAG - START --><h1 class="title">Delete Genre</h1><!-- PAGE HEADING TAG - END -->                            </div>
+                        <!-- PAGE HEADING TAG - START --><h1 class="title">Delete Genre</h1>
+                        <!-- PAGE HEADING TAG - END -->                            </div>
 
                     <div class="pull-right hidden-xs">
                         <ol class="breadcrumb">
@@ -320,32 +332,35 @@
                         <h2 class="title pull-left">Basic Info</h2>
                         <div class="actions panel_actions pull-right">
                             <a class="box_toggle fa fa-chevron-down"></a>
-                            <a class="box_setting fa fa-cog" data-toggle="modal" href="mus-genre-delete.html#section-settings"></a>
+                            <a class="box_setting fa fa-cog" data-toggle="modal"
+                               href="mus-genre-delete.html#section-settings"></a>
                             <a class="box_close fa fa-times"></a>
                         </div>
                     </header>
                     <div class="content-body">
                         <div class="row">
-                                <div class="col-xs-12 col-sm-9 col-md-8">
-                                    <div class="form-group">
-                                        <label class="form-label" >Genre Name</label>
+                            <div class="col-xs-12 col-sm-9 col-md-8">
+                                <div class="form-group">
+                                    <label class="form-label">Genre Name</label>
 
-                                        <div class="controls">
-                                            <ul>
-                                                <c:forEach items="${genres}" var="genre">
-                                                    <li>${genre.name} &nbsp; <a href="/deleteGenre?id=${genre.id}"><button type="button" class="btn btn-primary">Delete</button></a>
-                                                    </li>
-                                                </c:forEach>
-                                            </ul>
-                                        </div>
+                                    <div class="controls">
+                                        <ul>
+                                            <c:forEach items="${genres}" var="genre">
+                                                <li>${genre.name} &nbsp; <a href="/deleteGenre?id=${genre.id}">
+                                                    <button type="button" class="btn btn-primary">Delete</button>
+                                                </a>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
                                     </div>
                                 </div>
+                            </div>
                         </div>
 
 
                     </div>
-                </section></div>
-
+                </section>
+            </div>
 
 
             <!-- MAIN CONTENT AREA ENDS -->
@@ -545,9 +560,8 @@
     <div class="chatapi-windows ">
 
 
-
-
-    </div>    </div>
+    </div>
+</div>
 <!-- END CONTAINER -->
 <!-- LOAD FILES AT PAGE END FOR FASTER LOADING -->
 
@@ -559,13 +573,14 @@
 <script src="../adminpage/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
 <script src="../adminpage/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js" type="text/javascript"></script>
 <script src="../adminpage/assets/plugins/viewport/viewportchecker.js" type="text/javascript"></script>
-<script>window.jQuery||document.write('<script src="../adminpage/assets/js/jquery-1.11.2.min.js"><\/script>');</script>
+<script>window.jQuery || document.write('<script src="../adminpage/assets/js/jquery-1.11.2.min.js"><\/script>');</script>
 <!-- CORE JS FRAMEWORK - END -->
 
 
 <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
 
-<script src="../adminpage/assets/plugins/datepicker/js/datepicker.js" type="text/javascript"></script> <script src="../adminpage/assets/plugins/autosize/autosize.min.js" type="text/javascript"></script>
+<script src="../adminpage/assets/plugins/datepicker/js/datepicker.js" type="text/javascript"></script>
+<script src="../adminpage/assets/plugins/autosize/autosize.min.js" type="text/javascript"></script>
 <script src="../adminpage/assets/plugins/inputmask/min/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
 <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
 

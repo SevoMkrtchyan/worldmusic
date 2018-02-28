@@ -47,6 +47,7 @@
         <span>Add Album</span>
         <spring:form action="/addAlbum" modelAttribute="album" method="post">
             <spring:input path="name" title="name"/><br>
+            <input type="file" name="image">
             <input type="submit"/>
         </spring:form>
         <br>

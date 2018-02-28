@@ -1,15 +1,13 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%--
   Created by IntelliJ IDEA.
   User: vahan
   Date: 28-Feb-18
-  Time: 00:43
+  Time: 00:49
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-
 <!DOCTYPE html>
 <html class=" ">
 <head>
@@ -21,7 +19,7 @@
     -->
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <meta charset="utf-8"/>
-    <title>Complete Admin : Music Genres</title>
+    <title>Complete Admin : Edit Genre</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta content="" name="description"/>
     <meta content="" name="author"/>
@@ -51,6 +49,9 @@
     <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - START -->
 
 
+    <link href="../adminpage/assets/plugins/datepicker/css/datepicker.css" rel="stylesheet" type="text/css"
+          media="screen"/>
+
     <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
 
@@ -63,7 +64,8 @@
 <!-- END HEAD -->
 
 <!-- BEGIN BODY -->
-<body class=" "><!-- START TOPBAR -->
+<body class=" ">
+<!-- START TOPBAR -->
 <div class='page-topbar '>
     <div class='logo-area'>
 
@@ -127,7 +129,6 @@
             </ul>
         </div>
     </div>
-
 </div>
 <!-- END TOPBAR -->
 <!-- START CONTAINER -->
@@ -176,7 +177,7 @@
                     </a>
                 </li>
 
-                <li class="open">
+                <li class="">
                     <a href="javascript:;">
                         <i class="fa fa-music"></i>
                         <span class="title">Genres</span>
@@ -184,7 +185,7 @@
                     </a>
                     <ul class="sub-menu" style='display:block;'>
                         <li>
-                            <a class="active" href="/allGenre">All Genres</a>
+                            <a class="" href="/allGenre">All Genres</a>
                         </li>
                         <li>
                             <a class="" href="/addGenre">Add Genre</a>
@@ -194,7 +195,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="">
+                <li class="open">
                     <a href="javascript:;">
                         <i class="fa fa-microphone"></i>
                         <span class="title">Albums</span>
@@ -205,10 +206,10 @@
                             <a class="" href="/allAlbum">All Albums</a>
                         </li>
                         <li>
-                            <a class="active" href="/addAlbum">Add Album</a>
+                            <a class="" href="/addAlbum">Add Album</a>
                         </li>
                         <li>
-                            <a class="" href="/deleteAlbum">Delete Album</a>
+                            <a class="active" href="/deleteAlbum">Delete Album</a>
                         </li>
                     </ul>
                 </li>
@@ -264,12 +265,11 @@
                         </li>
                         <li>
                             <a class=""
-                               href="/addNews">AddNews</a>
+                               href="/addNews">Add News</a>
                         </li>
                         <li>
                             <a class=""
-                               href="/deleteNews">Delete
-                                News</a>
+                               href="/deleteNews">Delete News</a>
                         </li>
                     </ul>
                 </li>
@@ -305,7 +305,7 @@
                 <div class="page-title">
 
                     <div class="pull-left">
-                        <!-- PAGE HEADING TAG - START --><h1 class="title">Music Genres</h1>
+                        <!-- PAGE HEADING TAG - START --><h1 class="title">Delete Genre</h1>
                         <!-- PAGE HEADING TAG - END -->                            </div>
 
                     <div class="pull-right hidden-xs">
@@ -317,7 +317,7 @@
                                 <a href="mus-genres.html">Genres</a>
                             </li>
                             <li class="active">
-                                <strong>All Genres</strong>
+                                <strong>Edit Genre</strong>
                             </li>
                         </ol>
                     </div>
@@ -326,63 +326,39 @@
             </div>
             <div class="clearfix"></div>
             <!-- MAIN CONTENT AREA STARTS -->
-
-            <div class="col-lg-12">
-                <section class="box nobox ">
+            <div class="col-xs-12">
+                <section class="box ">
+                    <header class="panel_header">
+                        <h2 class="title pull-left">Basic Info</h2>
+                        <div class="actions panel_actions pull-right">
+                            <a class="box_toggle fa fa-chevron-down"></a>
+                            <a class="box_setting fa fa-cog" data-toggle="modal"
+                               href="mus-genre-delete.html#section-settings"></a>
+                            <a class="box_close fa fa-times"></a>
+                        </div>
+                    </header>
                     <div class="content-body">
                         <div class="row">
+                            <div class="col-xs-12 col-sm-9 col-md-8">
+                                <div class="form-group">
+                                    <label class="form-label">Album Name</label>
 
-                            <div class="col-xs-12 col-md-9">
-
-                                <div class="input-group primary">
-                <span class="input-group-addon">
-                    <span class="arrow"></span>
-                    <i class="fa fa-search"></i>
-                </span>
-                                    <input type="text" class="form-control search-page-input"
-                                           placeholder="Search Music by Genre" value="">
+                                    <div class="controls">
+                                        <ul>
+                                            <c:forEach items="${albums}" var="album">
+                                                <li><img class="img-responsive" src="image?fileName=${album.albumImg}">
+                                                ${album.name} &nbsp; <a href="/albumDelete?albumId=${album.id}">
+                                                    <button type="button" class="btn btn-primary">Delete</button>
+                                                </a>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <br>
-                            </div>
-                            <div class="col-xs-12 col-md-3">
-                                <nav class='pull-right'>
-                                    <!-- 								  <ul class="pager" style="margin:0px;">
-                                                                                                        <li><a href="#"><i class='fa fa-arrow-left icon-xs icon-accent icon-secondary'></i></a></li>
-                                                                                                        <li><a href="#"><i class='fa fa-arrow-right icon-xs icon-accent icon-secondary'></i></a></li>
-                                                                                                      </ul> -->
-
-                                    <ul class="pagination pull-right" style="margin:0px;">
-                                        <li><a href="mus-genres.html#">«</a></li>
-                                        <li class="active"><a href="mus-genres.html#">1</a></li>
-                                        <li><a href="mus-genres.html#">2</a></li>
-                                        <li><a href="mus-genres.html#">3</a></li>
-                                        <li><a href="mus-genres.html#">»</a></li>
-                                    </ul>
-
-                                </nav>
-                            </div>
-
-                            <div class="clearfix"></div>
-                            <br>
-
-                            <div class="col-xs-12 music_genre_search search_data">
-
-
-                                <ul class="nav nav-tabs vertical col-xs-3 col-md-2 left-aligned">
-                                    <li class="active">
-                                        <a href="mus-genres.html#all-1" data-toggle="tab">
-                                            <i class="fa fa-home"></i> All Genres
-                                        </a>
-                                    </li>
-                                    <c:forEach items="${genres}" var="genre">
-                                        <li>
-                                            <a href="mus-genres.html#alternativerock-1">${genre.name}</a>
-                                        </li>
-                                    </c:forEach>
-
-                                </ul>
                             </div>
                         </div>
+
+
                     </div>
                 </section>
             </div>
@@ -406,7 +382,7 @@
                         <i class="fa fa-circle"></i>
                     </div>
                     <div class="group-info">
-                        <h4><a href="mus-genres.html#">Work</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Work</a></h4>
                     </div>
                 </li>
                 <li class="group-row">
@@ -414,7 +390,7 @@
                         <i class="fa fa-circle"></i>
                     </div>
                     <div class="group-info">
-                        <h4><a href="mus-genres.html#">Friends</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Friends</a></h4>
                     </div>
                 </li>
 
@@ -426,10 +402,10 @@
 
                 <li class="user-row " id='chat_user_1' data-user-id='1'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Clarine Vassar</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Clarine Vassar</a></h4>
                         <span class="status available" data-status="available"> Available</span>
                     </div>
                     <div class="user-status available">
@@ -438,10 +414,10 @@
                 </li>
                 <li class="user-row " id='chat_user_2' data-user-id='2'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Brooks Latshaw</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Brooks Latshaw</a></h4>
                         <span class="status away" data-status="away"> Away</span>
                     </div>
                     <div class="user-status away">
@@ -450,10 +426,10 @@
                 </li>
                 <li class="user-row " id='chat_user_3' data-user-id='3'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Clementina Brodeur</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Clementina Brodeur</a></h4>
                         <span class="status busy" data-status="busy"> Busy</span>
                     </div>
                     <div class="user-status busy">
@@ -469,10 +445,10 @@
 
                 <li class="user-row " id='chat_user_4' data-user-id='4'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Carri Busey</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Carri Busey</a></h4>
                         <span class="status offline" data-status="offline"> Offline</span>
                     </div>
                     <div class="user-status offline">
@@ -481,10 +457,10 @@
                 </li>
                 <li class="user-row " id='chat_user_5' data-user-id='5'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Melissa Dock</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Melissa Dock</a></h4>
                         <span class="status offline" data-status="offline"> Offline</span>
                     </div>
                     <div class="user-status offline">
@@ -493,10 +469,10 @@
                 </li>
                 <li class="user-row " id='chat_user_6' data-user-id='6'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Verdell Rea</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Verdell Rea</a></h4>
                         <span class="status available" data-status="available"> Available</span>
                     </div>
                     <div class="user-status available">
@@ -505,10 +481,10 @@
                 </li>
                 <li class="user-row " id='chat_user_7' data-user-id='7'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Linette Lheureux</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Linette Lheureux</a></h4>
                         <span class="status busy" data-status="busy"> Busy</span>
                     </div>
                     <div class="user-status busy">
@@ -517,10 +493,10 @@
                 </li>
                 <li class="user-row " id='chat_user_8' data-user-id='8'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Araceli Boatright</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Araceli Boatright</a></h4>
                         <span class="status away" data-status="away"> Away</span>
                     </div>
                     <div class="user-status away">
@@ -529,10 +505,10 @@
                 </li>
                 <li class="user-row " id='chat_user_9' data-user-id='9'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Clay Peskin</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Clay Peskin</a></h4>
                         <span class="status busy" data-status="busy"> Busy</span>
                     </div>
                     <div class="user-status busy">
@@ -541,10 +517,10 @@
                 </li>
                 <li class="user-row " id='chat_user_10' data-user-id='10'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Loni Tindall</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Loni Tindall</a></h4>
                         <span class="status away" data-status="away"> Away</span>
                     </div>
                     <div class="user-status away">
@@ -553,10 +529,10 @@
                 </li>
                 <li class="user-row " id='chat_user_11' data-user-id='11'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Tanisha Kimbro</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Tanisha Kimbro</a></h4>
                         <span class="status idle" data-status="idle"> Idle</span>
                     </div>
                     <div class="user-status idle">
@@ -565,10 +541,10 @@
                 </li>
                 <li class="user-row " id='chat_user_12' data-user-id='12'>
                     <div class="user-img">
-                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
+                        <a href="mus-genre-delete.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-genres.html#">Jovita Tisdale</a></h4>
+                        <h4><a href="mus-genre-delete.html#">Jovita Tisdale</a></h4>
                         <span class="status idle" data-status="idle"> Idle</span>
                     </div>
                     <div class="user-status idle">
@@ -603,6 +579,10 @@
 
 
 <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
+
+<script src="../adminpage/assets/plugins/datepicker/js/datepicker.js" type="text/javascript"></script>
+<script src="../adminpage/assets/plugins/autosize/autosize.min.js" type="text/javascript"></script>
+<script src="../adminpage/assets/plugins/inputmask/min/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
 <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
 
@@ -634,8 +614,6 @@
 <!-- modal end -->
 </body>
 </html>
-
-
 
 
 

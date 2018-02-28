@@ -204,13 +204,13 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a class="" href="mus-albums.html">All Albums</a>
+                            <a class="" href="/allAlbums">All Albums</a>
                         </li>
                         <li>
-                            <a class="" href="mus-album-add.html">Add Album</a>
+                            <a class="" href="/addAlbum">Add Album</a>
                         </li>
                         <li>
-                            <a class="" href="mus-album-edit.html">Delete Album</a>
+                            <a class="" href="/deleteAlbum">Delete Album</a>
                         </li>
                     </ul>
                 </li>
@@ -222,13 +222,13 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a class="" href="mus-artists.html">All Artists</a>
+                            <a class="" href="/allArtist">All Artists</a>
                         </li>
                         <li>
-                            <a class="" href="mus-artist-add.html">Add Artist</a>
+                            <a class="" href="/addArtist">Add Artist</a>
                         </li>
                         <li>
-                            <a class="" href="mus-artist-edit.html">Delete Artist</a>
+                            <a class="" href="/deleteArtist">Delete Artist</a>
                         </li>
                     </ul>
                 </li>
@@ -241,18 +241,15 @@
                     <ul class="sub-menu">
                         <li>
                             <a class=""
-                               href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-add.html">Add
-                                Song</a>
+                               href="/addMusic">Add Song</a>
                         </li>
                         <li>
                             <a class=""
-                               href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-edit.html">Delete
-                                Song</a>
+                               href="/deleteMusic">Edit Song</a>
                         </li>
                         <li>
                             <a class=""
-                               href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html">View
-                                Song</a>
+                               href="allMusic">View Song</a>
                         </li>
                     </ul>
                 </li>
@@ -265,22 +262,15 @@
                     <ul class="sub-menu">
                         <li>
                             <a class=""
-                               href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-playlists.html">All
-                                News</a>
+                               href="/allNews">All News</a>
                         </li>
                         <li>
                             <a class=""
-                               href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-playlist-add.html">Add
-                                News</a>
+                               href="/addNews">AddNews</a>
                         </li>
                         <li>
                             <a class=""
-                               href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-playlist-edit.html">Delete
-                                News</a>
-                        </li>
-                        <li>
-                            <a class=""
-                               href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-playlist-view.html">View
+                               href="/deleteNews">Delete
                                 News</a>
                         </li>
                     </ul>

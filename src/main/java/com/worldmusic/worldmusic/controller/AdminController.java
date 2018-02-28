@@ -44,7 +44,7 @@ public class AdminController {
         map.addAttribute("albums", albumRepository.findAll());
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
-        map.addAttribute("newsis",newsRepository.findAll());
+        map.addAttribute("newsis", newsRepository.findAll());
         map.addAttribute("user", new User());
         map.addAttribute("music", new Music());
         map.addAttribute("album", new Album());
@@ -55,7 +55,7 @@ public class AdminController {
     }
 
 
-//    --ADD GENRE--
+    //    --ADD GENRE--
     @GetMapping("/addGenre")
     public String genrePage(ModelMap map) {
         CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -65,7 +65,7 @@ public class AdminController {
         map.addAttribute("albums", albumRepository.findAll());
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
-        map.addAttribute("newsis",newsRepository.findAll());
+        map.addAttribute("newsis", newsRepository.findAll());
         map.addAttribute("user", new User());
         map.addAttribute("music", new Music());
         map.addAttribute("album", new Album());
@@ -92,10 +92,34 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping(value = "/addAlbum")
-    public String saveAlbum(@ModelAttribute("album") Album album) {
+    // --ADD ALBUM--
+    @GetMapping("/addAlbum")
+    public String albumPage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
+        map.addAttribute("users", userRepository.findAll());
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("newsis", newsRepository.findAll());
+        map.addAttribute("user", new User());
+        map.addAttribute("music", new Music());
+        map.addAttribute("album", new Album());
+        map.addAttribute("genre", new Genre());
+        map.addAttribute("artist", new Artist());
+        map.addAttribute("news", new News());
+        return "addAlbum";
+    }
+
+    @PostMapping(value = "/saveAlbum")
+    public String saveAlbum(@Valid @ModelAttribute("album") Album album, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
+        File file = new File(imageUploadPath + picName);
+        multipartFile.transferTo(file);
+        album.setAlbumImg(picName);
         albumRepository.save(album);
-        return "redirect:/admin";
+        return "redirect:/addAlbum";
     }
 
     @PostMapping(value = "/addMusic")
