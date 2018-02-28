@@ -1,6 +1,7 @@
 package com.worldmusic.worldmusic.controller;
 
 import com.worldmusic.worldmusic.model.*;
+import com.worldmusic.worldmusic.repository.AlbumRepository;
 import com.worldmusic.worldmusic.repository.GenreRepository;
 import com.worldmusic.worldmusic.repository.MusicRepository;
 import com.worldmusic.worldmusic.security.CurrentUser;
@@ -18,6 +19,12 @@ public class GenreController {
     private GenreRepository genreRepository;
     @Autowired
     private MusicRepository musicRepository;
+
+    @GetMapping("/genre")
+    public String genreePage(ModelMap map) {
+        map.addAttribute("genres", genreRepository.findAll());
+        return "genre";
+    }
 
     @PostMapping("/genreView")
     public String genreView() {

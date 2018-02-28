@@ -15,6 +15,12 @@ public class ArtistController {
     @Autowired
     private ArtistRepository artistRepository;
 
+    @GetMapping("/artist")
+    public String artistPage(ModelMap map) {
+        map.addAttribute("genres", artistRepository.findAll());
+        return "artist";
+    }
+
     @GetMapping("/allArtist")
     public String genrePage(ModelMap map) {
         map.addAttribute("artists", artistRepository.findAll());
