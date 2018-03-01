@@ -73,7 +73,7 @@ public class MainController {
     @RequestMapping(value = "/image", method = RequestMethod.GET)
     public void getImageAsByteArray(HttpServletResponse response, @RequestParam("fileName") String fileName) throws IOException {
         InputStream in = new FileInputStream(imageUploadPath + fileName);
-        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+        response.setContentType(MediaType.ALL_VALUE);
         IOUtils.copy(in, response.getOutputStream());
     }
 

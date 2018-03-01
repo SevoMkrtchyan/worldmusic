@@ -1,3 +1,15 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%--
+  Created by IntelliJ IDEA.
+  User: vahan
+  Date: 28-Feb-18
+  Time: 00:43
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <!DOCTYPE html>
 <html class=" ">
 <head>
@@ -9,7 +21,7 @@
     -->
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <meta charset="utf-8"/>
-    <title>Complete Admin : Add a Album</title>
+    <title>Complete Admin : Music Genres</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta content="" name="description"/>
     <meta content="" name="author"/>
@@ -39,9 +51,6 @@
     <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - START -->
 
 
-    <link href="../adminpage/assets/plugins/datepicker/css/datepicker.css" rel="stylesheet" type="text/css"
-          media="screen"/>
-
     <!-- HEADER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
 
@@ -54,8 +63,7 @@
 <!-- END HEAD -->
 
 <!-- BEGIN BODY -->
-<body class=" ">
-<!-- START TOPBAR -->
+<body class=" "><!-- START TOPBAR -->
 <div class='page-topbar '>
     <div class='logo-area'>
 
@@ -85,31 +93,19 @@
             <ul class="info-menu right-links list-inline list-unstyled">
                 <li class="profile">
                     <a href="index-music.html#" data-toggle="dropdown" class="toggle">
-                        <img src="../adminpage/data/profile/profile-music.jpg" alt="user-image"
+                        <img src="/image?fileName=${currentUser.user.picUrl}" alt="user-image"
                              class="img-circle img-inline">
-                        <span>Alan Wilson <i class="fa fa-angle-down"></i></span>
+                        <span>${currentUser.user.name} ${currentUser.user.surname}<i class="fa fa-angle-down"></i></span>
                     </a>
                     <ul class="dropdown-menu profile animated fadeIn">
-                        <li>
-                            <a href="index-music.html#settings">
-                                <i class="fa fa-wrench"></i>
-                                Settings
-                            </a>
-                        </li>
                         <li>
                             <a href="index-music.html#profile">
                                 <i class="fa fa-user"></i>
                                 Profile
                             </a>
                         </li>
-                        <li>
-                            <a href="index-music.html#help">
-                                <i class="fa fa-info"></i>
-                                Help
-                            </a>
-                        </li>
                         <li class="last">
-                            <a href="ui-login.html">
+                            <a href="/logout">
                                 <i class="fa fa-lock"></i>
                                 Logout
                             </a>
@@ -137,20 +133,19 @@
 
                 <div class="profile-image col-xs-4">
                     <a href="ui-profile.html">
-                        <img alt="" src="../adminpage/data/profile/profile-music.jpg" class="img-responsive img-circle">
+                        <img src="/image?fileName=${currentUser.user.picUrl}" class="img-responsive img-circle">
                     </a>
                 </div>
 
                 <div class="profile-details col-xs-8">
 
                     <h3>
-                        <a href="ui-profile.html">Alan Wilson</a>
-
+                        ${currentUser.user.name} ${currentUser.user.surname}
                         <!-- Available statuses: online, idle, busy, away and offline -->
                         <span class="profile-status online"></span>
                     </h3>
 
-                    <p class="profile-title">Music Artist</p>
+                    <p class="profile-title">Music Admin</p>
 
                 </div>
 
@@ -161,21 +156,22 @@
             <ul class='wraplist'>
 
 
-                <li class="open">
+                <li class="">
                     <a href="index-music.html">
                         <i class="fa fa-dashboard"></i>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-                <li class="">
+
+                <li class="open">
                     <a href="javascript:;">
                         <i class="fa fa-music"></i>
                         <span class="title">Genres</span>
-                        <span class="arrow "></span>
+                        <span class="arrow open"></span>
                     </a>
-                    <ul class="sub-menu">
+                    <ul class="sub-menu" style='display:block;'>
                         <li>
-                            <a class="" href="/allGenre">All Genres</a>
+                            <a class="active" href="/allGenre">All Genres</a>
                         </li>
                         <li>
                             <a class="" href="/addGenre">Add Genre</a>
@@ -185,12 +181,13 @@
                         </li>
                     </ul>
                 </li>
-                <li class=""><a href="javascript:;">
-                    <i class="fa fa-microphone"></i>
-                    <span class="title">Albums</span>
-                    <span class="arrow open"></span>
-                </a>
-                    <ul class="sub-menu" style='display:block;'>
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="fa fa-microphone"></i>
+                        <span class="title">Albums</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
                         <li>
                             <a class="" href="/allAlbum">All Albums</a>
                         </li>
@@ -237,7 +234,7 @@
                         </li>
                         <li>
                             <a class=""
-                               href="allMusic">View Song</a>
+                               href="/allMusic">All Song</a>
                         </li>
                     </ul>
                 </li>
@@ -264,6 +261,7 @@
                     </ul>
                 </li>
             </ul>
+
 
             <div class="menustats">
                 <h5>Project Progress</h5>
@@ -294,7 +292,7 @@
                 <div class="page-title">
 
                     <div class="pull-left">
-                        <!-- PAGE HEADING TAG - START --><h1 class="title">Add a Album</h1>
+                        <!-- PAGE HEADING TAG - START --><h1 class="title">Music Genres</h1>
                         <!-- PAGE HEADING TAG - END -->                            </div>
 
                     <div class="pull-right hidden-xs">
@@ -303,10 +301,10 @@
                                 <a href="index.html"><i class="fa fa-home"></i>Home</a>
                             </li>
                             <li>
-                                <a href="../adminpage/fullmenu/mus-albums.html">Albums</a>
+                                <a href="mus-genres.html">Genres</a>
                             </li>
                             <li class="active">
-                                <strong>Add Album</strong>
+                                <strong>All Genres</strong>
                             </li>
                         </ol>
                     </div>
@@ -315,50 +313,67 @@
             </div>
             <div class="clearfix"></div>
             <!-- MAIN CONTENT AREA STARTS -->
-            <div class="col-xs-12">
-                <section class="box ">
-                    <header class="panel_header">
-                        <h2 class="title pull-left">Basic Info</h2>
-                        <div class="actions panel_actions pull-right">
-                            <a class="box_toggle fa fa-chevron-down"></a>
-                            <a class="box_setting fa fa-cog" data-toggle="modal"
-                               href="mus-album-add.html#section-settings"></a>
-                            <a class="box_close fa fa-times"></a>
-                        </div>
-                    </header>
+
+            <div class="col-lg-12">
+                <section class="box nobox ">
                     <div class="content-body">
                         <div class="row">
-                            <form action="mus-album-add.html#" method="post">
-                                <div class="col-xs-12 col-sm-9 col-md-8">
-                                    <div class="form-group">
-                                        <label class="form-label" for="field-122657">Album Title</label>
-                                        <span class="desc"></span>
-                                        <div class="controls">
-                                            <input type="text" value="" class="form-control" id="field-122657">
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="form-label">Album Cover Image</label>
-                                        <div class="controls">
-                                            <input type="file" class="form-control">
-                                        </div>
-                                    </div>
+                            <div class="col-xs-12 col-md-9">
 
+                                <div class="input-group primary">
+                <span class="input-group-addon">
+                    <span class="arrow"></span>
+                    <i class="fa fa-search"></i>
+                </span>
+                                    <input type="text" class="form-control search-page-input"
+                                           placeholder="Search Music by Genre" value="">
                                 </div>
+                                <br>
+                            </div>
+                            <div class="col-xs-12 col-md-3">
+                                <nav class='pull-right'>
+                                    <!-- 								  <ul class="pager" style="margin:0px;">
+                                                                                                        <li><a href="#"><i class='fa fa-arrow-left icon-xs icon-accent icon-secondary'></i></a></li>
+                                                                                                        <li><a href="#"><i class='fa fa-arrow-right icon-xs icon-accent icon-secondary'></i></a></li>
+                                                                                                      </ul> -->
 
-                                <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
-                                    <div class="text-left">
-                                        <button type="button" class="btn btn-primary">Save</button>
-                                    </div>
-                                </div>
-                            </form>
+                                    <ul class="pagination pull-right" style="margin:0px;">
+                                        <li><a href="mus-genres.html#">«</a></li>
+                                        <li class="active"><a href="mus-genres.html#">1</a></li>
+                                        <li><a href="mus-genres.html#">2</a></li>
+                                        <li><a href="mus-genres.html#">3</a></li>
+                                        <li><a href="mus-genres.html#">»</a></li>
+                                    </ul>
+
+                                </nav>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <br>
+
+                            <div class="col-xs-12 music_genre_search search_data">
+
+
+                                <ul class="nav nav-tabs vertical col-xs-3 col-md-2 left-aligned">
+                                    <li class="active">
+                                        <a href="mus-genres.html#all-1" data-toggle="tab">
+                                            <i class="fa fa-home"></i> All Genres
+                                        </a>
+                                    </li>
+                                    <c:forEach items="${genres}" var="genre">
+                                        <li>
+                                            <a href="mus-genres.html#alternativerock-1">${genre.name}</a>
+                                        </li>
+                                    </c:forEach>
+
+                                </ul>
+                            </div>
                         </div>
-
-
                     </div>
                 </section>
             </div>
+
 
             <!-- MAIN CONTENT AREA ENDS -->
         </section>
@@ -378,7 +393,7 @@
                         <i class="fa fa-circle"></i>
                     </div>
                     <div class="group-info">
-                        <h4><a href="mus-album-add.html#">Work</a></h4>
+                        <h4><a href="mus-genres.html#">Work</a></h4>
                     </div>
                 </li>
                 <li class="group-row">
@@ -386,7 +401,7 @@
                         <i class="fa fa-circle"></i>
                     </div>
                     <div class="group-info">
-                        <h4><a href="mus-album-add.html#">Friends</a></h4>
+                        <h4><a href="mus-genres.html#">Friends</a></h4>
                     </div>
                 </li>
 
@@ -398,10 +413,10 @@
 
                 <li class="user-row " id='chat_user_1' data-user-id='1'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Clarine Vassar</a></h4>
+                        <h4><a href="mus-genres.html#">Clarine Vassar</a></h4>
                         <span class="status available" data-status="available"> Available</span>
                     </div>
                     <div class="user-status available">
@@ -410,10 +425,10 @@
                 </li>
                 <li class="user-row " id='chat_user_2' data-user-id='2'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Brooks Latshaw</a></h4>
+                        <h4><a href="mus-genres.html#">Brooks Latshaw</a></h4>
                         <span class="status away" data-status="away"> Away</span>
                     </div>
                     <div class="user-status away">
@@ -422,10 +437,10 @@
                 </li>
                 <li class="user-row " id='chat_user_3' data-user-id='3'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Clementina Brodeur</a></h4>
+                        <h4><a href="mus-genres.html#">Clementina Brodeur</a></h4>
                         <span class="status busy" data-status="busy"> Busy</span>
                     </div>
                     <div class="user-status busy">
@@ -441,10 +456,10 @@
 
                 <li class="user-row " id='chat_user_4' data-user-id='4'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Carri Busey</a></h4>
+                        <h4><a href="mus-genres.html#">Carri Busey</a></h4>
                         <span class="status offline" data-status="offline"> Offline</span>
                     </div>
                     <div class="user-status offline">
@@ -453,10 +468,10 @@
                 </li>
                 <li class="user-row " id='chat_user_5' data-user-id='5'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Melissa Dock</a></h4>
+                        <h4><a href="mus-genres.html#">Melissa Dock</a></h4>
                         <span class="status offline" data-status="offline"> Offline</span>
                     </div>
                     <div class="user-status offline">
@@ -465,10 +480,10 @@
                 </li>
                 <li class="user-row " id='chat_user_6' data-user-id='6'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Verdell Rea</a></h4>
+                        <h4><a href="mus-genres.html#">Verdell Rea</a></h4>
                         <span class="status available" data-status="available"> Available</span>
                     </div>
                     <div class="user-status available">
@@ -477,10 +492,10 @@
                 </li>
                 <li class="user-row " id='chat_user_7' data-user-id='7'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Linette Lheureux</a></h4>
+                        <h4><a href="mus-genres.html#">Linette Lheureux</a></h4>
                         <span class="status busy" data-status="busy"> Busy</span>
                     </div>
                     <div class="user-status busy">
@@ -489,10 +504,10 @@
                 </li>
                 <li class="user-row " id='chat_user_8' data-user-id='8'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Araceli Boatright</a></h4>
+                        <h4><a href="mus-genres.html#">Araceli Boatright</a></h4>
                         <span class="status away" data-status="away"> Away</span>
                     </div>
                     <div class="user-status away">
@@ -501,10 +516,10 @@
                 </li>
                 <li class="user-row " id='chat_user_9' data-user-id='9'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Clay Peskin</a></h4>
+                        <h4><a href="mus-genres.html#">Clay Peskin</a></h4>
                         <span class="status busy" data-status="busy"> Busy</span>
                     </div>
                     <div class="user-status busy">
@@ -513,10 +528,10 @@
                 </li>
                 <li class="user-row " id='chat_user_10' data-user-id='10'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Loni Tindall</a></h4>
+                        <h4><a href="mus-genres.html#">Loni Tindall</a></h4>
                         <span class="status away" data-status="away"> Away</span>
                     </div>
                     <div class="user-status away">
@@ -525,10 +540,10 @@
                 </li>
                 <li class="user-row " id='chat_user_11' data-user-id='11'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Tanisha Kimbro</a></h4>
+                        <h4><a href="mus-genres.html#">Tanisha Kimbro</a></h4>
                         <span class="status idle" data-status="idle"> Idle</span>
                     </div>
                     <div class="user-status idle">
@@ -537,10 +552,10 @@
                 </li>
                 <li class="user-row " id='chat_user_12' data-user-id='12'>
                     <div class="user-img">
-                        <a href="mus-album-add.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
+                        <a href="mus-genres.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="mus-album-add.html#">Jovita Tisdale</a></h4>
+                        <h4><a href="mus-genres.html#">Jovita Tisdale</a></h4>
                         <span class="status idle" data-status="idle"> Idle</span>
                     </div>
                     <div class="user-status idle">
@@ -575,10 +590,6 @@
 
 
 <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
-
-<script src="../adminpage/assets/plugins/datepicker/js/datepicker.js" type="text/javascript"></script>
-<script src="../adminpage/assets/plugins/autosize/autosize.min.js" type="text/javascript"></script>
-<script src="../adminpage/assets/plugins/inputmask/min/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
 <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
 
@@ -610,6 +621,9 @@
 <!-- modal end -->
 </body>
 </html>
+
+
+
 
 
 

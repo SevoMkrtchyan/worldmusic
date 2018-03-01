@@ -74,7 +74,7 @@ public class AdminController {
         map.addAttribute("genre", new Genre());
         map.addAttribute("artist", new Artist());
         map.addAttribute("news", new News());
-        return "addgenre";
+        return "addGenre";
     }
 
     @GetMapping(value = "/saveGenre")

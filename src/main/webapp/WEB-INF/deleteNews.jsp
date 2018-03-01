@@ -100,31 +100,19 @@
             <ul class="info-menu right-links list-inline list-unstyled">
                 <li class="profile">
                     <a href="index-music.html#" data-toggle="dropdown" class="toggle">
-                        <img src="../adminpage/data/profile/profile-music.jpg" alt="user-image"
+                        <img src="/image?fileName=${currentUser.user.picUrl}" alt="user-image"
                              class="img-circle img-inline">
-                        <span>Alan Wilson <i class="fa fa-angle-down"></i></span>
+                        <span>${currentUser.user.name} ${currentUser.user.surname}<i class="fa fa-angle-down"></i></span>
                     </a>
                     <ul class="dropdown-menu profile animated fadeIn">
-                        <li>
-                            <a href="index-music.html#settings">
-                                <i class="fa fa-wrench"></i>
-                                Settings
-                            </a>
-                        </li>
                         <li>
                             <a href="index-music.html#profile">
                                 <i class="fa fa-user"></i>
                                 Profile
                             </a>
                         </li>
-                        <li>
-                            <a href="index-music.html#help">
-                                <i class="fa fa-info"></i>
-                                Help
-                            </a>
-                        </li>
                         <li class="last">
-                            <a href="ui-login.html">
+                            <a href="/logout">
                                 <i class="fa fa-lock"></i>
                                 Logout
                             </a>
@@ -152,20 +140,19 @@
 
                 <div class="profile-image col-xs-4">
                     <a href="ui-profile.html">
-                        <img alt="" src="../adminpage/data/profile/profile-music.jpg" class="img-responsive img-circle">
+                        <img src="/image?fileName=${currentUser.user.picUrl}" class="img-responsive img-circle">
                     </a>
                 </div>
 
                 <div class="profile-details col-xs-8">
 
                     <h3>
-                        <a href="ui-profile.html">Alan Wilson</a>
-
+                        ${currentUser.user.name} ${currentUser.user.surname}
                         <!-- Available statuses: online, idle, busy, away and offline -->
                         <span class="profile-status online"></span>
                     </h3>
 
-                    <p class="profile-title">Music Artist</p>
+                    <p class="profile-title">Music Admin</p>
 
                 </div>
 
@@ -253,7 +240,7 @@
                         </li>
                         <li>
                             <a class=""
-                               href="allMusic">View Song</a>
+                               href="/allMusic">All Song</a>
                         </li>
                     </ul>
                 </li>

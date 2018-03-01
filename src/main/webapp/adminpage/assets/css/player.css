@@ -25,9 +25,7 @@ footer, header, hgroup, menu, nav, section, img {
     display: block;
 }
 
-body {
-    line-height: 1;
-}
+
 
 ol, ul {
     list-style: none;
@@ -56,24 +54,7 @@ table {
 
 /*	General Styling
 ----------------------------------------------------------------------*/
-body {
-    margin: 0 auto;
-    background: #111;
-    color: #7A7A7A;
-    line-height: 24px;
-    font-family: "Tahoma", Helvetica, Arial;
-    font-size: 12px
-}
 
-::selection {
-    color: #fff;
-    background: #FF0078
-}
-
-::-moz-selection {
-    color: #fff;
-    background: #FF0078
-}
 
 img {
     border: none;
@@ -87,12 +68,9 @@ a {
     transition: color 0.1s ease-in-out
 }
 
-a:hover {
-    color: #FF0078
-}
 
 h1, h2, h3, h4, h5, h6 {
-    color: #fff;
+    color: #000000;
     padding: 0;
     margin: 0 0 10px 0;
     font-family: "Oswald", Tahoma, Arial;
@@ -135,7 +113,7 @@ p:last-child {
 
 strong {
     font-weight: bold;
-    color: #fff;
+    color: #000000;
 }
 
 em {

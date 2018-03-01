@@ -2,10 +2,14 @@ package com.worldmusic.worldmusic.controller;
 
 import com.worldmusic.worldmusic.model.*;
 import com.worldmusic.worldmusic.repository.*;
+import com.worldmusic.worldmusic.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class MusicController {
@@ -43,19 +47,23 @@ public class MusicController {
         return "redirect:/mp3";
     }
 
-    @GetMapping("/musicAll")
+    @GetMapping("/allMusic")
     public String allMusicPage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
         map.addAttribute("musics", musicRepository.findAll());
         return "allMusic";
     }
 
     @PostMapping("/musicView")
-    public String albumView() {
-        return "redirect:/allArtists";
+    public String musicView() {
+        return "redirect:/allMusic";
     }
 
     @GetMapping("/deleteMusic")
     public String genreDelete(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
         map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("music", new Music());
         return "deleteMusic";
@@ -63,7 +71,17 @@ public class MusicController {
 
     @GetMapping("/musicDelete")
     public String deleteMusic(@RequestParam("musicId") int id) {
-        artistRepository.delete(id);
+        musicRepository.delete(id);
         return "redirect:/deleteMusic";
+    }
+
+    @GetMapping("/musicSingle")
+    public String musicSingle(@RequestParam("musicId") int id, @RequestParam("artistId") int artistId,
+                              @RequestParam("albumId") int albumId, @RequestParam("genreId") int genreId, ModelMap map) {
+        map.addAttribute("musics", musicRepository.findOne(id));
+        map.addAttribute("artists", artistRepository.findOne(artistId));
+        map.addAttribute("albums", albumRepository.findOne(albumId));
+        map.addAttribute("genres", genreRepository.findOne(genreId));
+        return "singleMusic";
     }
 }

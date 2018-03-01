@@ -24,17 +24,26 @@
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EmulateIE8; IE=EDGE"/>
     <script src="../http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <link rel="stylesheet" type="text/css" href="../styles/icons/font-awesome-ie7.min.css"/>
     <![endif]-->
+
+    <link href="../adminpage/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+    <% User user = (User) session.getAttribute("user"); %>
+
 </head>
 <body id="fluidGridSystem">
 <div id="layout" class="full">
     <header id="header" class="glue">
         <div class="row clearfix">
             <div class="little-head">
+                <% if (user == null) {%>
                 <a href="/loginPage">
                     <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign In</span></div>
+                </a> <%} else {%>
+                <a href="/logout">
+                    <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign out</span></div>
                 </a>
+                <%}%>
+
                 <div class="social social-head">
                     <a href="http://twitter.com/behzadg1" class="bottomtip" title="Follow us on Twitter"
                        target="_blank"><i class="icon-twitter"></i></a>
@@ -57,23 +66,13 @@
                     <a href="http://www.linkedin.com/" class="bottomtip" title="Linkedin" target="_blank"><i
                             class="icon-linkedin"></i></a>
                 </div><!-- end social -->
-
-                <div class="search">
-                    <form action="search.html" id="search" method="get">
-                        <input id="inputhead" name="search" type="text"
-                               onfocus="if (this.value=='Start Searching...') this.value = '';"
-                               onblur="if (this.value=='') this.value = 'Start Searching...';"
-                               value="Start Searching..." placeholder="Start Searching ...">
-                        <button type="submit"><i class="icon-search"></i></button>
-                    </form><!-- end form -->
-                </div><!-- search -->
             </div><!-- little head -->
         </div><!-- row -->
 
         <div class="headdown">
             <div class="row clearfix">
                 <div class="logo bottomtip" title="Best and Most Popular Musics">
-                    <a href="index.html#"><img src="../images/logo.png" alt="Best and Most Popular Musics"></a>
+                    <a href="/home"><img src="../images/logo.png" alt="Best and Most Popular Musics"></a>
                 </div><!-- end logo -->
 
                 <nav>
@@ -107,6 +106,66 @@
     </div><!-- under header -->
 
     <div class="page-content back_to_up">
+        <div class="row clearfix mbf">
+            <div class="music-player-list"></div>
+
+        </div>
+        <!-- Scripts -->
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/theme20.js"></script>
+        <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script type="text/javascript" src="../js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="../js/jquery.flexslider-min.js"></script>
+        <script type="text/javascript" src="../js/jquery.jplayer.js"></script>
+        <script type="text/javascript" src="../js/ttw-music-player-min.js"></script>
+        <script type="text/javascript" src="../music/myplaylist.js"></script>
+        <script type="text/javascript" src="../js/countdown.js"></script>
+        <script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script>
+        <script type="text/javascript" src="../js/custom.js"></script>
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            jQuery(document).ready(function () {
+                jQuery('.tp-banner').revolution({
+                    delay: 9000,
+                    startwidth: 1060,
+                    startheight: 610,
+                    hideThumbs: 10,
+                    navigationType: "off",
+                    fullWidth: "on",
+                    forceFullWidth: "on"
+                });
+                jQuery("#event1").countdown({
+                        date: "31 December 2017 23:59:59",
+                        format: "on"
+                    },
+                    function () {
+                        // callback function
+                    });
+            });
+            /* ]]> */
+        </script>
+
+        <script>
+            var myPlaylist = [
+                <c:forEach items="${musics}" var="music">
+                {
+                    mp3: '/image?fileName=${music.music}',
+                    title: '${music.name}',
+                    <c:forEach items="${music.artists}" var="artist">
+                    artist: '${artist.name} ${artist.surname}',
+                    </c:forEach>
+                    rating: 5,
+                    buy: '/trrrr',
+                    cover: '/image?fileName=${music.picture}'
+                }, </c:forEach>
+
+            ];
+            ;
+        </script>
+
+        <!-- row music player -->
         <div class="row clearfix mb">
             <div class="Alphabet">
                 <ul>
@@ -161,8 +220,9 @@
                                     <spring:form action="/musicView" method="post" enctype="multipart/form-data">
                                         <c:forEach items="${musics}" var="music">
                                             <li class="grid_6">
-                                                <a class="m-thumbnail" href="../mp3_single_half.html"><img width="50" height="50" src="/image?fileName=${music.picture}" alt="#"></a>
-                                                <h3><a href="../mp3_single_half.html">${music.name}</a></h3>
+                                                <a class="m-thumbnail" href="/musicSingle?musicId=${music.id}">
+                                                    <img width="50" height="50" src="/image?fileName=${music.picture}"></a>
+                                                <h3><a href="/musicSingle?musicId=${music.id}">${music.name}</a></h3>
                                                 <span>
                                             <c:forEach items="${music.artists}" var="artis">
                                                 ${artis.name}</c:forEach></span>

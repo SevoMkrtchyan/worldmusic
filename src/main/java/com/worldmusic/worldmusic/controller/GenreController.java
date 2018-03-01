@@ -26,12 +26,16 @@ public class GenreController {
 
     @GetMapping("/allGenre")
     public String genrePage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
         map.addAttribute("genres", genreRepository.findAll());
-        return "allgenres";
+        return "allGenres";
     }
 
     @GetMapping("/genreDelete")
     public String genreDelete(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("genre", new Genre());
         return "deleteGenre";
