@@ -81,6 +81,5 @@ public class MusicController {
         map.addAttribute("artists",music.getArtists());
         map.addAttribute("music",music);
         return "singleMusic";
-        hj
     }
 }
