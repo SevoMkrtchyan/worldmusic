@@ -107,9 +107,9 @@
                             </spring:form>
                         </li>
 
-                        <li><a href="album.html">Album<span class="sub">all albums of performers</span></a>
+                        <li><a href="/album">Album<span class="sub">all albums of performers</span></a>
                         </li>
-                        <li><a href="artist.html#">Artist<span class="sub">all artists</span></a>
+                        <li><a href="/artist">Artist<span class="sub">all artists</span></a>
                         </li>
                         <li><a href="/aboutUs">About us<span class="sub">creator and developer</span></a>
                         </li>
@@ -171,10 +171,10 @@
             <div class="foot-menu">
                 <ul>
                     <li><a href="/mp3">MP3</a></li>
-                    <li><a href="genre.html">Genre</a></li>
-                    <li><a href="genre.html">Album</a></li>
-                    <li><a href="genre.html">Artist</a></li>
-                    <li><a href="genre.html">About us</a></li>
+                    <li><a href="/genre">Genre</a></li>
+                    <li><a href="/album">Album</a></li>
+                    <li><a href="/artist">Artist</a></li>
+                    <li><a href="/aboutUs">About us</a></li>
                 </ul><!-- end links -->
             </div><!-- end foot menu -->
         </div><!-- row -->
@@ -206,12 +206,16 @@
             artist: '${artist.name} ${artist.surname}',
             </c:forEach>
             rating: 5,
-            buy: '/trrrr',
+            buy: '/downloadMusic?musicName=${music.music}',
             cover: '/image?fileName=${music.picture}'
         },
 
     ];
     ;
+
+
+
+
 </script>
 </body>
 </html>

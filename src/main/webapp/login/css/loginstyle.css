@@ -138,3 +138,9 @@ body {
     color: #333333;
     text-decoration: none;
 }
+.checkbox {
+    margin-bottom: 30px;
+}
+.checkbox {
+    font-weight: normal;
+}

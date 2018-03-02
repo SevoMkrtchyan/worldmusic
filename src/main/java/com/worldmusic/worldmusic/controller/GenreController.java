@@ -1,7 +1,6 @@
 package com.worldmusic.worldmusic.controller;
 
 import com.worldmusic.worldmusic.model.*;
-import com.worldmusic.worldmusic.repository.AlbumRepository;
 import com.worldmusic.worldmusic.repository.GenreRepository;
 import com.worldmusic.worldmusic.repository.MusicRepository;
 import com.worldmusic.worldmusic.security.CurrentUser;
@@ -59,6 +58,7 @@ public class GenreController {
         Genre one = genreRepository.findOne(id);
         List<Music> musics = musicRepository.findAllByGenresContaining(one);
         map.addAttribute("musics", musics);
-        return "singlegenre";
+        map.addAttribute("genres", genreRepository.findAll());
+        return "singleGenre";
     }
 }

@@ -11,5 +11,6 @@ import java.util.List;
 public interface MusicRepository extends JpaRepository<Music, Integer> {
 
     List<Music> findAllByGenresContaining(Genre genre);
+    List<Music> findAllByAlbumId(int id);
 
 }

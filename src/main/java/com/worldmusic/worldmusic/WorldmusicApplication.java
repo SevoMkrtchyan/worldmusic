@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
@@ -64,6 +67,13 @@ public class WorldmusicApplication extends WebMvcConfigurerAdapter /*implements 
 //                    .build());
 //        }
 //    }
+    @Bean
+    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer(){
+        return (configurableEmbeddedServletContainer -> {
+            ErrorPage custom404=new ErrorPage(HttpStatus.NOT_FOUND,"/404");
+            configurableEmbeddedServletContainer.addErrorPages(custom404);
+        });
+    }
 }
 
 

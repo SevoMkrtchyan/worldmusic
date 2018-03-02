@@ -3,6 +3,8 @@ package com.worldmusic.worldmusic.controller;
 import com.worldmusic.worldmusic.model.*;
 import com.worldmusic.worldmusic.repository.AlbumRepository;
 import com.worldmusic.worldmusic.repository.ArtistRepository;
+import com.worldmusic.worldmusic.repository.GenreRepository;
+import com.worldmusic.worldmusic.repository.MusicRepository;
 import com.worldmusic.worldmusic.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,10 +20,15 @@ public class AlbumController {
     private AlbumRepository albumRepository;
     @Autowired
     private ArtistRepository artistRepository;
+    @Autowired
+    private GenreRepository genreRepository;
+    @Autowired
+    private MusicRepository musicRepository;
 
     @GetMapping("/album")
     public String albumPage(ModelMap map) {
         map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
         return "album";
     }
     @GetMapping("/allAlbum")
@@ -36,6 +43,7 @@ public class AlbumController {
     public String albumView() {
         return "redirect:/allAlbum";
     }
+
     @GetMapping("/deleteAlbum")
     public String genreDelete(ModelMap map) {
         CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -48,6 +56,13 @@ public class AlbumController {
     public String deleteAlbum(@RequestParam("albumId") int id) {
         albumRepository.delete(id);
         return "redirect:/deleteAlbum";
+    }
+    @GetMapping("/albumSingle")
+    public String albumSingle(@RequestParam("albumId") int id, ModelMap map) {
+        Album album=albumRepository.findOne(id);
+        map.addAttribute("musics", musicRepository.findAllByAlbumId(id));
+        map.addAttribute("genres", genreRepository.findAll());
+        return "singleAlbum";
     }
 
 
