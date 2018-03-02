@@ -43,4 +43,7 @@ public class AlbumController {
         albumRepository.delete(id);
         return "redirect:/deleteAlbum";
     }
+
+
+
 }

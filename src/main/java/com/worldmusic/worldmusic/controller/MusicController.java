@@ -2,10 +2,19 @@ package com.worldmusic.worldmusic.controller;
 
 import com.worldmusic.worldmusic.model.*;
 import com.worldmusic.worldmusic.repository.*;
+import com.worldmusic.worldmusic.security.CurrentUser;
+import org.hibernate.engine.jdbc.StreamUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.util.List;
 
 @Controller
 public class MusicController {
@@ -21,6 +30,8 @@ public class MusicController {
     private ArtistRepository artistRepository;
     @Autowired
     private NewsRepository newsRepository;
+    @Value("${worldmusic.product.upload.path}")
+    private String imageUploadPath;
 
     @GetMapping("/mp3")
     public String genrePage(ModelMap map) {
@@ -43,19 +54,23 @@ public class MusicController {
         return "redirect:/mp3";
     }
 
-    @GetMapping("/musicAll")
+    @GetMapping("/allMusic")
     public String allMusicPage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
         map.addAttribute("musics", musicRepository.findAll());
         return "allMusic";
     }
 
     @PostMapping("/musicView")
-    public String albumView() {
-        return "redirect:/allArtists";
+    public String musicView() {
+        return "redirect:/allMusic";
     }
 
     @GetMapping("/deleteMusic")
     public String genreDelete(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
         map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("music", new Music());
         return "deleteMusic";
@@ -63,7 +78,26 @@ public class MusicController {
 
     @GetMapping("/musicDelete")
     public String deleteMusic(@RequestParam("musicId") int id) {
-        artistRepository.delete(id);
+        musicRepository.delete(id);
         return "redirect:/deleteMusic";
     }
+
+    @GetMapping("/musicSingle")
+    public String musicSingle(@RequestParam("musicId") int id, ModelMap map) {
+        Music music = musicRepository.findOne(id);
+        map.addAttribute("artists", music.getArtists());
+        map.addAttribute("music", music);
+        map.addAttribute("genres", genreRepository.findAll());
+        return "singleMusic";
+    }
+
+    @GetMapping(value = "/downloadMusic")
+    public void downloadMusic(@RequestParam("musicName") String musicName, HttpServletResponse response) throws IOException {
+        InputStream in = new FileInputStream(imageUploadPath + musicName);
+        response.setContentType(MediaType.ALL_VALUE);
+        FileOutputStream out = new FileOutputStream(new File("D:\\git\\download\\" + musicName));
+        StreamUtils.copy(in, out);
+
+    }
+
 }

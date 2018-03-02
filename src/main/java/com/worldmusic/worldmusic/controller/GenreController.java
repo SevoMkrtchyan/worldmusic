@@ -1,7 +1,6 @@
 package com.worldmusic.worldmusic.controller;
 
 import com.worldmusic.worldmusic.model.*;
-import com.worldmusic.worldmusic.repository.AlbumRepository;
 import com.worldmusic.worldmusic.repository.GenreRepository;
 import com.worldmusic.worldmusic.repository.MusicRepository;
 import com.worldmusic.worldmusic.security.CurrentUser;
@@ -33,12 +32,16 @@ public class GenreController {
 
     @GetMapping("/allGenre")
     public String genrePage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
         map.addAttribute("genres", genreRepository.findAll());
-        return "allgenres";
+        return "allGenres";
     }
 
     @GetMapping("/genreDelete")
     public String genreDelete(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("genre", new Genre());
         return "deleteGenre";
@@ -55,6 +58,7 @@ public class GenreController {
         Genre one = genreRepository.findOne(id);
         List<Music> musics = musicRepository.findAllByGenresContaining(one);
         map.addAttribute("musics", musics);
-        return "singlegenre";
+        map.addAttribute("genres", genreRepository.findAll());
+        return "singleGenre";
     }
 }

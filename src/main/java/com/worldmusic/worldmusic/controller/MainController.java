@@ -73,9 +73,16 @@ public class MainController {
     @RequestMapping(value = "/image", method = RequestMethod.GET)
     public void getImageAsByteArray(HttpServletResponse response, @RequestParam("fileName") String fileName) throws IOException {
         InputStream in = new FileInputStream(imageUploadPath + fileName);
-        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+        response.setContentType(MediaType.ALL_VALUE);
         IOUtils.copy(in, response.getOutputStream());
     }
-
-
+    @GetMapping("/404")
+    public String error404(ModelMap map){
+        map.addAttribute("users", userRepository.findAll());
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
+        return"404";
+    }
 }

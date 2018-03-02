@@ -91,7 +91,7 @@
 
                         <li><a href="/album">Album<span class="sub">all albums of performers</span></a>
                         </li>
-                        <li><a href="/artist">Artist<span class="sub">all artists</span></a>
+                        <li><a href="artist.html#">Artist<span class="sub">all artists</span></a>
                         </li>
                         <li><a href="/aboutUs">About us<span class="sub">creator and developer</span></a>
                         </li>
@@ -157,7 +157,7 @@
                     artist: '${artist.name} ${artist.surname}',
                     </c:forEach>
                     rating: 5,
-                    buy: '/trrrr',
+                    buy: '/downloadMusic?musicName=${music.music}',
                     cover: '/image?fileName=${music.picture}'
                 }, </c:forEach>
 
@@ -206,9 +206,9 @@
             <div class="span8 posts">
                 <div class="def-block">
                     <ul class="tabs">
-                        <li><a href="/mp3" class="active">All mp3</a></li>
-                        <li><a href="/playlist">Playlist </a></li>
-                        <li><a href="/album">Albums</a></li>
+                        <li><a href="/mp3">All mp3</a></li>
+                        <li><a href="mp3s.html#Featured">Playlist </a></li>
+                        <li><a href=/album" class="active">Albums</a></li>
                         <!--<li><a href="mp3s.html#Soon"> Comming Soon </a></li>-->
                     </ul>
                     <!-- tabs -->
@@ -217,18 +217,18 @@
                         <li id="Latest" class="active">
                             <div class="post no-border no-mp clearfix">
                                 <ul class="tab-content-items">
-                                    <spring:form action="/musicView" method="post" enctype="multipart/form-data">
-                                        <c:forEach items="${musics}" var="music">
-                                            <li class="grid_6">
-                                                <a class="m-thumbnail" href="/musicSingle?musicId=${music.id}">
-                                                    <img width="50" height="50" src="/image?fileName=${music.picture}"></a>
-                                                <h3><a href="/musicSingle?musicId=${music.id}&userId=${m}">${music.name}</a></h3>
-                                                <span>
-                                            <c:forEach items="${music.artists}" var="artis">
-                                                ${artis.name}</c:forEach></span>
-                                            </li>
-                                        </c:forEach>
-                                    </spring:form>
+                                    <c:forEach items="${musics}" var="music">
+                                        <li class="grid_6">
+                                            <a class="m-thumbnail" href="/musicSingle?musicId=${music.id}">
+                                                <img width="50" height="50" src="/image?fileName=${music.picture}"></a>
+                                            <h3><a href="/musicSingle?musicId=${music.id}">${music.name}</a></h3>
+                                            <span>
+                                            <c:forEach items="${music.artists}" var="artist">
+                                                ${artist.name}</c:forEach></span>
+                                            <span>   <c:forEach items="${music.genres}" var="genre">
+                                                ${genre.name}</c:forEach></span>
+                                        </li>
+                                    </c:forEach>
                                 </ul>
                             </div><!-- latest -->
                         </li><!-- tab content -->
@@ -256,6 +256,7 @@
                 </div><!-- end foot menu -->
             </div><!-- row -->
         </div><!-- end last -->
+
     </footer><!-- end footer -->
 
 </div><!-- end layout -->

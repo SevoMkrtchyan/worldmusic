@@ -24,8 +24,9 @@
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EmulateIE8; IE=EDGE"/>
     <script src="../http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <link href="../adminpage/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
     <![endif]-->
+
+    <link href="../adminpage/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 
     <!--Slayder-->
     <link rel="stylesheet" href="../slayder/css/style.css">
@@ -41,11 +42,13 @@
     <header id="header" class="glue">
         <div class="row clearfix">
             <div class="little-head">
-                <% if(user == null){%>
+                <% if (user == null) {%>
                 <a href="/loginPage">
                     <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign In</span></div>
-                </a>                <%}else {%>
-                <a href="/logout"><div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign out</span></div></a>
+                </a> <%} else {%>
+                <a href="/logout">
+                    <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign out</span></div>
+                </a>
                 <%}%>
 
                 <div class="social social-head">
@@ -71,22 +74,13 @@
                             class="icon-linkedin"></i></a>
                 </div><!-- end social -->
 
-                <div class="search">
-                    <form action="search.html" id="search" method="get">
-                        <input id="inputhead" name="search" type="text"
-                               onfocus="if (this.value=='Start Searching...') this.value = '';"
-                               onblur="if (this.value=='') this.value = 'Start Searching...';"
-                               value="Start Searching..." placeholder="Start Searching ...">
-                        <button type="submit"><i class="icon-search"></i></button>
-                    </form><!-- end form -->
-                </div><!-- search -->
             </div><!-- little head -->
         </div><!-- row -->
 
         <div class="headdown">
             <div class="row clearfix">
                 <div class="logo bottomtip" title="Best and Most Popular Musics">
-                    <a href="index.html#"><img src="../images/logo.png" alt="Best and Most Popular Musics"></a>
+                    <a href="/home"><img src="../images/logo.png" alt="Best and Most Popular Musics"></a>
                 </div><!-- end logo -->
 
                 <nav>
@@ -103,9 +97,9 @@
                             </spring:form>
                         </li>
 
-                        <li><a href="album.html">Album<span class="sub">all albums of performers</span></a>
+                        <li><a href="/album">Album<span class="sub">all albums of performers</span></a>
                         </li>
-                        <li><a href="artist.html#">Artist<span class="sub">all artists</span></a>
+                        <li><a href="/artist">Artist<span class="sub">all artists</span></a>
                         </li>
                         <li><a href="/aboutUs">About us<span class="sub">creator and developer</span></a>
                         </li>
@@ -263,6 +257,7 @@
     <div class="page-content">
         <div class="row clearfix mbf">
             <div class="music-player-list"></div>
+
         </div><!-- row music player -->
 
         <div class="row row-fluid clearfix mbf">
@@ -273,14 +268,15 @@
                     <spring:form action="/viewNews" enctype="multipart/form-data" method="post">
                         <c:forEach items="${newsis}" var="news">
                             <div class="news row-fluid animtt" data-gen="fadeUp" style="opacity:100;">
-                                <div class="span5"><img width="240" height="260" class="four-radius" src="/image?fileName=${news.newsImage}" alt="#">
+                                <div class="span5"><img width="240" height="260" class="four-radius"
+                                                        src="/image?fileName=${news.newsImage}" alt="#">
                                 </div>
                                 <div class="span7">
                                     <h3 class="news-title"><a href="news_single.html">${news.name}</a>
                                     </h3>
                                     <p>${news.description}</p>
                                     <div class="meta">
-                                    <span> <i class="icon-time mi"></i> </span> | <span> <a
+                                        <span> <i class="icon-time mi"></i> </span> | <span> <a
                                             href="index.html#"><i
                                             class="icon-comments-alt"></i> ${news.timestamp}</a> </span>
                                     </div><!-- meta -->
@@ -365,10 +361,10 @@
                     <div class="foot-menu">
                         <ul>
                             <li><a href="/mp3">MP3</a></li>
-                            <li><a href="genre.html">Genre</a></li>
-                            <li><a href="genre.html">Album</a></li>
-                            <li><a href="genre.html">Artist</a></li>
-                            <li><a href="genre.html">About us</a></li>
+                            <li><a href="/genre">Genre</a></li>
+                            <li><a href="/album">Album</a></li>
+                            <li><a href="/artist">Artist</a></li>
+                            <li><a href="/aboutUs">About us</a></li>
                         </ul><!-- end links -->
                     </div><!-- end foot menu -->
                 </div><!-- row -->
@@ -414,5 +410,24 @@
         /* ]]> */
     </script>
 
-</div></body>
+    <script>
+        var myPlaylist = [
+            <c:forEach items="${musics}" var="music">
+            {
+                mp3: '/image?fileName=${music.music}',
+                title: '${music.name}',
+                <c:forEach items="${music.artists}" var="artist">
+                artist: '${artist.name} ${artist.surname}',
+                </c:forEach>
+                rating: 5,
+                buy: '/downloadMusic?musicName=${music.music}',
+                cover: '/image?fileName=${music.picture}'
+            }, </c:forEach>
+
+        ];
+        ;
+    </script>
+
+</div>
+</body>
 </html>
