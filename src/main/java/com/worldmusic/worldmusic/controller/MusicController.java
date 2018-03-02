@@ -76,12 +76,10 @@ public class MusicController {
     }
 
     @GetMapping("/musicSingle")
-    public String musicSingle(@RequestParam("musicId") int id, @RequestParam("artistId") int artistId,
-                              @RequestParam("albumId") int albumId, @RequestParam("genreId") int genreId, ModelMap map) {
-        map.addAttribute("musics", musicRepository.findOne(id));
-        map.addAttribute("artists", artistRepository.findOne(artistId));
-        map.addAttribute("albums", albumRepository.findOne(albumId));
-        map.addAttribute("genres", genreRepository.findOne(genreId));
+    public String musicSingle(@RequestParam("musicId") int id,ModelMap map) {
+        Music music = musicRepository.findOne(id);
+        map.addAttribute("artists",music.getArtists());
+        map.addAttribute("music",music);
         return "singleMusic";
     }
 }

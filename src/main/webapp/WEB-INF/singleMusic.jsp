@@ -60,6 +60,7 @@
                     <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign out</span></div>
                 </a>
                 <%}%>
+
                 <div class="social social-head">
                     <a href="http://twitter.com/behzadg1" class="bottomtip" title="Follow us on Twitter"
                        target="_blank"><i class="icon-twitter"></i></a>
@@ -82,13 +83,14 @@
                     <a href="http://www.linkedin.com/" class="bottomtip" title="Linkedin" target="_blank"><i
                             class="icon-linkedin"></i></a>
                 </div><!-- end social -->
+
             </div><!-- little head -->
         </div><!-- row -->
 
         <div class="headdown">
             <div class="row clearfix">
                 <div class="logo bottomtip" title="Best and Most Popular Musics">
-                    <a href="index.html"><img src="../images/logo.png" alt="Best and Most Popular Musics"></a>
+                    <a href="/home"><img src="../images/logo.png" alt="Best and Most Popular Musics"></a>
                 </div><!-- end logo -->
 
                 <nav>
@@ -133,70 +135,54 @@
 
         <div class="row row-fluid clearfix mbf">
             <div class="posts">
-                    <div class="row clearfix mbf">
-                        <div class="music-player-list"></div>
+                <div class="row clearfix mbf">
+                    <div class="music-player-list"></div>
                     <!-- end player -->
 
 
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                            voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
-                            cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id
-                            est laborum et dolorum fuga. Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                            1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                            specimen book. It has survived not only five centuries, but also the leap into electronic
-                            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>${music.description}</p>
 
-                        <p>
-                            <span> Tags: </span>
-                            <a href="mp3_single_wide.html#" class="#"> Alexander doe </a>,
-                            <a href="mp3_single_wide.html#" class="#"> Remix </a>
-                        </p><!-- tags -->
+                    <p>
+                        <span> Tags: </span>
+                        <c:forEach items="${artists}" var="artist">${artist.name} ${artist.surname}</c:forEach>,
+                        ${music.album.name}
+                    </p><!-- tags -->
 
-                        <div class="meta">
-                            <span> <i class="icon-user mi"></i> Admin </span>
-                            <span> <i class="icon-time mi"></i>August 20, 2013 2:00 AM </span>
-                        </div><!-- meta -->
+                </div><!-- post -->
 
+                <!-- Disqus Comment Form -->
+                <script type="text/javascript"></script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments
+                    powered by Disqus.</a></noscript>
+                <!-- Disqus Comment Form -->
 
-                    </div><!-- post -->
+            </div><!-- def block -->
+        </div><!-- span8 posts -->
 
-                    <!-- Disqus Comment Form -->
-                    <script type="text/javascript"></script>
-                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments
-                        powered by Disqus.</a></noscript>
-                    <!-- Disqus Comment Form -->
+    </div><!-- row clearfix -->
+</div><!-- end page content -->
 
-                </div><!-- def block -->
-            </div><!-- span8 posts -->
+<footer id="footer">
+    <div class="footer-last">
+        <div class="row clearfix">
+            <span class="copyright">© 2018 by <a href="http://theme20.com/">Txekov</a></span>
+            <div id="toTop"><i class="icon-angle-up"></i></div><!-- Back to top -->
 
-        </div><!-- row clearfix -->
-    </div><!-- end page content -->
+            <div class="foot-menu">
+                <ul>
+                    <li><a href="/mp3">MP3</a></li>
+                    <li><a href="genre.html">Genre</a></li>
+                    <li><a href="genre.html">Album</a></li>
+                    <li><a href="genre.html">Artist</a></li>
+                    <li><a href="genre.html">About us</a></li>
+                </ul><!-- end links -->
+            </div><!-- end foot menu -->
+        </div><!-- row -->
+    </div><!-- end last -->
 
-    <footer id="footer">
-        <div class="footer-last">
-            <div class="row clearfix">
-                <span class="copyright">© 2013 by <a href="http://theme20.com/">Theme20</a>. All Rights Reserved. Powered by <a
-                        href="http://themeforest.net/user/behzadg?ref=behzadg">Themeforest</a>.</span>
-                <div id="toTop"><i class="icon-angle-up"></i></div><!-- Back to top -->
-                <div class="foot-menu">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="mp3s.html">MP3</a></li>
-                        <li><a href="../videos.html">Video</a></li>
-                        <li><a href="http://d.theme20.com/remix_html/gallery.html">Photo Gallery</a></li>
-                        <li><a href="http://d.theme20.com/remix_html/blog.html">Blog</a></li>
-                        <li><a href="../contact.html">Contact</a></li>
-                    </ul><!-- end links -->
-                </div><!-- end foot menu -->
-            </div><!-- row -->
-        </div><!-- end last -->
+</footer><!-- end footer -->
 
-    </footer><!-- end footer -->
-
-</div><!-- end layout -->
+<!-- end layout -->
 <!-- Scripts -->
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/theme20.js"></script>
@@ -213,17 +199,16 @@
 <script type="text/javascript" src="../js/custom.js"></script>
 <script type="text/javascript">
     var myPlaylist = [
-        <c:forEach items="${musics}" var="music">
         {
             mp3: '/image?fileName=${music.music}',
             title: '${music.name}',
-            <c:forEach items="${music.artists}" var="artist">
+            <c:forEach items="${artists}" var="artist">
             artist: '${artist.name} ${artist.surname}',
             </c:forEach>
             rating: 5,
             buy: '/trrrr',
             cover: '/image?fileName=${music.picture}'
-        }, </c:forEach>
+        },
 
     ];
     ;
