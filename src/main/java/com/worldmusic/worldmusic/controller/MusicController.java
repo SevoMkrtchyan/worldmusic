@@ -4,12 +4,18 @@ import com.worldmusic.worldmusic.model.*;
 import com.worldmusic.worldmusic.repository.*;
 import com.worldmusic.worldmusic.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class MusicController {
@@ -25,6 +31,8 @@ public class MusicController {
     private ArtistRepository artistRepository;
     @Autowired
     private NewsRepository newsRepository;
+    @Value("${worldmusic.product.upload.path}")
+    private String imageUploadPath;
 
     @GetMapping("/mp3")
     public String genrePage(ModelMap map) {
@@ -76,10 +84,20 @@ public class MusicController {
     }
 
     @GetMapping("/musicSingle")
-    public String musicSingle(@RequestParam("musicId") int id,ModelMap map) {
+    public String musicSingle(@RequestParam("musicId") int id, ModelMap map) {
         Music music = musicRepository.findOne(id);
-        map.addAttribute("artists",music.getArtists());
-        map.addAttribute("music",music);
+        map.addAttribute("artists", music.getArtists());
+        map.addAttribute("music", music);
         return "singleMusic";
     }
+
+    @GetMapping(value = "/downloadMusic")
+    public void downloadMusic(@RequestParam("musicName") String musicName, HttpServletResponse response) throws IOException {
+        InputStream in = new FileInputStream(imageUploadPath + musicName);
+        response.setContentType(MediaType.ALL_VALUE);
+        FileOutputStream out = new FileOutputStream(new File("D:\\git\\worldMusic\\downloaded\\"+musicName));
+        StreamUtils.copy(in, out);
+
+    }
+
 }

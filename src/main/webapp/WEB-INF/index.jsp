@@ -420,7 +420,7 @@
                 artist: '${artist.name} ${artist.surname}',
                 </c:forEach>
                 rating: 5,
-                buy: '/trrrr',
+                buy: '/downloadMusic?musicName=${music.music}',
                 cover: '/image?fileName=${music.picture}'
             }, </c:forEach>
 
