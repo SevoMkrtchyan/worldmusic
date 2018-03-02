@@ -1,6 +1,6 @@
 package com.worldmusic.worldmusic.controller;
 
-import com.worldmusic.worldmusic.model.Album;
+import com.worldmusic.worldmusic.model.*;
 import com.worldmusic.worldmusic.repository.AlbumRepository;
 import com.worldmusic.worldmusic.repository.ArtistRepository;
 import com.worldmusic.worldmusic.security.CurrentUser;
@@ -19,6 +19,11 @@ public class AlbumController {
     @Autowired
     private ArtistRepository artistRepository;
 
+    @GetMapping("/album")
+    public String albumPage(ModelMap map) {
+        map.addAttribute("albums", albumRepository.findAll());
+        return "album";
+    }
     @GetMapping("/allAlbum")
     public String genrePage(ModelMap map) {
         CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
