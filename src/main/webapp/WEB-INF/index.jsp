@@ -20,7 +20,7 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../images/favicon.ico">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="../images/icon.jpeg">
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EmulateIE8; IE=EDGE"/>
     <script src="../http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -80,7 +80,7 @@
         <div class="headdown">
             <div class="row clearfix">
                 <div class="logo bottomtip" title="Best and Most Popular Musics">
-                    <a href="/home"><img src="../images/logo.png" alt="Best and Most Popular Musics"></a>
+                    <a href="/home"><img src="../images/icon.jpeg" alt="Best and Most Popular Musics"></a>
                 </div><!-- end logo -->
 
                 <nav>

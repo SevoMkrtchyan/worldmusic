@@ -68,7 +68,7 @@
         <div class="headdown">
             <div class="row clearfix">
                 <div class="logo bottomtip" title="Best and Most Popular Musics">
-                    <a href="index.html"><img src="../images/logo.png" alt="Best and Most Popular Musics"></a>
+                    <a href="index.html"><img src="../images/icon.jpeg" alt="Best and Most Popular Musics"></a>
                 </div><!-- end logo -->
 
                 <nav>
