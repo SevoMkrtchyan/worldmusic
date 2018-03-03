@@ -3,6 +3,7 @@ package com.worldmusic.worldmusic.controller;
 import com.worldmusic.worldmusic.model.*;
 import com.worldmusic.worldmusic.repository.*;
 import com.worldmusic.worldmusic.security.CurrentUser;
+import org.apache.commons.io.IOUtils;
 import org.hibernate.engine.jdbc.StreamUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.List;
@@ -90,14 +93,18 @@ public class MusicController {
         map.addAttribute("genres", genreRepository.findAll());
         return "singleMusic";
     }
-
-    @GetMapping(value = "/downloadMusic")
-    public void downloadMusic(@RequestParam("musicName") String musicName, HttpServletResponse response) throws IOException {
-        InputStream in = new FileInputStream(imageUploadPath + musicName);
-        response.setContentType(MediaType.ALL_VALUE);
-        FileOutputStream out = new FileOutputStream(new File("D:\\git\\download\\" + musicName));
-        StreamUtils.copy(in, out);
-
+    @RequestMapping(value = "/downloadMusic", method = RequestMethod.GET)
+    public void downLoadFile(HttpServletRequest request, HttpServletResponse response, @RequestParam("musicName") String fileName) {
+        try {
+            File file = new File(imageUploadPath + fileName);
+            InputStream in = new BufferedInputStream(new FileInputStream(file));
+            response.setContentType("audio/mp3");
+            response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".mp3");
+            ServletOutputStream out = response.getOutputStream();
+            IOUtils.copy(in, out);
+            response.flushBuffer();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
 }
