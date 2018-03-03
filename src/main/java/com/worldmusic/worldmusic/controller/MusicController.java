@@ -93,15 +93,6 @@ public class MusicController {
         map.addAttribute("genres", genreRepository.findAll());
         return "singleMusic";
     }
-
-    @GetMapping(value = "/downloadMusic")
-    public void downloadMusic(@RequestParam("musicName") String musicName, HttpServletResponse response) throws IOException {
-        InputStream in = new FileInputStream(imageUploadPath + musicName);
-        response.setContentType(MediaType.ALL_VALUE);
-        FileOutputStream out = new FileOutputStream(new File("D:\\git\\download\\" + musicName));
-        StreamUtils.copy(in, out);
-
-    }
     @RequestMapping(value = "/downloadMusic", method = RequestMethod.GET)
     public void downLoadFile(HttpServletRequest request, HttpServletResponse response, @RequestParam("musicName") String fileName) {
         try {
