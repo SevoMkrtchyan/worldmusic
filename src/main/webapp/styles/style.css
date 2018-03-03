@@ -79,6 +79,9 @@ img {
     border: none;
     max-width: 100%;
 }
+.logo bottomtip {
+    border-radius: 500%;
+}
 
 a {
     color: #fff;
