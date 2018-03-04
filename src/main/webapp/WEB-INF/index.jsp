@@ -79,7 +79,7 @@
 
         <div class="headdown">
             <div class="row clearfix">
-                <h5 class="marquee"><span>Text, text, text. Text, text, text...</span></h5>
+                <h5 class="marquee"><span>Taner banm greq...</span></h5>
                 <div class="logo bottomtip" title="Best and Most Popular Musics">
                     <a href="/home"><img src="../images/icon.jpeg" alt="Best and Most Popular Musics"></a>
                 </div><!-- end logo -->
