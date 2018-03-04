@@ -318,30 +318,6 @@
                                     <span> Joe </span>
                                     <span> 792,240 Plays </span>
                                 </li>
-                                <li class="clearfix">
-                                    <a class="m-thumbnail" href="mp3_single_half.html"><img width="50" height="50"
-                                                                                            src="../images/assets/thumb-mp3-4.jpg"
-                                                                                            alt="#"></a>
-                                    <h3><a href="mp3_single_half.html">If you love me</a></h3>
-                                    <span> Enrique </span>
-                                    <span> 788,471 Plays </span>
-                                </li>
-                                <li class="clearfix">
-                                    <a class="m-thumbnail" href="mp3_single_half.html"><img width="50" height="50"
-                                                                                            src="../images/assets/thumb-mp3-5.jpg"
-                                                                                            alt="#"></a>
-                                    <h3><a href="mp3_single_half.html">Burning For you</a></h3>
-                                    <span> Lura </span>
-                                    <span> 710,105 Plays </span>
-                                </li>
-                                <li class="clearfix">
-                                    <a class="m-thumbnail" href="mp3_single_half.html"><img width="50" height="50"
-                                                                                            src="../images/assets/thumb-mp3-6.jpg"
-                                                                                            alt="#"></a>
-                                    <h3><a href="mp3_single_half.html">Skyfool ( Dubstep Remix )</a></h3>
-                                    <span> Babel </span>
-                                    <span> 611,748 Plays </span>
-                                </li>
                             </ul>
                         </div>
                     </div>
