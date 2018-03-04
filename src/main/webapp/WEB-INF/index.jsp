@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="../styles/style.css" id="dark" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../styles/req.css" id="dark" media="screen"/>
     <link rel="stylesheet" type="text/css" href="../js/rs-plugin/css/settings.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="../styles/icons/icons.css" media="screen"/>
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -50,7 +51,6 @@
                     <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign out</span></div>
                 </a>
                 <%}%>
-
                 <div class="social social-head">
                     <a href="http://twitter.com/behzadg1" class="bottomtip" title="Follow us on Twitter"
                        target="_blank"><i class="icon-twitter"></i></a>
@@ -79,6 +79,7 @@
 
         <div class="headdown">
             <div class="row clearfix">
+                <h5 class="marquee"><span>Text, text, text. Text, text, text...</span></h5>
                 <div class="logo bottomtip" title="Best and Most Popular Musics">
                     <a href="/home"><img src="../images/icon.jpeg" alt="Best and Most Popular Musics"></a>
                 </div><!-- end logo -->
