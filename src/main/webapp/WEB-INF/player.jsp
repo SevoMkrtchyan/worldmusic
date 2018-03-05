@@ -27,7 +27,6 @@
     <![endif]-->
 
     <link href="../adminpage/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-    <% User user = (User) session.getAttribute("user"); %>
 
 </head>
 <body id="fluidGridSystem">
@@ -35,14 +34,9 @@
     <header id="header" class="glue">
         <div class="row clearfix">
             <div class="little-head">
-                <% if (user == null) {%>
                 <a href="/loginPage">
                     <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign In</span></div>
-                </a> <%} else {%>
-                <a href="/logout">
-                    <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign out</span></div>
                 </a>
-                <%}%>
 
                 <div class="social social-head">
                     <a href="http://twitter.com/behzadg1" class="bottomtip" title="Follow us on Twitter"
@@ -72,13 +66,13 @@
         <div class="headdown">
             <div class="row clearfix">
                 <div class="logo bottomtip" title="Best and Most Popular Musics">
-                    <a href="/home"><img src="../images/icon.jpeg" alt="Best and Most Popular Musics"></a>
+                    <a href="/home">remix</a>
                 </div><!-- end logo -->
 
                 <nav>
                     <ul class="sf-menu">
                         <li><a href="/mp3">MP3<span class="sub">full archive</span></a></li>
-                        <li><a href="/genre">Genre<span class="sub">all genres</span></a>
+                        <li><a href="/genres">Genre<span class="sub">all genres</span></a>
                             <spring:form action="/genreView" method="post" enctype="multipart/form-data">
                                 <ul>
                                     <c:forEach items="${genres}" var="genre">
@@ -89,9 +83,9 @@
                             </spring:form>
                         </li>
 
-                        <li><a href="/album">Album<span class="sub">all albums of performers</span></a>
+                        <li><a href="/albums">Album<span class="sub">all albums of performers</span></a>
                         </li>
-                        <li><a href="/artist">Artist<span class="sub">all artists</span></a>
+                        <li><a href="/artists">Artist<span class="sub">all artists</span></a>
                         </li>
                         <li><a href="/aboutUs">About us<span class="sub">creator and developer</span></a>
                         </li>
@@ -157,7 +151,7 @@
                     artist: '${artist.name} ${artist.surname}',
                     </c:forEach>
                     rating: 5,
-                    buy: '/trrrr',
+                    buy: '/downloadMusic?musicName=${music.music}',
                     cover: '/image?fileName=${music.picture}'
                 }, </c:forEach>
 
@@ -207,8 +201,9 @@
                 <div class="def-block">
                     <ul class="tabs">
                         <li><a href="/mp3" class="active">All mp3</a></li>
-                        <li><a href="/playlist">Playlist </a></li>
-                        <li><a href="/album">Albums</a></li>
+                        <li><a href="/albums">Albums</a></li>
+                        <li><a href="/genres">Genres</a></li>
+                        <li><a href="/artists">Artists</a></li>
                         <!--<li><a href="mp3s.html#Soon"> Comming Soon </a></li>-->
                     </ul>
                     <!-- tabs -->
@@ -248,9 +243,9 @@
                 <div class="foot-menu">
                     <ul>
                         <li><a href="/mp3">MP3</a></li>
-                        <li><a href="/genre">Genre</a></li>
-                        <li><a href="/album">Album</a></li>
-                        <li><a href="/artist">Artist</a></li>
+                        <li><a href="/genres">Genre</a></li>
+                        <li><a href="/albums">Album</a></li>
+                        <li><a href="/artists">Artist</a></li>
                         <li><a href="/aboutUs">About us</a></li>
                     </ul><!-- end links -->
                 </div><!-- end foot menu -->

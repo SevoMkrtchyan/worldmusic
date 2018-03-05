@@ -17,9 +17,9 @@ public class ArtistController {
     @Autowired
     private ArtistRepository artistRepository;
 
-    @GetMapping("/artist")
+    @GetMapping("/artists")
     public String artistPage(ModelMap map) {
-        map.addAttribute("genres", artistRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
         return "artist";
     }
 
@@ -30,10 +30,12 @@ public class ArtistController {
         map.addAttribute("artists", artistRepository.findAll());
         return "allArtists";
     }
+
     @PostMapping("/artistView")
     public String albumView() {
         return "redirect:/allArtists";
     }
+
     @GetMapping("/deleteArtist")
     public String genreDelete(ModelMap map) {
         CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -42,6 +44,7 @@ public class ArtistController {
         map.addAttribute("artist", new Artist());
         return "deleteArtist";
     }
+
     @GetMapping("/artistDelete")
     public String deleteArtist(@RequestParam("artistId") int id) {
         artistRepository.delete(id);

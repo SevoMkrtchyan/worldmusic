@@ -21,7 +21,6 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../images/favicon.ico">
-    <link rel="apple-touch-icon" href="../images/icon.jpeg">
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EmulateIE8; IE=EDGE"/>
     <script src="../http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,7 +32,6 @@
     <link rel="stylesheet" href="../slayder/css/style.css">
     <script type="text/javascript" src="../slayder/js/jssor.slider.min.js"></script>
     <!--END Slayder-->
-    <% User user = (User) session.getAttribute("user"); %>
 
 </head>
 
@@ -43,14 +41,9 @@
     <header id="header" class="glue">
         <div class="row clearfix">
             <div class="little-head">
-                <% if (user == null) {%>
                 <a href="/loginPage">
                     <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign In</span></div>
-                </a> <%} else {%>
-                <a href="/logout">
-                    <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign out</span></div>
                 </a>
-                <%}%>
                 <div class="social social-head">
                     <a href="http://twitter.com/behzadg1" class="bottomtip" title="Follow us on Twitter"
                        target="_blank"><i class="icon-twitter"></i></a>
@@ -79,15 +72,14 @@
 
         <div class="headdown">
             <div class="row clearfix">
-                <h5 class="marquee"><span>Taner banm greq...</span></h5>
                 <div class="logo bottomtip" title="Best and Most Popular Musics">
-                    <a href="/home"><img src="../images/icon.jpeg" alt="Best and Most Popular Musics"></a>
+                    <a href="/home">remix</a>
                 </div><!-- end logo -->
 
                 <nav>
                     <ul class="sf-menu">
                         <li><a href="/mp3">MP3<span class="sub">full archive</span></a></li>
-                        <li><a href="/genre">Genre<span class="sub">all genres</span></a>
+                        <li><a href="/genres">Genre<span class="sub">all genres</span></a>
                             <spring:form action="/genreView" method="post" enctype="multipart/form-data">
                                 <ul>
                                     <c:forEach items="${genres}" var="genre">
@@ -187,9 +179,6 @@
             <!-- Slides Container -->
             <div u="slides"
                  style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1600px;  height: 800px; overflow: hidden;">
-                <div>
-                    <img data-u="image" src="../images/slides/slider1.jpg"/>
-                </div>
                 <div>
                     <img data-u="image" src="../images/slides/slider2.jpg"/>
                 </div>
@@ -338,9 +327,9 @@
                     <div class="foot-menu">
                         <ul>
                             <li><a href="/mp3">MP3</a></li>
-                            <li><a href="/genre">Genre</a></li>
-                            <li><a href="/album">Album</a></li>
-                            <li><a href="/artist">Artist</a></li>
+                            <li><a href="/genres">Genre</a></li>
+                            <li><a href="/albums">Album</a></li>
+                            <li><a href="/artists">Artist</a></li>
                             <li><a href="/aboutUs">About us</a></li>
                         </ul><!-- end links -->
                     </div><!-- end foot menu -->

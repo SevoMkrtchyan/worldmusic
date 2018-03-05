@@ -1,6 +1,8 @@
 package com.worldmusic.worldmusic.controller;
 
 import com.worldmusic.worldmusic.model.*;
+import com.worldmusic.worldmusic.repository.AlbumRepository;
+import com.worldmusic.worldmusic.repository.ArtistRepository;
 import com.worldmusic.worldmusic.repository.GenreRepository;
 import com.worldmusic.worldmusic.repository.MusicRepository;
 import com.worldmusic.worldmusic.security.CurrentUser;
@@ -15,13 +17,20 @@ import java.util.List;
 @Controller
 public class GenreController {
     @Autowired
-    private GenreRepository genreRepository;
+    private AlbumRepository albumRepository;
+    @Autowired
+    private ArtistRepository artistRepository;
     @Autowired
     private MusicRepository musicRepository;
+    @Autowired
+    private GenreRepository genreRepository;
 
-    @GetMapping("/genre")
-    public String genreePage(ModelMap map) {
+    @GetMapping("/genres")
+    public String genrePage(ModelMap map) {
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("albums", albumRepository.findAll());
         map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
         return "genre";
     }
 
@@ -31,7 +40,7 @@ public class GenreController {
     }
 
     @GetMapping("/allGenre")
-    public String genrePage(ModelMap map) {
+    public String allGenrePage(ModelMap map) {
         CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         map.addAttribute("currentUser", principal);
         map.addAttribute("genres", genreRepository.findAll());
