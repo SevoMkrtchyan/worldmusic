@@ -233,7 +233,7 @@
                         </li>
                         <li>
                             <a class="active"
-                               href="/deleteMusic">Edit Song</a>
+                               href="/deleteMusic">Delete Song</a>
                         </li>
                         <li>
                             <a class=""

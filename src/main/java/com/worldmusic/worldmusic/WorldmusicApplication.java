@@ -47,13 +47,14 @@ public class WorldmusicApplication extends WebMvcConfigurerAdapter /*implements 
         return bean;
     }
 
-    	@Bean(name = "multipartResolver")
-	public CommonsMultipartResolver multipartResolver() {
-		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		multipartResolver.setMaxUploadSize(1000000000);
-		return multipartResolver;
-	}
-//    @Override
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(1000000000);
+        return multipartResolver;
+    }
+
+    //    @Override
 //    public void run(String... strings) throws Exception {
 //        String email = "poxosik@mail.ru";
 //        User oneByEmail = userRepository.findOneByEmail(email);
@@ -68,9 +69,9 @@ public class WorldmusicApplication extends WebMvcConfigurerAdapter /*implements 
 //        }
 //    }
     @Bean
-    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer(){
+    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer() {
         return (configurableEmbeddedServletContainer -> {
-            ErrorPage custom404=new ErrorPage(HttpStatus.NOT_FOUND,"/404");
+            ErrorPage custom404 = new ErrorPage(HttpStatus.NOT_FOUND, "/404");
             configurableEmbeddedServletContainer.addErrorPages(custom404);
         });
     }

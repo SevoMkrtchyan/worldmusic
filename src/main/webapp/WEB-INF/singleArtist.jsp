@@ -183,10 +183,10 @@
                 <div class="span8 posts">
                     <div class="def-block">
                         <ul class="tabs">
-                            <li><a href="/mp3" class="active">All mp3</a></li>
+                            <li><a href="/mp3">All mp3</a></li>
                             <li><a href="/albums">Albums</a></li>
-                            <li><a href="/genres" >Genres</a></li>
-                            <li><a href="/artists">Artists</a></li>
+                            <li><a href="/genres">Genres</a></li>
+                            <li><a href="/artists" class="active">Artists</a></li>
                             <!--<li><a href="mp3s.html#Soon"> Comming Soon </a></li>-->
                         </ul>
                         <!-- tabs -->
@@ -195,15 +195,14 @@
                             <li id="Latest" class="active">
                                 <div class="post no-border no-mp clearfix">
                                     <ul class="tab-content-items">
-                                        <spring:form action="/musicView" method="post" enctype="multipart/form-data">
-                                            <c:forEach items="${musics}" var="music">
+                                        <spring:form action="/artistView" method="post" enctype="multipart/form-data">
+                                            <c:forEach items="${artists}" var="artist">
                                                 <li class="grid_6">
-                                                    <a class="m-thumbnail" href="/musicSingle?musicId=${music.id}">
-                                                        <img width="50" height="50" src="/image?fileName=${music.picture}"></a>
-                                                    <h3><a href="/musicSingle?musicId=${music.id}&userId=${m}">${music.name}</a></h3>
-                                                    <span>
-                                            <c:forEach items="${music.artists}" var="artis">
-                                                ${artis.name}</c:forEach></span>
+                                                    <a class="m-thumbnail" href="/artistSingle?artistId=${artist.id}">
+                                                        <img width="50" height="50"
+                                                             src="/image?fileName=${artist.photo}"></a>
+                                                    <h3><a href="/artistSingle?artistId=${artist.id}">${artist.name}</a>
+                                                    </h3>
                                                 </li>
                                             </c:forEach>
                                         </spring:form>
@@ -277,8 +276,6 @@
 
     ];
     ;
-
-
 
 
 </script>

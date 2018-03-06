@@ -37,6 +37,7 @@ public class MainController {
         map.addAttribute("message", message != null ? message : "Welcome");
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("musicsLimit", musicRepository.orderByMusic());
         map.addAttribute("albums", albumRepository.findAll());
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
@@ -47,22 +48,6 @@ public class MainController {
         map.addAttribute("genre", new Genre());
         map.addAttribute("artist", new Artist());
         return "index";
-    }
-
-    @GetMapping("/user")
-    public String userPage(ModelMap map, @RequestParam(value = "message", required = false) String message) {
-        map.addAttribute("message", message != null ? message : "Welcome");
-        map.addAttribute("users", userRepository.findAll());
-        map.addAttribute("musics", musicRepository.findAll());
-        map.addAttribute("albums", albumRepository.findAll());
-        map.addAttribute("genres", genreRepository.findAll());
-        map.addAttribute("artists", artistRepository.findAll());
-        map.addAttribute("user", new User());
-        map.addAttribute("music", new Music());
-        map.addAttribute("album", new Album());
-        map.addAttribute("genre", new Genre());
-        map.addAttribute("artist", new Artist());
-        return "user";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -76,13 +61,14 @@ public class MainController {
         response.setContentType(MediaType.ALL_VALUE);
         IOUtils.copy(in, response.getOutputStream());
     }
+
     @GetMapping("/404")
-    public String error404(ModelMap map){
+    public String error404(ModelMap map) {
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("albums", albumRepository.findAll());
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
-        return"404";
+        return "404";
     }
 }

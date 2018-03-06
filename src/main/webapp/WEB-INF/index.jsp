@@ -90,9 +90,9 @@
                             </spring:form>
                         </li>
 
-                        <li><a href="/album">Album<span class="sub">all albums of performers</span></a>
+                        <li><a href="/albums">Album<span class="sub">all albums of performers</span></a>
                         </li>
-                        <li><a href="/artist">Artist<span class="sub">all artists</span></a>
+                        <li><a href="/artists">Artist<span class="sub">all artists</span></a>
                         </li>
                         <li><a href="/aboutUs">About us<span class="sub">creator and developer</span></a>
                         </li>
@@ -262,13 +262,13 @@
                                                         src="/image?fileName=${news.newsImage}" alt="#">
                                 </div>
                                 <div class="span7">
-                                    <h3 class="news-title"><a href="news_single.html">${news.name}</a>
+                                    <h3 class="news-title">${news.name}
                                     </h3>
                                     <p>${news.description}</p>
                                     <div class="meta">
-                                        <span> <i class="icon-time mi"></i> </span> | <span> <a
+                                        <span> <i class="icon-time mi"></i> </span> | <span>
                                             href="index.html#"><i
-                                            class="icon-comments-alt"></i> ${news.timestamp}</a> </span>
+                                            class="icon-comments-alt"></i> ${news.timestamp} </span>
                                     </div><!-- meta -->
                                 </div><!-- span7 -->
                             </div>
@@ -283,30 +283,16 @@
                     <div class="scroll-mp3" style="height: 220px;">
                         <div class="content">
                             <ul class="tab-content-items">
-                                <li class="clearfix">
-                                    <a class="m-thumbnail" href="mp3_single_half.html"><img width="50" height="50"
-                                                                                            src="../images/assets/thumb-mp3-1.jpg"
-                                                                                            alt="#"></a>
-                                    <h3><a href="mp3_single_half.html">Don’t go mary ( Remix )</a></h3>
-                                    <span> Alexander </span>
-                                    <span> 1,892,250 Plays </span>
-                                </li>
-                                <li class="clearfix">
-                                    <a class="m-thumbnail" href="mp3_single_half.html"><img width="50" height="50"
-                                                                                            src="../images/assets/thumb-mp3-2.jpg"
-                                                                                            alt="#"></a>
-                                    <h3><a href="mp3_single_half.html">That's My Kind Of Night </a></h3>
-                                    <span> Alexander Mikoole </span>
-                                    <span> 998,879 Plays </span>
-                                </li>
-                                <li class="clearfix">
-                                    <a class="m-thumbnail" href="mp3_single_half.html"><img width="50" height="50"
-                                                                                            src="../images/assets/thumb-mp3-3.jpg"
-                                                                                            alt="#"></a>
-                                    <h3><a href="mp3_single_half.html">Magna Carta... Holy Grail </a></h3>
-                                    <span> Joe </span>
-                                    <span> 792,240 Plays </span>
-                                </li>
+                                <c:forEach items="${musicsLimit}" var="musicLimit">
+                                    <li class="clearfix">
+                                        <a class="m-thumbnail" href="/musicSingle?musicId=${musicLimit  .id}">
+                                            <img width="50" height="50" src="/image?fileName=${musicLimit.picture}"></a>
+                                        <h3><a href="/musicSingle?musicId=${music.id}">${musicLimit.name}</a></h3>
+                                        <c:forEach items="${musicLimit.artists}" var="artist">
+                                            <span> ${artist.name} </span>
+                                        </c:forEach>
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 import org.hibernate.engine.jdbc.StreamUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -91,6 +92,7 @@ public class MusicController {
         map.addAttribute("artists", music.getArtists());
         map.addAttribute("music", music);
         map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("musics", musicRepository.findAll());
         return "singleMusic";
     }
     @RequestMapping(value = "/downloadMusic", method = RequestMethod.GET)
