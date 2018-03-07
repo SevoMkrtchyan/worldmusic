@@ -3,12 +3,9 @@ package com.worldmusic.worldmusic.controller;
 import com.worldmusic.worldmusic.model.*;
 import com.worldmusic.worldmusic.repository.*;
 import com.worldmusic.worldmusic.security.CurrentUser;
-import org.apache.commons.io.IOUtils;
-import org.hibernate.engine.jdbc.StreamUtils;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,7 +15,6 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.List;
 
 @Controller
 public class MusicController {

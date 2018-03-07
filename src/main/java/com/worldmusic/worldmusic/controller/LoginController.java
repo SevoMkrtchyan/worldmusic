@@ -1,12 +1,14 @@
 package com.worldmusic.worldmusic.controller;
 
+import com.worldmusic.worldmusic.jwt.JwtTokenUtil;
+import com.worldmusic.worldmusic.mail.EmailServiceImpl;
 import com.worldmusic.worldmusic.model.*;
 import com.worldmusic.worldmusic.repository.*;
 import com.worldmusic.worldmusic.security.CurrentUser;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -32,7 +34,10 @@ public class LoginController {
     private PasswordEncoder passwordEncoder;
     @Value("${worldmusic.product.upload.path}")
     private String imageUploadPath;
-
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    private EmailServiceImpl emailService;
     @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
     public String loginPage(ModelMap map) {
         map.addAttribute("user", new User());
@@ -54,7 +59,13 @@ public class LoginController {
         user.setPicUrl(picName);
         user.setUserType(UserType.USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setVerify(false);
         userRepository.save(user);
+        String token = jwtTokenUtil.generateToken(new CurrentUser(user));
+        String message = String.format("Hi %s, You are successfully registered to our cool Music World portal. " +
+                "Please visit by \"http://localhost:8080/verify?token=%s\">this link to verify your account",
+                user.getName(), token);
+        emailService.sendSimpleMessage(user.getEmail(), "Welcome", message);
         return "redirect:/home";
     }
 
@@ -64,6 +75,15 @@ public class LoginController {
         if (principal.getUser().getUserType() == UserType.ADMIN) {
             return "redirect:/admin";
         }
+        return "redirect:/home";
+    }
+
+    @GetMapping("/verify")
+    public String verifyUser(@RequestParam("token") String token) {
+        String email = jwtTokenUtil.getUsernameFromToken(token);
+        User oneByEmail = userRepository.findOneByEmail(email);
+        oneByEmail.setVerify(true);
+        userRepository.save(oneByEmail);
         return "redirect:/home";
     }
 }

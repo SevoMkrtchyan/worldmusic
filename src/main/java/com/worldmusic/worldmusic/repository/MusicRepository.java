@@ -12,7 +12,6 @@ import java.util.List;
 public interface MusicRepository extends JpaRepository<Music, Integer> {
 
     List<Music> findAllByGenresContaining(Genre genre);
-    List<Music> findOneByArtists(Artist artist);
     List<Music> findAllByAlbumId(int id);
 
     @Query(value = "select * from music order by `music` limit 10", nativeQuery = true)
