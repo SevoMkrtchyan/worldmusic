@@ -71,4 +71,14 @@ public class MainController {
         map.addAttribute("artists", artistRepository.findAll());
         return "404";
     }
+
+    @GetMapping("/loginErr")
+    public String loginErr(ModelMap map) {
+        map.addAttribute("users", userRepository.findAll());
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
+        return "loginErr";
+    }
 }

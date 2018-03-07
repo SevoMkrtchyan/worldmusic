@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("j_email")
                 .passwordParameter("j_password")
                 .defaultSuccessUrl("/loginSuccess")
-//                .failureUrl("/login?error")
+                .failureUrl("/loginErr")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
