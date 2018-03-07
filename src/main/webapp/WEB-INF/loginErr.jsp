@@ -111,7 +111,7 @@
                 <div class="def-block">
                     <div class="tac error-page clearfix">
                         <i class="icon-warning-sign"></i>
-                        <h2 class="tac">Sorry, but you are not verified<small>To pass the verification, we sent you a verification code to your mailbox</small></h2>
+                        <h2 class="tac">Sorry, but you are not verified<small>To pass the verification, we sent you a verification code to your<a href="https://mail.google.com"> mailbox</a></small></h2>
                         <a href="/loginPage" class="tbutton medium"><span>Back To Loginpage</span></a>
                     </div>
                 </div><!-- def block -->
