@@ -14,7 +14,7 @@ public interface MusicRepository extends JpaRepository<Music, Integer> {
     List<Music> findAllByGenresContaining(Genre genre);
     List<Music> findAllByAlbumId(int id);
 
-    @Query(value = "select * from music order by `music` limit 10", nativeQuery = true)
+    @Query(value = "select * from music order by `music` limit 5", nativeQuery = true)
     List<Music> orderByMusic();
 
 }

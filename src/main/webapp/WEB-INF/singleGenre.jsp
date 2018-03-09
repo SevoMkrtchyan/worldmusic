@@ -158,41 +158,7 @@
         </script>
 
         <!-- row music player -->
-        <div class="row clearfix mb">
-            <div class="Alphabet">
-                <ul>
-                    <li><a href="mp3s.html#"> Browse All </a></li>
-                    <li><a href="mp3s.html#"> A </a></li>
-                    <li><a href="mp3s.html#"> B </a></li>
-                    <li><a href="mp3s.html#"> C </a></li>
-                    <li><a href="mp3s.html#"> D </a></li>
-                    <li><a href="mp3s.html#"> E </a></li>
-                    <li><a href="mp3s.html#"> F </a></li>
-                    <li><a href="mp3s.html#"> G </a></li>
-                    <li><a href="mp3s.html#"> H </a></li>
-                    <li><a href="mp3s.html#"> I </a></li>
-                    <li><a href="mp3s.html#"> J </a></li>
-                    <li><a href="mp3s.html#"> K </a></li>
-                    <li><a href="mp3s.html#"> L </a></li>
-                    <li><a href="mp3s.html#"> M </a></li>
-                    <li><a href="mp3s.html#"> N </a></li>
-                    <li><a href="mp3s.html#"> O </a></li>
-                    <li><a href="mp3s.html#"> P </a></li>
-                    <li><a href="mp3s.html#"> Q </a></li>
-                    <li><a href="mp3s.html#"> R </a></li>
-                    <li><a href="mp3s.html#"> S </a></li>
-                    <li><a href="mp3s.html#"> T </a></li>
-                    <li><a href="mp3s.html#"> U </a></li>
-                    <li><a href="mp3s.html#"> V </a></li>
-                    <li><a href="mp3s.html#"> W </a></li>
-                    <li><a href="mp3s.html#"> X </a></li>
-                    <li><a href="mp3s.html#"> Y </a></li>
-                    <li><a href="mp3s.html#"> Z </a></li>
-                    <li><a href="mp3s.html#"> 0-9 </a></li>
-                    <li><a href="mp3s.html#"> Other Artists </a></li>
-                </ul>
-            </div><!-- breadcrumb -->
-        </div><!-- row -->
+
 
         <div class="row row-fluid clearfix mbf">
             <div class="span8 posts">

@@ -45,16 +45,26 @@
                     <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign In</span></div>
                 </a>
                 <div class="social social-head">
-                    <a href="http://twitter.com/behzadg1" class="bottomtip" title="Follow us on Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                    <a href="http://fb.com/theme20" class="bottomtip" title="Like us on Facebook" target="_blank"><i class="icon-facebook"></i></a>
-                    <a href="https://plus.google.com/u/0/104807493509867599773" class="bottomtip" title="GooglePlus" target="_blank"><i class="icon-google-plus"></i></a>
-                    <a href="http://instagram.com/" class="bottomtip" title="instagram" target="_blank"><i class="icon-instagram"></i></a>
-                    <a href="http://dribbble.com/behzadg" class="bottomtip" title="Dribbble" target="_blank"><i class="icon-dribbble"></i></a>
-                    <a href="https://soundcloud.com/behzad-gh" class="bottomtip" title="Soundcloud" target="_blank"><i class="icon-cloud"></i></a>
-                    <a href="http://reverbnation.com/" class="bottomtip" target="_blank" title="Reverbnation"><i class="icon-star"></i></a>
-                    <a href="http://youtube.com/" class="bottomtip" target="_blank" title="YouTube"><i class="icon-youtube-play"></i></a>
-                    <a href="http://youtube.com/" class="bottomtip" target="_blank" title="Flickr"><i class="icon-flickr"></i></a>
-                    <a href="http://www.linkedin.com/" class="bottomtip" title="Linkedin" target="_blank"><i class="icon-linkedin"></i></a>
+                    <a href="http://twitter.com/behzadg1" class="bottomtip" title="Follow us on Twitter"
+                       target="_blank"><i class="icon-twitter"></i></a>
+                    <a href="http://fb.com/theme20" class="bottomtip" title="Like us on Facebook" target="_blank"><i
+                            class="icon-facebook"></i></a>
+                    <a href="https://plus.google.com/u/0/104807493509867599773" class="bottomtip" title="GooglePlus"
+                       target="_blank"><i class="icon-google-plus"></i></a>
+                    <a href="http://instagram.com/" class="bottomtip" title="instagram" target="_blank"><i
+                            class="icon-instagram"></i></a>
+                    <a href="http://dribbble.com/behzadg" class="bottomtip" title="Dribbble" target="_blank"><i
+                            class="icon-dribbble"></i></a>
+                    <a href="https://soundcloud.com/behzad-gh" class="bottomtip" title="Soundcloud" target="_blank"><i
+                            class="icon-cloud"></i></a>
+                    <a href="http://reverbnation.com/" class="bottomtip" target="_blank" title="Reverbnation"><i
+                            class="icon-star"></i></a>
+                    <a href="http://youtube.com/" class="bottomtip" target="_blank" title="YouTube"><i
+                            class="icon-youtube-play"></i></a>
+                    <a href="http://youtube.com/" class="bottomtip" target="_blank" title="Flickr"><i
+                            class="icon-flickr"></i></a>
+                    <a href="http://www.linkedin.com/" class="bottomtip" title="Linkedin" target="_blank"><i
+                            class="icon-linkedin"></i></a>
                 </div><!-- end social -->
 
             </div><!-- little head -->
@@ -101,7 +111,9 @@
             <div class="breadcrumbIn">
                 <ul>
                     <li><a href="/home" class="toptip" original-title="Homepage"> <i class="icon-home"></i> </a></li>
-                    <li>Sorry, but you are not <verified></verified></li>
+                    <li>Sorry, but you are not
+                        <verified></verified>
+                    </li>
                 </ul>
             </div><!-- breadcrumb -->
         </div><!-- row -->
@@ -111,7 +123,10 @@
                 <div class="def-block">
                     <div class="tac error-page clearfix">
                         <i class="icon-warning-sign"></i>
-                        <h2 class="tac">Sorry, but you are not verified<small>To pass the verification, we sent you a verification code to your<a href="https://mail.google.com"> mailbox</a></small></h2>
+                        <h2 class="tac">Sorry, but you are not verified
+                            <small>To pass the verification, we sent you a verification code to your<a
+                                    href="https://mail.google.com"> mailbox</a></small>
+                        </h2>
                         <a href="/loginPage" class="tbutton medium"><span>Back To Loginpage</span></a>
                     </div>
                 </div><!-- def block -->

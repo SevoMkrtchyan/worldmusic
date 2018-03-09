@@ -191,7 +191,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a class="" href="/allAlbums">All Albums</a>
+                            <a class="" href="/allAlbum">All Albums</a>
                         </li>
                         <li>
                             <a class="" href="/addAlbum">Add Album</a>
