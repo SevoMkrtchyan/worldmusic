@@ -7,7 +7,9 @@ import com.worldmusic.worldmusic.repository.GenreRepository;
 import com.worldmusic.worldmusic.repository.MusicRepository;
 import com.worldmusic.worldmusic.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -26,11 +28,15 @@ public class GenreController {
     private GenreRepository genreRepository;
 
     @GetMapping("/genres")
-    public String genrePage(ModelMap map) {
+    public String genrePage(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("albums", albumRepository.findAll());
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
         return "genre";
     }
 
@@ -63,11 +69,15 @@ public class GenreController {
     }
 
     @GetMapping("/genreSingle")
-    public String genre(@RequestParam("genreId") int id, ModelMap map) {
+    public String genre(@RequestParam("genreId") int id,ModelMap map,@AuthenticationPrincipal UserDetails userDetails) {
         Genre one = genreRepository.findOne(id);
         List<Music> musics = musicRepository.findAllByGenresContaining(one);
         map.addAttribute("musics", musics);
         map.addAttribute("genres", genreRepository.findAll());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
         return "singleGenre";
     }
 }

@@ -6,7 +6,9 @@ import com.worldmusic.worldmusic.security.CurrentUser;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +36,7 @@ public class MusicController {
     private String imageUploadPath;
 
     @GetMapping("/mp3")
-    public String genrePage(ModelMap map) {
+    public String genrePage(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("albums", albumRepository.findAll());
@@ -46,6 +48,10 @@ public class MusicController {
         map.addAttribute("album", new Album());
         map.addAttribute("genre", new Genre());
         map.addAttribute("artist", new Artist());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
         return "player";
     }
 
@@ -83,16 +89,21 @@ public class MusicController {
     }
 
     @GetMapping("/musicSingle")
-    public String musicSingle(@RequestParam("musicId") int id, ModelMap map) {
+    public String musicSingle(@RequestParam("musicId") int id, ModelMap map,@AuthenticationPrincipal UserDetails userDetails) {
         Music music = musicRepository.findOne(id);
         map.addAttribute("artists", music.getArtists());
         map.addAttribute("music", music);
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("musics", musicRepository.findAll());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
         return "singleMusic";
     }
+
     @RequestMapping(value = "/downloadMusic", method = RequestMethod.GET)
-    public void downLoadFile(HttpServletRequest request, HttpServletResponse response, @RequestParam("musicName") String fileName) {
+    public void downLoadFile(HttpServletResponse response, @RequestParam("musicName") String fileName) {
         try {
             File file = new File(imageUploadPath + fileName);
             InputStream in = new BufferedInputStream(new FileInputStream(file));

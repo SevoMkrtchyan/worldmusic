@@ -234,23 +234,24 @@
 <script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script>
 <script type="text/javascript" src="../js/custom.js"></script>
 <script type="text/javascript">
-
     var myPlaylist = [
+        <c:forEach items="${musics}" var="music">
         {
             mp3: '/image?fileName=${music.music}',
             title: '${music.name}',
-            <c:forEach items="${artists}" var="artist">
+            <c:forEach items="${music.artists}" var="artist">
             artist: '${artist.name} ${artist.surname}',
             </c:forEach>
+            <c:if test="${currentUser == null}">
+            buy: '/loginPage',
+            </c:if>
+            <c:if test="${currentUser != null}">
             buy: '/downloadMusic?musicName=${music.music}',
-            cover: '/image?fileName=${music.picture}'
-        },
+            </c:if>                    cover: '/image?fileName=${music.picture}'
+        }, </c:forEach>
 
     ];
     ;
-
-
-
 </script>
 </body>
 </html>

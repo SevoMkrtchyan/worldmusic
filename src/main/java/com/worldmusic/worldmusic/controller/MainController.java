@@ -2,10 +2,14 @@ package com.worldmusic.worldmusic.controller;
 
 import com.worldmusic.worldmusic.model.*;
 import com.worldmusic.worldmusic.repository.*;
+import com.worldmusic.worldmusic.security.CurrentUser;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 @Controller
 public class MainController {
@@ -33,8 +38,7 @@ public class MainController {
     private String imageUploadPath;
 
     @GetMapping("/home")
-    public String mainPage(ModelMap map, @RequestParam(value = "message", required = false) String message) {
-        map.addAttribute("message", message != null ? message : "Welcome");
+    public String mainPage(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("musicsLimit", musicRepository.orderByMusic());
@@ -47,6 +51,11 @@ public class MainController {
         map.addAttribute("album", new Album());
         map.addAttribute("genre", new Genre());
         map.addAttribute("artist", new Artist());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
+
         return "index";
     }
 
@@ -73,12 +82,16 @@ public class MainController {
     }
 
     @GetMapping("/loginErr")
-    public String loginErr(ModelMap map) {
+    public String loginErr(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("albums", albumRepository.findAll());
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
         return "loginErr";
     }
 }

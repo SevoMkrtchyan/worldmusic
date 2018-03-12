@@ -157,8 +157,12 @@
                     <c:forEach items="${music.artists}" var="artist">
                     artist: '${artist.name} ${artist.surname}',
                     </c:forEach>
+                    <c:if test="${currentUser == null}">
+                    buy: '/loginPage',
+                    </c:if>
+                    <c:if test="${currentUser != null}">
                     buy: '/downloadMusic?musicName=${music.music}',
-                    cover: '/image?fileName=${music.picture}'
+                    </c:if>                    cover: '/image?fileName=${music.picture}'
                 }, </c:forEach>
 
             ];

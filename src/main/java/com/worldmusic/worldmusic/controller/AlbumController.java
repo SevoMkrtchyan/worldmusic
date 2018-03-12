@@ -7,7 +7,9 @@ import com.worldmusic.worldmusic.repository.GenreRepository;
 import com.worldmusic.worldmusic.repository.MusicRepository;
 import com.worldmusic.worldmusic.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,13 +28,16 @@ public class AlbumController {
     private GenreRepository genreRepository;
 
     @GetMapping("/albums")
-    public String albumPage(ModelMap map) {
-        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        map.addAttribute("currentUser", principal);
+    public String albumPage(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("albums", albumRepository.findAll());
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
         return "album";
     }
 
@@ -64,11 +69,16 @@ public class AlbumController {
     }
 
     @GetMapping("/albumSingle")
-    public String albumSingle(@RequestParam("albumId") int id, ModelMap map) {
+    public String albumSingle(@RequestParam("albumId") int id, ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         Album album = albumRepository.findOne(id);
         map.addAttribute("musics", musicRepository.findAllByAlbumId(album.getId()));
         map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
         return "singleAlbum";
     }
 

@@ -156,7 +156,7 @@
                         <ul class="tabs">
                             <li><a href="/mp3" class="active">All mp3</a></li>
                             <li><a href="/albums">Albums</a></li>
-                            <li><a href="/genres" >Genres</a></li>
+                            <li><a href="/genres">Genres</a></li>
                             <li><a href="/artists">Artists</a></li>
                             <!--<li><a href="mp3s.html#Soon"> Comming Soon </a></li>-->
                         </ul>
@@ -170,8 +170,11 @@
                                             <c:forEach items="${musics}" var="music">
                                                 <li class="grid_6">
                                                     <a class="m-thumbnail" href="/musicSingle?musicId=${music.id}">
-                                                        <img width="50" height="50" src="/image?fileName=${music.picture}"></a>
-                                                    <h3><a href="/musicSingle?musicId=${music.id}&userId=${m}">${music.name}</a></h3>
+                                                        <img width="50" height="50"
+                                                             src="/image?fileName=${music.picture}"></a>
+                                                    <h3>
+                                                        <a href="/musicSingle?musicId=${music.id}&userId=${m}">${music.name}</a>
+                                                    </h3>
                                                     <span>
                                             <c:forEach items="${music.artists}" var="artis">
                                                 ${artis.name}</c:forEach></span>
@@ -242,14 +245,17 @@
             <c:forEach items="${artists}" var="artist">
             artist: '${artist.name} ${artist.surname}',
             </c:forEach>
+            <c:if test="${currentUser == null}">
+            buy: '/loginPage',
+            </c:if>
+            <c:if test="${currentUser != null}">
             buy: '/downloadMusic?musicName=${music.music}',
+            </c:if>
             cover: '/image?fileName=${music.picture}'
         },
 
     ];
     ;
-
-
 
 
 </script>

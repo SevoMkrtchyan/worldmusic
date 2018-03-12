@@ -157,7 +157,12 @@
                     <c:forEach items="${music.artists}" var="artist">
                     artist: '${artist.name} ${artist.surname}',
                     </c:forEach>
+                    <c:if test="${currentUser == null}">
+                    buy: '/loginPage',
+                    </c:if>
+                    <c:if test="${currentUser != null}">
                     buy: '/downloadMusic?musicName=${music.music}',
+                    </c:if>
                     cover: '/image?fileName=${music.picture}'
                 }, </c:forEach>
 
@@ -171,7 +176,7 @@
             <div class="span8 posts">
                 <div class="def-block">
                     <ul class="tabs">
-                        <li><a href="/mp3" >All mp3</a></li>
+                        <li><a href="/mp3">All mp3</a></li>
                         <li><a href="/albums" class="active">Albums</a></li>
                         <li><a href="/genres">Genres</a></li>
                         <li><a href="/artists">Artists</a></li>
