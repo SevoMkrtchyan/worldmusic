@@ -34,9 +34,16 @@
     <header id="header" class="glue">
         <div class="row clearfix">
             <div class="little-head">
-                <a href="/loginPage">
-                    <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign In</span></div>
-                </a>
+                <c:if test="${currentUser == null}">
+                    <a href="/loginPage">
+                        <div id="Login_PopUp_Link" class="sign-btn tbutton small"><span>Sign In</span></div>
+                    </a>
+                </c:if>
+                <c:if test="${currentUser != null}">
+                    <a href="/logout">
+                        <div class="sign-btn tbutton small"><span>Sign out</span></div>
+                    </a>
+                </c:if>
                 <div class="social social-head">
                     <a href="http://twitter.com/behzadg1" class="bottomtip" title="Follow us on Twitter"
                        target="_blank"><i class="icon-twitter"></i></a>
@@ -59,13 +66,14 @@
                     <a href="http://www.linkedin.com/" class="bottomtip" title="Linkedin" target="_blank"><i
                             class="icon-linkedin"></i></a>
                 </div><!-- end social -->
+
             </div><!-- little head -->
         </div><!-- row -->
 
         <div class="headdown">
             <div class="row clearfix">
                 <div class="logo bottomtip" title="Best and Most Popular Musics">
-                    <a href="/home">remix</a>
+                    <a href="/home"><img src="../images/VAhanLOGO.png"></a>
                 </div><!-- end logo -->
 
                 <nav>
