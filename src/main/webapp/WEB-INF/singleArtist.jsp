@@ -1,42 +1,25 @@
 <%@ page import="com.worldmusic.worldmusic.model.User" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: vahan
-  Date: 01-Mar-18
-  Time: 20:50
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<!--[if IE 7 ]>
-<html class="ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>
-<html class="ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]>
-<html class="ie9" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"> <![endif]-->
-<!--[if (gte IE 10)|!(IE)]><!-->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
-<!--<![endif]-->
+<html>
 <head>
-    <title>MP3 Album Missing You | Remix</title>
+    <title>Remix</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <!-- Seo Meta -->
-    <meta name="description" content="Missing You | Remix">
-    <meta name="keywords"
-          content="mp3, Album, Missing You, remix, music, light, dark, themeforest, multi purpose, band, css3, html5">
-
+    <meta name="description" content="Remix - Music & Band Site Template HTML5 and CSS3">
+    <meta name="keywords" content="remix, music, light, dark, themeforest, multi purpose, band, css3, html5">
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="../styles/style.css" id="dark" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../js/rs-plugin/css/settings.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="../styles/icons/icons.css" media="screen"/>
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../images/favicon.ico">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EmulateIE8; IE=EDGE"/>
     <script src="../http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,10 +27,16 @@
 
     <link href="../adminpage/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 
+    <!--Slayder-->
+    <link rel="stylesheet" href="../slayder/css/style.css">
+    <script type="text/javascript" src="../slayder/js/jssor.slider.min.js"></script>
+    <!--END Slayder-->
+
 </head>
+
+
 <body id="fluidGridSystem">
 <div id="layout" class="full">
-
     <header id="header" class="glue">
         <div class="row clearfix">
             <div class="little-head">
@@ -118,107 +107,87 @@
             </div><!-- row -->
         </div><!-- headdown -->
     </header><!-- end header -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row row-fluid clearfix mbf">
+        <div class="span8">
+            <div class="def-block">
+                <div class="news row-fluid animtt" data-gen="fadeUp" style="opacity:100;">
+                    <div class="span5"><img width="240" height="260" class="four-radius"
+                                            src="/image?fileName=${artist.photo}" alt="#">
+                    </div>
+                    <div class="span7">
+                        <h3 class="news-title">${artist.name} ${artist.surname}
+                        </h3>
+                        <p>Gender:${artist.gender}</p>
+                        <p>Country:${artist.country}</p>
+                    </div><!-- span7 -->
+                </div>
+            </div><!-- def block -->
+            <br>
+        </div><!-- span8 aboutUs -->
 
-    <div class="under_header">
-        <img src="../images/assets/breadcrumbs12.png" alt="#">
-    </div><!-- under header -->
-
-    <div class="page-content back_to_up">
-        <div class="row clearfix mb">
-            <div class="breadcrumbIn">
-                <ul>
-                    <li><a href="/home" class="toptip" title="Homepage"> <i class="icon-home"></i> </a></li>
-                    <li><a href="/mp3"> MP3s </a></li>
-                </ul>
-            </div><!-- breadcrumb -->
-        </div><!-- row -->
 
         <div class="row row-fluid clearfix mbf">
-            <div class="posts">
-                <div class="row clearfix mbf">
-                    <div class="music-player-list"></div>
-                    <!-- end player -->
+            <div class="span8 posts">
+                <div class="def-block">
+                    <ul class="tabs">
+                        <li><a href="/mp3" >All mp3</a></li>
+                        <li><a href="/albums" >Albums</a></li>
+                        <li><a href="/genres">Genres</a></li>
+                        <li><a href="/artists" class="active">Artists</a></li>
+                        <!--<li><a href="mp3s.html#Soon"> Comming Soon </a></li>-->
+                    </ul>
+                    <!-- tabs -->
 
+                    <ul class="tabs-content">
+                        <li id="Latest" class="active">
+                            <div class="post no-border no-mp clearfix">
+                                <ul class="tab-content-items">
+                                    <c:forEach items="${artists}" var="artist">
+                                        <li class="grid_6">
+                                            <a class="m-thumbnail" href="/artistSingle?artistId=${artist.id}">
+                                                <img width="50" height="50" src="/image?fileName=${artist.photo}"></a>
+                                            <h3><a href="/artistSingle?artistId=${artist.id}">${artist.name}</a></h3>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- latest -->
+                        </li><!-- tab content -->
+                    </ul><!-- end tabs -->
 
-                    <p>${music.description}</p>
+                </div><!-- def block -->
+            </div><!-- span8 posts -->
+        </div><!-- row clearfix -->
+    </div><!-- end page content -->
 
-                    <p>
-                        <span> Tags: </span>
-                        <c:forEach items="${artists}" var="artist">${artist.name} ${artist.surname}</c:forEach>,
-                        ${music.album.name}
-                    </p><!-- tags -->
+    <footer id="footer">
+        <div class="footer-last">
+            <div class="row clearfix">
+                <span class="copyright">© 2018 by <a href="http://theme20.com/">Txekov</a></span>
+                <div id="toTop"><i class="icon-angle-up"></i></div><!-- Back to top -->
 
-                </div>
-                <!-- post -->
+                <div class="foot-menu">
+                    <ul>
+                        <li><a href="/mp3">MP3</a></li>
+                        <li><a href="/genres">Genre</a></li>
+                        <li><a href="/albums">Album</a></li>
+                        <li><a href="/artists">Artist</a></li>
+                        <li><a href="/aboutUs">About us</a></li>
+                    </ul><!-- end links -->
+                </div><!-- end foot menu -->
+            </div><!-- row -->
+        </div><!-- end last -->
 
-                <div class="span8 posts">
-                    <div class="def-block">
-                        <ul class="tabs">
-                            <li><a href="/mp3">All mp3</a></li>
-                            <li><a href="/albums">Albums</a></li>
-                            <li><a href="/genres">Genres</a></li>
-                            <li><a href="/artists" class="active">Artists</a></li>
-                            <!--<li><a href="mp3s.html#Soon"> Comming Soon </a></li>-->
-                        </ul>
-                        <!-- tabs -->
+    </footer><!-- end footer -->
 
-                        <ul class="tabs-content">
-                            <li id="Latest" class="active">
-                                <div class="post no-border no-mp clearfix">
-                                    <ul class="tab-content-items">
-                                        <spring:form action="/artistView" method="post" enctype="multipart/form-data">
-                                            <c:forEach items="${artists}" var="artist">
-                                                <li class="grid_6">
-                                                    <a class="m-thumbnail" href="/artistSingle?artistId=${artist.id}">
-                                                        <img width="50" height="50"
-                                                             src="/image?fileName=${artist.photo}"></a>
-                                                    <h3><a href="/artistSingle?artistId=${artist.id}">${artist.name}</a>
-                                                    </h3>
-                                                </li>
-                                            </c:forEach>
-                                        </spring:form>
-                                    </ul>
-                                </div><!-- latest -->
-                            </li><!-- tab content -->
-                        </ul><!-- end tabs -->
-
-                    </div><!-- def block -->
-                </div><!-- span8 posts -->
-
-
-                <!-- Disqus Comment Form -->
-                <script type="text/javascript"></script>
-                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments
-                    powered by Disqus.</a></noscript>
-                <!-- Disqus Comment Form -->
-
-            </div><!-- def block -->
-        </div><!-- span8 posts -->
-
-    </div><!-- row clearfix -->
-</div><!-- end page content -->
-
-<footer id="footer">
-    <div class="footer-last">
-        <div class="row clearfix">
-            <span class="copyright">© 2018 by <a href="http://theme20.com/">Txekov</a></span>
-            <div id="toTop"><i class="icon-angle-up"></i></div><!-- Back to top -->
-
-            <div class="foot-menu">
-                <ul>
-                    <li><a href="/mp3">MP3</a></li>
-                    <li><a href="/genres">Genre</a></li>
-                    <li><a href="/albums">Album</a></li>
-                    <li><a href="/artists">Artist</a></li>
-                    <li><a href="/aboutUs">About us</a></li>
-                </ul><!-- end links -->
-            </div><!-- end foot menu -->
-        </div><!-- row -->
-    </div><!-- end last -->
-
-</footer><!-- end footer -->
-
-<!-- end layout -->
+</div><!-- end layout -->
 <!-- Scripts -->
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/theme20.js"></script>
@@ -234,24 +203,26 @@
 <script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script>
 <script type="text/javascript" src="../js/custom.js"></script>
 <script type="text/javascript">
-    var myPlaylist = [
-        <c:forEach items="${musics}" var="music">
-        {
-            mp3: '/image?fileName=${music.music}',
-            title: '${music.name}',
-            <c:forEach items="${music.artists}" var="artist">
-            artist: '${artist.name} ${artist.surname}',
-            </c:forEach>
-            <c:if test="${currentUser == null}">
-            buy: '/loginPage',
-            </c:if>
-            <c:if test="${currentUser != null}">
-            buy: '/downloadMusic?musicName=${music.music}',
-            </c:if>                    cover: '/image?fileName=${music.picture}'
-        }, </c:forEach>
-
-    ];
-    ;
+    /* <![CDATA[ */
+    jQuery(document).ready(function () {
+        jQuery('.tp-banner').revolution({
+            delay: 9000,
+            startwidth: 1060,
+            startheight: 610,
+            hideThumbs: 10,
+            navigationType: "off",
+            fullWidth: "on",
+            forceFullWidth: "on"
+        });
+        jQuery("#event1").countdown({
+                date: "31 December 2017 23:59:59",
+                format: "on"
+            },
+            function () {
+                // callback function
+            });
+    });
+    /* ]]> */
 </script>
 </body>
 </html>

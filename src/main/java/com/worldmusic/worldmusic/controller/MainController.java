@@ -80,6 +80,7 @@ public class MainController {
         map.addAttribute("artists", artistRepository.findAll());
         return "404";
     }
+
     @GetMapping("/aboutUs")
     public String aboutUsPage(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         map.addAttribute("genres", genreRepository.findAll());
@@ -90,6 +91,7 @@ public class MainController {
 
         return "aboutUs";
     }
+
     @GetMapping("/loginErr")
     public String loginErr(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         map.addAttribute("users", userRepository.findAll());
