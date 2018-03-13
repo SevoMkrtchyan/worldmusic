@@ -274,8 +274,8 @@
                                     <p>${news.description}</p>
                                     <div class="meta">
                                         <span> <i class="icon-time mi"></i> </span> | <span>
-                                            href="index.html#"><i
-                                            class="icon-comments-alt"></i> ${news.timestamp} </span>
+                                            ${news.timestamp}
+                                    </span>
                                     </div><!-- meta -->
                                 </div><!-- span7 -->
                             </div>
@@ -378,10 +378,10 @@
                 <c:forEach items="${music.artists}" var="artist">
                 artist: '${artist.name} ${artist.surname}',
                 </c:forEach>
-            <c:if test="${currentUser == null}">
+                <c:if test="${currentUser == null}">
                 buy: '/loginPage',
                 </c:if>
-            <c:if test="${currentUser != null}">
+                <c:if test="${currentUser != null}">
                 buy: '/downloadMusic?musicName=${music.music}',
                 </c:if>
                 cover: '/image?fileName=${music.picture}'
