@@ -80,7 +80,22 @@ public class MainController {
         map.addAttribute("artists", artistRepository.findAll());
         return "404";
     }
+    @GetMapping("/aboutUs")
+    public String aboutUsPage(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
+        map.addAttribute("users", userRepository.findAll());
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("musicsLimit", musicRepository.orderByMusic());
+        map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("newsis", newsRepository.findAll());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
 
+        return "aboutUs";
+    }
     @GetMapping("/loginErr")
     public String loginErr(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         map.addAttribute("users", userRepository.findAll());
