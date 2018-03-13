@@ -69,20 +69,11 @@
         <div class='pull-left'>
             <ul class="info-menu left-links list-inline list-unstyled">
                 <li class="sidebar-toggle-wrap">
-                    <a href="index-music.html#" data-toggle="sidebar" class="sidebar_toggle">
+                    <a data-toggle="sidebar" class="sidebar_toggle">
                         <i class="fa fa-bars"></i>
                     </a>
                 </li>
                 <li class="hidden-sm hidden-xs searchform">
-                    <form action="ui-search.html" method="post">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="fa fa-search"></i>
-                            </span>
-                            <input type="text" class="form-control animated fadeIn" placeholder="Search & Enter">
-                        </div>
-                        <input type='submit' value="">
-                    </form>
                 </li>
             </ul>
         </div>
@@ -95,12 +86,7 @@
                         <span>${currentUser.user.name} ${currentUser.user.surname}<i class="fa fa-angle-down"></i></span>
                     </a>
                     <ul class="dropdown-menu profile animated fadeIn">
-                        <li>
-                            <a href="index-music.html#profile">
-                                <i class="fa fa-user"></i>
-                                Profile
-                            </a>
-                        </li>
+                        <li></li>
                         <li class="last">
                             <a href="/logout">
                                 <i class="fa fa-lock"></i>

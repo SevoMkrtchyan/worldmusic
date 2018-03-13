@@ -43,6 +43,8 @@ public class AlbumController {
 
     @GetMapping("/allAlbum")
     public String genrePage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
         map.addAttribute("albums", albumRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
         return "allAlbums";

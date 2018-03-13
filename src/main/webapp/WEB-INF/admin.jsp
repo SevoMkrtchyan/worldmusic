@@ -63,20 +63,11 @@
         <div class='pull-left'>
             <ul class="info-menu left-links list-inline list-unstyled">
                 <li class="sidebar-toggle-wrap">
-                    <a href="index-music.html#" data-toggle="sidebar" class="sidebar_toggle">
+                    <a data-toggle="sidebar" class="sidebar_toggle">
                         <i class="fa fa-bars"></i>
                     </a>
                 </li>
                 <li class="hidden-sm hidden-xs searchform">
-                    <form action="ui-search.html" method="post">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="fa fa-search"></i>
-                            </span>
-                            <input type="text" class="form-control animated fadeIn" placeholder="Search & Enter">
-                        </div>
-                        <input type='submit' value="">
-                    </form>
                 </li>
             </ul>
         </div>
@@ -89,12 +80,7 @@
                         <span>${currentUser.user.name} ${currentUser.user.surname}<i class="fa fa-angle-down"></i></span>
                     </a>
                     <ul class="dropdown-menu profile animated fadeIn">
-                        <li>
-                            <a href="index-music.html#profile">
-                                <i class="fa fa-user"></i>
-                                Profile
-                            </a>
-                        </li>
+                        <li></li>
                         <li class="last">
                             <a href="/logout">
                                 <i class="fa fa-lock"></i>
@@ -295,7 +281,7 @@
                         <h2 class="title pull-left">Trending Albums</h2>
                         <div class="actions panel_actions pull-right">
                             <a class="box_toggle fa fa-chevron-down"></a>
-                            <a class="box_setting fa fa-cog" data-toggle="modal" href="index-music.html#section-settings"></a>
+                            <a class="box_setting fa fa-cog" data-toggle="modal"></a>
                             <a class="box_close fa fa-times"></a>
                         </div>
                     </header>
@@ -309,21 +295,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-1.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Modern Roc..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Mellisa</a></span>
+                                        <span><a>Mellisa</a></span>
                                     </div>
 
                                 </div>
@@ -335,21 +321,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-2.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Hard Metal..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Jude</a></span>
+                                        <span><a>Jude</a></span>
                                     </div>
 
                                 </div>
@@ -361,21 +347,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-3.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Love Songs..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Jack</a></span>
+                                        <span><a>Jack</a></span>
                                     </div>
 
                                 </div>
@@ -387,21 +373,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-4.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Instrument..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Jackson</a></span>
+                                        <span><a>Jackson</a></span>
                                     </div>
 
                                 </div>
@@ -413,21 +399,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-5.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Made for y..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Law Tiger</a></span>
+                                        <span><a>Law Tiger</a></span>
                                     </div>
 
                                 </div>
@@ -439,21 +425,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-6.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Kiss the s..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Misterious</a></span>
+                                        <span><a>Misterious</a></span>
                                     </div>
 
                                 </div>
@@ -465,21 +451,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-7.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 In the Dep..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Blank</a></span>
+                                        <span><a>Blank</a></span>
                                     </div>
 
                                 </div>
@@ -491,21 +477,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-8.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Volcano..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Martini</a></span>
+                                        <span><a>Martini</a></span>
                                     </div>
 
                                 </div>
@@ -517,21 +503,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-9.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Juicy touc..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Jingle</a></span>
+                                        <span><a>Jingle</a></span>
                                     </div>
 
                                 </div>
@@ -543,21 +529,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-1.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Modern Roc..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Mellisa</a></span>
+                                        <span><a>Mellisa</a></span>
                                     </div>
 
                                 </div>
@@ -566,24 +552,23 @@
 
                             <div class="col-lg-2 col-sm-4 col-xs-6 music_genre">
                                 <div class="team-member ">
-
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-2.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Hard Metal..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Jude</a></span>
+                                        <span><a>Jude</a></span>
                                     </div>
 
                                 </div>
@@ -595,21 +580,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-3.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Love Songs..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Jack</a></span>
+                                        <span><a>Jack</a></span>
                                     </div>
 
                                 </div>
@@ -621,21 +606,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-4.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Instrument..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Jackson</a></span>
+                                        <span><a>Jackson</a></span>
                                     </div>
 
                                 </div>
@@ -647,21 +632,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-5.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Made for y..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Law Tiger</a></span>
+                                        <span><a>Law Tiger</a></span>
                                     </div>
 
                                 </div>
@@ -673,21 +658,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-6.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Kiss the s..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Misterious</a></span>
+                                        <span><a>Misterious</a></span>
                                     </div>
 
                                 </div>
@@ -699,21 +684,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-7.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 In the Dep..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Blank</a></span>
+                                        <span><a>Blank</a></span>
                                     </div>
 
                                 </div>
@@ -725,21 +710,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-8.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Volcano..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Martini</a></span>
+                                        <span><a>Martini</a></span>
                                     </div>
 
                                 </div>
@@ -751,21 +736,21 @@
 
                                     <div class="thumb">
                                         <img class="img-responsive" src="../adminpage/data/albums/album-9.jpg">
-                                        <div class="overlay"><a href="mus-album-view.html"><i class="fa fa-play"></i></a></div>
+                                        <div class="overlay"></div>
                                     </div>
 
                                     <div class="team-info ">
                                         <h4>
 
 
-                                            <a href="mus-album-view.html">
+                                            <a>
                                                 Juicy touc..</a>
 
 
                                         </h4>
 
 
-                                        <span><a href="mus-artist-profile.html">Jingle</a></span>
+                                        <span><a>Jingle</a></span>
                                     </div>
 
                                 </div>
@@ -782,7 +767,7 @@
                         <h2 class="title pull-left">Trending Songs</h2>
                         <div class="actions panel_actions pull-right">
                             <a class="box_toggle fa fa-chevron-down"></a>
-                            <a class="box_setting fa fa-cog" data-toggle="modal" href="index-music.html#section-settings"></a>
+                            <a class="box_setting fa fa-cog" data-toggle="modal"></a>
                             <a class="box_close fa fa-times"></a>
                         </div>
                     </header>
@@ -796,11 +781,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-1.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">ligula pel..</a></h4>
+                                        <h4><a>ligula pel..</a></h4>
                                         <span>ahayes0</span>
                                     </div>
 
@@ -814,11 +798,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-2.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">at ipsum a..</a></h4>
+                                        <h4><a>at ipsum a..</a></h4>
                                         <span>dross1</span>
                                     </div>
 
@@ -832,11 +815,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-3.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">amet eleif..</a></h4>
+                                        <h4><a>amet eleif..</a></h4>
                                         <span>bphillips2</span>
                                     </div>
 
@@ -850,11 +832,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-4.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">nulla moll..</a></h4>
+                                        <h4><a>nulla moll..</a></h4>
                                         <span>sramos3</span>
                                     </div>
 
@@ -868,11 +849,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-5.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">nulla temp..</a></h4>
+                                        <h4><a>nulla temp..</a></h4>
                                         <span>sdean4</span>
                                     </div>
 
@@ -886,11 +866,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-6.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">felis ut a..</a></h4>
+                                        <h4><a>felis ut a..</a></h4>
                                         <span>amyers5</span>
                                     </div>
 
@@ -904,11 +883,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-7.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">vel enim s..</a></h4>
+                                        <h4><a>vel enim s..</a></h4>
                                         <span>gaustin6</span>
                                     </div>
 
@@ -922,11 +900,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-8.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">nibh quisq..</a></h4>
+                                        <h4><a>nibh quisq..</a></h4>
                                         <span>jharper7</span>
                                     </div>
 
@@ -940,11 +917,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-9.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">nulla dapi..</a></h4>
+                                        <h4><a>nulla dapi..</a></h4>
                                         <span>amartinez8</span>
                                     </div>
 
@@ -958,11 +934,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-10.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">etiam vel ..</a></h4>
+                                        <h4><a>etiam vel ..</a></h4>
                                         <span>hallen9</span>
                                     </div>
 
@@ -976,11 +951,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-11.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">duis ac ni..</a></h4>
+                                        <h4><a>duis ac ni..</a></h4>
                                         <span>pcarrolla</span>
                                     </div>
 
@@ -994,11 +968,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-12.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">montes nas..</a></h4>
+                                        <h4><a>montes nas..</a></h4>
                                         <span>mharrisb</span>
                                     </div>
 
@@ -1012,11 +985,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-13.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">eros suspe..</a></h4>
+                                        <h4><a>eros suspe..</a></h4>
                                         <span>rwoodsc</span>
                                     </div>
 
@@ -1030,11 +1002,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-14.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">nisl duis ..</a></h4>
+                                        <h4><a>nisl duis ..</a></h4>
                                         <span>spattersond</span>
                                     </div>
 
@@ -1048,11 +1019,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-15.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">vulputate ..</a></h4>
+                                        <h4><a>vulputate ..</a></h4>
                                         <span>afishere</span>
                                     </div>
 
@@ -1066,11 +1036,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-16.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">fusce cong..</a></h4>
+                                        <h4><a>fusce cong..</a></h4>
                                         <span>cwilsonf</span>
                                     </div>
 
@@ -1084,11 +1053,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-17.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">augue vest..</a></h4>
+                                        <h4><a>augue vest..</a></h4>
                                         <span>rholmesg</span>
                                     </div>
 
@@ -1102,11 +1070,10 @@
                                     <div class="team-img thumb ">
                                         <img class="img-responsive" src="../adminpage/data/songs/song-18.jpg" alt="">
                                         <div class="overlay">
-                                            <a href="../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/../adminpage/Java/Admin%20page/mus-song-view.html"><i class="fa fa-play"></i></a>
                                         </div>
                                     </div>
                                     <div class="team-info ">
-                                        <h4><a href="http://jaybabani.com/complete-admin/v5.1/preview/fullmenu/mus-genre-profile.html">magna ac c..</a></h4>
+                                        <h4><a>magna ac c..</a></h4>
                                         <span>wfranklinh</span>
                                     </div>
 
@@ -1128,7 +1095,7 @@
                         <h2 class="title pull-left">New Registrations</h2>
                         <div class="actions panel_actions pull-right">
                             <a class="box_toggle fa fa-chevron-down"></a>
-                            <a class="box_setting fa fa-cog" data-toggle="modal" href="index-music.html#section-settings"></a>
+                            <a class="box_setting fa fa-cog" data-toggle="modal"></a>
                             <a class="box_close fa fa-times"></a>
                         </div>
                     </header>
@@ -1178,7 +1145,7 @@
                         <h2 class="title pull-left">Trending Playlist</h2>
                         <div class="actions panel_actions pull-right">
                             <a class="box_toggle fa fa-chevron-down"></a>
-                            <a class="box_setting fa fa-cog" data-toggle="modal" href="index-music.html#section-settings"></a>
+                            <a class="box_setting fa fa-cog" data-toggle="modal"></a>
                             <a class="box_close fa fa-times"></a>
                         </div>
                     </header>
@@ -1242,7 +1209,7 @@
                         <i class="fa fa-circle"></i>
                     </div>
                     <div class="group-info">
-                        <h4><a href="index-music.html#">Work</a></h4>
+                        <h4><a>Work</a></h4>
                     </div>
                 </li>
                 <li class="group-row">
@@ -1250,7 +1217,7 @@
                         <i class="fa fa-circle"></i>
                     </div>
                     <div class="group-info">
-                        <h4><a href="index-music.html#">Friends</a></h4>
+                        <h4><a>Friends</a></h4>
                     </div>
                 </li>
 
@@ -1262,10 +1229,10 @@
 
                 <li class="user-row " id='chat_user_1' data-user-id='1'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
+                        <a><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Clarine Vassar</a></h4>
+                        <h4><a>Clarine Vassar</a></h4>
                         <span class="status available" data-status="available"> Available</span>
                     </div>
                     <div class="user-status available">
@@ -1274,10 +1241,10 @@
                 </li>
                 <li class="user-row " id='chat_user_2' data-user-id='2'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
+                        <a><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Brooks Latshaw</a></h4>
+                        <h4><a >Brooks Latshaw</a></h4>
                         <span class="status away" data-status="away"> Away</span>
                     </div>
                     <div class="user-status away">
@@ -1286,10 +1253,10 @@
                 </li>
                 <li class="user-row " id='chat_user_3' data-user-id='3'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
+                        <a><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Clementina Brodeur</a></h4>
+                        <h4><a>Clementina Brodeur</a></h4>
                         <span class="status busy" data-status="busy"> Busy</span>
                     </div>
                     <div class="user-status busy">
@@ -1305,10 +1272,10 @@
 
                 <li class="user-row " id='chat_user_4' data-user-id='4'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
+                        <a><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Carri Busey</a></h4>
+                        <h4><a>Carri Busey</a></h4>
                         <span class="status offline" data-status="offline"> Offline</span>
                     </div>
                     <div class="user-status offline">
@@ -1317,10 +1284,10 @@
                 </li>
                 <li class="user-row " id='chat_user_5' data-user-id='5'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
+                        <a><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Melissa Dock</a></h4>
+                        <h4><a>Melissa Dock</a></h4>
                         <span class="status offline" data-status="offline"> Offline</span>
                     </div>
                     <div class="user-status offline">
@@ -1329,10 +1296,10 @@
                 </li>
                 <li class="user-row " id='chat_user_6' data-user-id='6'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
+                        <a ><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Verdell Rea</a></h4>
+                        <h4><a>Verdell Rea</a></h4>
                         <span class="status available" data-status="available"> Available</span>
                     </div>
                     <div class="user-status available">
@@ -1341,10 +1308,10 @@
                 </li>
                 <li class="user-row " id='chat_user_7' data-user-id='7'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
+                        <a><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Linette Lheureux</a></h4>
+                        <h4><a>Linette Lheureux</a></h4>
                         <span class="status busy" data-status="busy"> Busy</span>
                     </div>
                     <div class="user-status busy">
@@ -1353,10 +1320,10 @@
                 </li>
                 <li class="user-row " id='chat_user_8' data-user-id='8'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
+                        <a><img src="../adminpage/data/profile/avatar-3.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Araceli Boatright</a></h4>
+                        <h4><a>Araceli Boatright</a></h4>
                         <span class="status away" data-status="away"> Away</span>
                     </div>
                     <div class="user-status away">
@@ -1365,10 +1332,10 @@
                 </li>
                 <li class="user-row " id='chat_user_9' data-user-id='9'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
+                        <a><img src="../adminpage/data/profile/avatar-4.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Clay Peskin</a></h4>
+                        <h4><a>Clay Peskin</a></h4>
                         <span class="status busy" data-status="busy"> Busy</span>
                     </div>
                     <div class="user-status busy">
@@ -1377,10 +1344,10 @@
                 </li>
                 <li class="user-row " id='chat_user_10' data-user-id='10'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
+                        <a><img src="../adminpage/data/profile/avatar-5.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Loni Tindall</a></h4>
+                        <h4><a>Loni Tindall</a></h4>
                         <span class="status away" data-status="away"> Away</span>
                     </div>
                     <div class="user-status away">
@@ -1389,10 +1356,10 @@
                 </li>
                 <li class="user-row " id='chat_user_11' data-user-id='11'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
+                        <a><img src="../adminpage/data/profile/avatar-1.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Tanisha Kimbro</a></h4>
+                        <h4><a>Tanisha Kimbro</a></h4>
                         <span class="status idle" data-status="idle"> Idle</span>
                     </div>
                     <div class="user-status idle">
@@ -1401,10 +1368,10 @@
                 </li>
                 <li class="user-row " id='chat_user_12' data-user-id='12'>
                     <div class="user-img">
-                        <a href="index-music.html#"><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
+                        <a><img src="../adminpage/data/profile/avatar-2.png" alt=""></a>
                     </div>
                     <div class="user-info">
-                        <h4><a href="index-music.html#">Jovita Tisdale</a></h4>
+                        <h4><a>Jovita Tisdale</a></h4>
                         <span class="status idle" data-status="idle"> Idle</span>
                     </div>
                     <div class="user-status idle">

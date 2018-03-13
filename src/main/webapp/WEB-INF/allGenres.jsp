@@ -72,20 +72,11 @@
         <div class='pull-left'>
             <ul class="info-menu left-links list-inline list-unstyled">
                 <li class="sidebar-toggle-wrap">
-                    <a href="index-music.html#" data-toggle="sidebar" class="sidebar_toggle">
+                    <a data-toggle="sidebar" class="sidebar_toggle">
                         <i class="fa fa-bars"></i>
                     </a>
                 </li>
                 <li class="hidden-sm hidden-xs searchform">
-                    <form action="ui-search.html" method="post">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="fa fa-search"></i>
-                            </span>
-                            <input type="text" class="form-control animated fadeIn" placeholder="Search & Enter">
-                        </div>
-                        <input type='submit' value="">
-                    </form>
                 </li>
             </ul>
         </div>
@@ -98,12 +89,6 @@
                         <span>${currentUser.user.name} ${currentUser.user.surname}<i class="fa fa-angle-down"></i></span>
                     </a>
                     <ul class="dropdown-menu profile animated fadeIn">
-                        <li>
-                            <a href="index-music.html#profile">
-                                <i class="fa fa-user"></i>
-                                Profile
-                            </a>
-                        </li>
                         <li class="last">
                             <a href="/logout">
                                 <i class="fa fa-lock"></i>
@@ -132,7 +117,7 @@
             <div class="profile-info row">
 
                 <div class="profile-image col-xs-4">
-                    <a href="ui-profile.html">
+                    <a>
                         <img src="/image?fileName=${currentUser.user.picUrl}" class="img-responsive img-circle">
                     </a>
                 </div>
@@ -141,11 +126,9 @@
 
                     <h3>
                         ${currentUser.user.name} ${currentUser.user.surname}
-                        <!-- Available statuses: online, idle, busy, away and offline -->
-                        <span class="profile-status online"></span>
                     </h3>
 
-                    <p class="profile-title">Music Admin</p>
+                    <p class="profile-title">Music World Admin</p>
 
                 </div>
 
@@ -157,7 +140,7 @@
 
 
                 <li class="">
-                    <a href="index-music.html">
+                    <a href="/admin">
                         <i class="fa fa-dashboard"></i>
                         <span class="title">Dashboard</span>
                     </a>
@@ -321,33 +304,20 @@
 
                             <div class="col-xs-12 col-md-9">
 
-                                <div class="input-group primary">
-                <span class="input-group-addon">
-                    <span class="arrow"></span>
-                    <i class="fa fa-search"></i>
-                </span>
-                                    <input type="text" class="form-control search-page-input"
-                                           placeholder="Search Music by Genre" value="">
-                                </div>
+                                <%--<div class="input-group primary">--%>
+                <%--<span class="input-group-addon">--%>
+                    <%--<span class="arrow"></span>--%>
+                    <%--<i class="fa fa-search"></i>--%>
+                <%--</span>--%>
+                                    <%--<input type="text" class="form-control search-page-input"--%>
+                                           <%--placeholder="Search Music by Genre" value="">--%>
+                                <%--</div>--%>
                                 <br>
                             </div>
-                            <div class="col-xs-12 col-md-3">
-                                <nav class='pull-right'>
-                                    <!-- 								  <ul class="pager" style="margin:0px;">
-                                                                                                        <li><a href="#"><i class='fa fa-arrow-left icon-xs icon-accent icon-secondary'></i></a></li>
-                                                                                                        <li><a href="#"><i class='fa fa-arrow-right icon-xs icon-accent icon-secondary'></i></a></li>
-                                                                                                      </ul> -->
-
-                                    <ul class="pagination pull-right" style="margin:0px;">
-                                        <li><a href="mus-genres.html#">«</a></li>
-                                        <li class="active"><a href="mus-genres.html#">1</a></li>
-                                        <li><a href="mus-genres.html#">2</a></li>
-                                        <li><a href="mus-genres.html#">3</a></li>
-                                        <li><a href="mus-genres.html#">»</a></li>
-                                    </ul>
-
-                                </nav>
-                            </div>
+                            <%--<div class="col-xs-12 col-md-3">--%>
+                                <%--<nav class='pull-right'>--%>
+                                <%--</nav>--%>
+                            <%--</div>--%>
 
                             <div class="clearfix"></div>
                             <br>
@@ -363,7 +333,7 @@
                                     </li>
                                     <c:forEach items="${genres}" var="genre">
                                         <li>
-                                            <a href="mus-genres.html#alternativerock-1">${genre.name}</a>
+                                            <a>${genre.name}</a>
                                         </li>
                                     </c:forEach>
 
