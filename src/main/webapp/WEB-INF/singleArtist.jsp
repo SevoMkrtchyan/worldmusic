@@ -125,8 +125,8 @@
                     <div class="span7">
                         <h3 class="news-title">${artist.name} ${artist.surname}
                         </h3>
-                        <p>Gender:${artist.gender}</p>
-                        <p>Country:${artist.country}</p>
+                        <p>Gender:${artist.gender}<br>
+                            Country:${artist.country}</p>
                     </div><!-- span7 -->
                 </div>
             </div><!-- def block -->
