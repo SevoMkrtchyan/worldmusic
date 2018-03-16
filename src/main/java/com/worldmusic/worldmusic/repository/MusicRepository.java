@@ -12,9 +12,13 @@ import java.util.List;
 public interface MusicRepository extends JpaRepository<Music, Integer> {
 
     List<Music> findAllByGenresContaining(Genre genre);
+
     List<Music> findAllByAlbumId(int id);
 
     @Query(value = "select * from music order by `music` limit 5", nativeQuery = true)
     List<Music> orderByMusic();
 
+    Music findMusicByNameContains(String name);
+
+    List<Music> findMusicsByNameContains(String name);
 }

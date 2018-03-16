@@ -88,7 +88,6 @@ public class MainController {
             User user = ((CurrentUser) userDetails).getUser();
             map.addAttribute("currentUser", user);
         }
-
         return "aboutUs";
     }
 

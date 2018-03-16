@@ -109,6 +109,12 @@
     <div class="page-content back_to_up">
         <div class="row clearfix mbf">
             <div class="music-player-list"></div>
+            <div>
+                <form class="form-wrapper cf" action="/searchGenre">
+                    <input type="text" placeholder="Search here..." name="name" required><br>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
 
         </div>
         <!-- Scripts -->

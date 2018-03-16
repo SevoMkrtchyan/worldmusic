@@ -82,19 +82,21 @@ public class AdminController {
         genreRepository.save(genre);
         return "redirect:/addGenre";
     }
-//    --END ADD GENRE--
+
+    //    --END ADD GENRE--
 // --ADD ARTIST--
-@GetMapping("/addArtist")
-public String addArtistPage(ModelMap map) {
-    CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    map.addAttribute("currentUser", principal);
-    map.addAttribute("artists", artistRepository.findAll());
-    map.addAttribute("", artistRepository.findAll());
-    List<Gender> genders= Arrays.asList(Gender.values());
-    map.addAttribute("genders",genders);
-    map.addAttribute("artist", new Artist());
-    return "addArtist";
-}
+    @GetMapping("/addArtist")
+    public String addArtistPage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
+        map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("", artistRepository.findAll());
+        List<Gender> genders = Arrays.asList(Gender.values());
+        map.addAttribute("genders", genders);
+        map.addAttribute("artist", new Artist());
+        return "addArtist";
+    }
+
     @PostMapping(value = "/saveArtist")
     public String saveArtist(@Valid @ModelAttribute("artist") Artist artist, @RequestParam("image") MultipartFile multipartFile) throws IOException {
         String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
@@ -104,7 +106,8 @@ public String addArtistPage(ModelMap map) {
         artistRepository.save(artist);
         return "redirect:/addArtist";
     }
-// --END ADD ARTIST
+
+    // --END ADD ARTIST
     // --ADD ALBUM--
     @GetMapping("/addAlbum")
     public String albumPage(ModelMap map) {
@@ -134,26 +137,27 @@ public String addArtistPage(ModelMap map) {
         albumRepository.save(album);
         return "redirect:/addAlbum";
     }
-// --END ADD ALBUM--
+
+    // --END ADD ALBUM--
 //     --ADD MUSIC--
-@GetMapping("/addMusic")
-public String addMusicPage(ModelMap map) {
-    CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    map.addAttribute("currentUser", principal);
-    map.addAttribute("users", userRepository.findAll());
-    map.addAttribute("musics", musicRepository.findAll());
-    map.addAttribute("albums", albumRepository.findAll());
-    map.addAttribute("genres", genreRepository.findAll());
-    map.addAttribute("artists", artistRepository.findAll());
-    map.addAttribute("newsis", newsRepository.findAll());
-    map.addAttribute("user", new User());
-    map.addAttribute("music", new Music());
-    map.addAttribute("album", new Album());
-    map.addAttribute("genre", new Genre());
-    map.addAttribute("artist", new Artist());
-    map.addAttribute("news", new News());
-    return "addMusic";
-}
+    @GetMapping("/addMusic")
+    public String addMusicPage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
+        map.addAttribute("users", userRepository.findAll());
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("newsis", newsRepository.findAll());
+        map.addAttribute("user", new User());
+        map.addAttribute("music", new Music());
+        map.addAttribute("album", new Album());
+        map.addAttribute("genre", new Genre());
+        map.addAttribute("artist", new Artist());
+        map.addAttribute("news", new News());
+        return "addMusic";
+    }
 
     @PostMapping(value = "/saveMusic")
     public String saveMusic(@ModelAttribute("music") Music music, @RequestParam("musicImg") MultipartFile musicImg, @RequestParam("musicName") MultipartFile musicName) throws IOException {
@@ -170,15 +174,16 @@ public String addMusicPage(ModelMap map) {
     }
 //    --END ADD MUSIC
 
-//    --ADD NEWS--
-@GetMapping("/addNews")
-public String addNewsPage(ModelMap map) {
-    CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    map.addAttribute("currentUser", principal);
-    map.addAttribute("newsis", newsRepository.findAll());
-    map.addAttribute("news", new News());
-    return "addNews";
-}
+    //    --ADD NEWS--
+    @GetMapping("/addNews")
+    public String addNewsPage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
+        map.addAttribute("newsis", newsRepository.findAll());
+        map.addAttribute("news", new News());
+        return "addNews";
+    }
+
     @PostMapping(value = "/saveNews")
     public String saveNews(@ModelAttribute("news") News news, @RequestParam("newsImg") MultipartFile multipartFile) throws IOException {
         String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();

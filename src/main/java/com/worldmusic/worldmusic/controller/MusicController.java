@@ -17,6 +17,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.List;
 
 @Controller
 public class MusicController {
@@ -89,8 +90,33 @@ public class MusicController {
     }
 
     @GetMapping("/musicSingle")
-    public String musicSingle(@RequestParam("musicId") int id, ModelMap map,@AuthenticationPrincipal UserDetails userDetails) {
+    public String musicSingle(@RequestParam("musicId") int id, ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         Music music = musicRepository.findOne(id);
+        map.addAttribute("artists", music.getArtists());
+        map.addAttribute("music", music);
+        map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("musics", musicRepository.findAll());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
+        return "singleMusic";
+    }
+
+    @GetMapping("/searchMusic")
+    public String searchMusic(@RequestParam("name") String name, ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
+        List<Music> musics = musicRepository.findMusicsByNameContains(name);
+        if (musics.size() > 1) {
+            map.addAttribute("musics", musics);
+            map.addAttribute("genres", genreRepository.findAll());
+            if (userDetails != null) {
+                User user = ((CurrentUser) userDetails).getUser();
+                map.addAttribute("currentUser", user);
+            }
+            return "musicsByContaining";
+
+        }
+        Music music = musicRepository.findMusicByNameContains(name);
         map.addAttribute("artists", music.getArtists());
         map.addAttribute("music", music);
         map.addAttribute("genres", genreRepository.findAll());

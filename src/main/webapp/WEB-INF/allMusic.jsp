@@ -59,7 +59,8 @@
 <!-- END HEAD -->
 
 <!-- BEGIN BODY -->
-<body class=" "><!-- START TOPBAR -->
+<body class=" ">
+<!-- START TOPBAR -->
 <div class='page-topbar '>
     <div class='logo-area'>
 
@@ -82,7 +83,8 @@
                     <a href="index-music.html#" data-toggle="dropdown" class="toggle">
                         <img src="/image?fileName=${currentUser.user.picUrl}" alt="user-image"
                              class="img-circle img-inline">
-                        <span>${currentUser.user.name} ${currentUser.user.surname}<i class="fa fa-angle-down"></i></span>
+                        <span>${currentUser.user.name} ${currentUser.user.surname}<i
+                                class="fa fa-angle-down"></i></span>
                     </a>
                     <ul class="dropdown-menu profile animated fadeIn">
                         <li class="last">
@@ -141,16 +143,15 @@
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-
-                <li class="open">
+                <li class="">
                     <a href="javascript:;">
                         <i class="fa fa-music"></i>
                         <span class="title">Genres</span>
-                        <span class="arrow open"></span>
+                        <span class="arrow "></span>
                     </a>
-                    <ul class="sub-menu" style='display:block;'>
+                    <ul class="sub-menu">
                         <li>
-                            <a class="active" href="/allGenre">All Genres</a>
+                            <a class="" href="/allGenre">All Genres</a>
                         </li>
                         <li>
                             <a class="" href="/addGenre">Add Genre</a>
@@ -160,25 +161,25 @@
                         </li>
                     </ul>
                 </li>
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-microphone"></i>
-                        <span class="title">Albums</span>
-                        <span class="arrow "></span>
-                    </a>
+                <li class=""><a href="javascript:;">
+                    <i class="fa fa-microphone"></i>
+                    <span class="title">Albums</span>
+                    <span class="arrow "></span>
+                </a>
                     <ul class="sub-menu">
                         <li>
                             <a class="" href="/allAlbum">All Albums</a>
                         </li>
                         <li>
-                            <a class="active" href="/addAlbum">Add Album</a>
+                            <a class="" href="/addAlbum">Add Album</a>
                         </li>
                         <li>
                             <a class="" href="/deleteAlbum">Delete Album</a>
                         </li>
+
                     </ul>
                 </li>
-                <li class="">
+                <li class="open">
                     <a href="javascript:;">
                         <i class="fa fa-users"></i>
                         <span class="title">Artists</span>
@@ -186,7 +187,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a class="" href="/allArtist">All Artists</a>
+                            <a class="active" href="/allArtists">All Artists</a>
                         </li>
                         <li>
                             <a class="" href="/addArtist">Add Artist</a>
@@ -209,7 +210,7 @@
                         </li>
                         <li>
                             <a class=""
-                               href="/deleteMusic">Edit Song</a>
+                               href="/deleteMusic">Delete Song</a>
                         </li>
                         <li>
                             <a class=""
@@ -230,17 +231,15 @@
                         </li>
                         <li>
                             <a class=""
-                               href="/addNews">AddNews</a>
+                               href="/addNews">Add News</a>
                         </li>
                         <li>
                             <a class=""
-                               href="/deleteNews">Delete
-                                News</a>
+                               href="/deleteNews">Delete News</a>
                         </li>
                     </ul>
                 </li>
             </ul>
-
 
             <div class="menustats">
                 <h5>Project Progress</h5>
@@ -262,6 +261,10 @@
 
 
     </div>
+    <!-- SIDEBAR - END -->
+    <!-- MAIN MENU - END -->
+
+
     <!--  SIDEBAR - END -->
     <!-- START CONTENT -->
     <section id="main-content" class="">
@@ -290,75 +293,73 @@
 
                 </div>
             </div>
-            <div class="clearfix"></div>
-            <!-- MAIN CONTENT AREA STARTS -->
-
-
-
-                    <div class="music-player-list"></div>
-
-
-
-
-            <!-- Scripts -->
-            <script type="text/javascript" src="../js/jquery.min.js"></script>
-            <script type="text/javascript" src="../js/theme20.js"></script>
-            <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="../js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-            <script type="text/javascript" src="../js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-            <script type="text/javascript" src="../js/jquery.prettyPhoto.js"></script>
-            <script type="text/javascript" src="../js/jquery.flexslider-min.js"></script>
-            <script type="text/javascript" src="../js/jquery.jplayer.js"></script>
-            <script type="text/javascript" src="../js/ttw-music-player-min.js"></script>
-            <script type="text/javascript" src="../music/myplaylist.js"></script>
-            <script type="text/javascript" src="../js/countdown.js"></script>
-            <script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script>
-            <script type="text/javascript" src="../js/custom.js"></script>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function () {
-                    jQuery('.tp-banner').revolution({
-                        delay: 9000,
-                        startwidth: 1060,
-                        startheight: 610,
-                        hideThumbs: 10,
-                        navigationType: "off",
-                        fullWidth: "on",
-                        forceFullWidth: "on"
-                    });
-                    jQuery("#event1").countdown({
-                            date: "31 December 2017 23:59:59",
-                            format: "on"
-                        },
-                        function () {
-                            // callback function
-                        });
-                });
-                /* ]]> */
-            </script>
-
-            <script>
-                var myPlaylist = [
-                    <c:forEach items="${musics}" var="music">
-                    {
-                        mp3: '/image?fileName=${music.music}',
-                        title: '${music.name}',
-                        <c:forEach items="${music.artists}" var="artist">
-                        artist: '${artist.name} ${artist.surname}',
-                        </c:forEach>
-                        rating: 5,
-                        buy: '/trrrr',
-                        cover: '/image?fileName=${music.picture}'
-                    }, </c:forEach>
-
-                ];
-                ;
-            </script>
-
-
-            <!-- MAIN CONTENT AREA ENDS -->
         </section>
+        <div class="clearfix"></div>
+        <!-- MAIN CONTENT AREA STARTS -->
+
+
+        <div class="music-player-list"></div>
+
+
+        <!-- Scripts -->
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/theme20.js"></script>
+        <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script type="text/javascript" src="../js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="../js/jquery.flexslider-min.js"></script>
+        <script type="text/javascript" src="../js/jquery.jplayer.js"></script>
+        <script type="text/javascript" src="../js/ttw-music-player-min.js"></script>
+        <script type="text/javascript" src="../music/myplaylist.js"></script>
+        <script type="text/javascript" src="../js/countdown.js"></script>
+        <script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script>
+        <script type="text/javascript" src="../js/custom.js"></script>
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            jQuery(document).ready(function () {
+                jQuery('.tp-banner').revolution({
+                    delay: 9000,
+                    startwidth: 1060,
+                    startheight: 610,
+                    hideThumbs: 10,
+                    navigationType: "off",
+                    fullWidth: "on",
+                    forceFullWidth: "on"
+                });
+                jQuery("#event1").countdown({
+                        date: "31 December 2017 23:59:59",
+                        format: "on"
+                    },
+                    function () {
+                        // callback function
+                    });
+            });
+            /* ]]> */
+        </script>
+
+        <script>
+            var myPlaylist = [
+                <c:forEach items="${musics}" var="music">
+                {
+                    mp3: '/image?fileName=${music.music}',
+                    title: '${music.name}',
+                    <c:forEach items="${music.artists}" var="artist">
+                    artist: '${artist.name} ${artist.surname}',
+                    </c:forEach>
+                    rating: 5,
+                    buy: '/trrrr',
+                    cover: '/image?fileName=${music.picture}'
+                }, </c:forEach>
+
+            ];
+            ;
+        </script>
+
+
+        <!-- MAIN CONTENT AREA ENDS -->
     </section>
+
     <!-- END CONTENT -->
     <div class="page-chatapi hideit">
 
@@ -374,6 +375,7 @@
 
     </div>
 </div>
+
 <!-- END CONTAINER -->
 <!-- LOAD FILES AT PAGE END FOR FASTER LOADING -->
 

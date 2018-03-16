@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Remix</title>
+    <title>MP3s | Remix - Music & Band</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <!-- Seo Meta -->
@@ -20,6 +20,7 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EmulateIE8; IE=EDGE"/>
     <script src="../http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -27,14 +28,7 @@
 
     <link href="../adminpage/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 
-    <!--Slayder-->
-    <link rel="stylesheet" href="../slayder/css/style.css">
-    <script type="text/javascript" src="../slayder/js/jssor.slider.min.js"></script>
-    <!--END Slayder-->
-
 </head>
-
-
 <body id="fluidGridSystem">
 <div id="layout" class="full">
     <header id="header" class="glue">
@@ -107,53 +101,71 @@
             </div><!-- row -->
         </div><!-- headdown -->
     </header><!-- end header -->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="row row-fluid clearfix mbf">
-        <div class="span8">
-            <div class="def-block">
-                <div class="news row-fluid animtt" data-gen="fadeUp" style="opacity:100;">
-                    <div class="span5"><img width="240" height="260" class="four-radius"
-                                            src="../images/AV-494.jpg" alt="#">
-                    </div>
-                    <div class="span7">
-                        <h3 class="news-title">Vahan Khachatryan
-                        </h3>
-                        <p>Creator And Developer<br><br>
-                            Country: Armenia,Gyumri<br>
-                            Year of birth: 01.11.1995<br>
-                            Skype: vahan20141<br>
-                            Phone: +374 43 454443<br>
-                            Inbox: vahan.gti8190@mail.ru<br>
-                    </div><!-- span7 -->
-                </div>
-            </div><!-- def block -->
-            <br>
-            <div class="def-block">
-                <div class="news row-fluid animtt" data-gen="fadeUp" style="opacity:100;">
-                    <div class="span5"><img width="240" height="260" class="four-radius"
-                                            src="../images/sevo.jpg" alt="#">
-                    </div>
-                    <div class="span7">
-                        <h3 class="news-title">Sevada Mkrtchyan
-                        </h3>
-                        <p>Creator And Developer<br><br>
-                            Country: Armenia,Gyumri<br>
-                            Year of birth: 01.11.1995<br>
-                            Skype: sevak1995<<br>
-                            Phone: +374 94 199523<br>
-                            Inbox: sevada.mkrtchyan.95@gmail.com<br>
-                        </p>
-                    </div><!-- span7 -->
-                </div>
-            </div><!-- def block -->
-        </div><!-- span8 aboutUs -->
+
+    <div class="under_header">
+        <img src="../images/assets/breadcrumbs10.png" alt="#">
+    </div><!-- under header -->
+
+    <div class="page-content back_to_up">
+        <div class="row clearfix mbf">
+            <%--<div class="music-player-list"></div>--%>
+            <div>
+                <form class="form-wrapper cf" action="/searchArtist">
+                    <input type="text" placeholder="Search here..." name="name" required><br>
+                    <input type="text" placeholder="Search here..." name="surname"><br>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+        </div>
+        <!-- Scripts -->
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/theme20.js"></script>
+        <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script type="text/javascript" src="../js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="../js/jquery.flexslider-min.js"></script>
+        <script type="text/javascript" src="../js/jquery.jplayer.js"></script>
+        <script type="text/javascript" src="../js/ttw-music-player-min.js"></script>
+        <script type="text/javascript" src="../music/myplaylist.js"></script>
+        <script type="text/javascript" src="../js/countdown.js"></script>
+        <script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script>
+        <script type="text/javascript" src="../js/custom.js"></script>
+
+        <!-- row music player -->
+
+        <div class="row row-fluid clearfix mbf">
+            <div class="span8 posts">
+                <div class="def-block">
+                    <ul class="tabs">
+                        <li><a href="/mp3">All mp3</a></li>
+                        <li><a href="/albums">Albums</a></li>
+                        <li><a href="/genres">Genres</a></li>
+                        <li><a href="/artists" class="active">Artists</a></li>
+                        <!--<li><a href="mp3s.html#Soon"> Comming Soon </a></li>-->
+                    </ul>
+                    <!-- tabs -->
+
+                    <ul class="tabs-content">
+                        <li id="Latest" class="active">
+                            <div class="post no-border no-mp clearfix">
+                                <ul class="tab-content-items">
+                                    <c:forEach items="${artists}" var="artist">
+                                        <li class="grid_6">
+                                            <a class="m-thumbnail" href="/artistSingle?artistId=${artist.id}">
+                                                <img width="50" height="50" src="/image?fileName=${artist.photo}"></a>
+                                            <h3><a href="/artistSingle?artistId=${artist.id}">${artist.name}</a></h3>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- latest -->
+                        </li><!-- tab content -->
+                    </ul><!-- end tabs -->
+
+                </div><!-- def block -->
+            </div><!-- span8 posts -->
+        </div><!-- row clearfix -->
     </div><!-- end page content -->
 
     <footer id="footer">
@@ -181,37 +193,10 @@
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/theme20.js"></script>
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-<script type="text/javascript" src="../js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="../js/jquery.prettyPhoto.js"></script>
 <script type="text/javascript" src="../js/jquery.flexslider-min.js"></script>
-<script type="text/javascript" src="../js/jquery.jplayer.js"></script>
-<script type="text/javascript" src="../js/ttw-music-player-min.js"></script>
-<script type="text/javascript" src="../music/myplaylist.js"></script>
-<script type="text/javascript" src="../js/countdown.js"></script>
 <script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="../js/twitter/jquery.tweet.js"></script>
 <script type="text/javascript" src="../js/custom.js"></script>
-<script type="text/javascript">
-    /* <![CDATA[ */
-    jQuery(document).ready(function () {
-        jQuery('.tp-banner').revolution({
-            delay: 9000,
-            startwidth: 1060,
-            startheight: 610,
-            hideThumbs: 10,
-            navigationType: "off",
-            fullWidth: "on",
-            forceFullWidth: "on"
-        });
-        jQuery("#event1").countdown({
-                date: "31 December 2017 23:59:59",
-                format: "on"
-            },
-            function () {
-                // callback function
-            });
-    });
-    /* ]]> */
-</script>
 </body>
 </html>

@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class ArtistController {
     @Autowired
@@ -65,6 +67,7 @@ public class ArtistController {
         artistRepository.delete(id);
         return "redirect:/deleteArtist";
     }
+
     @GetMapping("/artistSingle")
     public String musicSingle(@RequestParam("artistId") int id, ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         Artist artist = artistRepository.findOne(id);
@@ -72,6 +75,31 @@ public class ArtistController {
         map.addAttribute("artists", artistRepository.findAll());
         map.addAttribute("musics", musicRepository.findOne(id));
         map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
+        return "singleArtist";
+    }
+
+    @GetMapping("/searchArtist")
+    public String musicSingle(@RequestParam("name") String name, @RequestParam("surname") String surname, ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
+        List<Artist> artists = artistRepository.findArtistsByNameContainsOrSurnameContains(name, surname);
+        if (artists.size() > 1) {
+            map.addAttribute("artists", artists);
+            map.addAttribute("genres", genreRepository.findAll());
+            if (userDetails != null) {
+                User user = ((CurrentUser) userDetails).getUser();
+                map.addAttribute("currentUser", user);
+            }
+            return "artistsByContaining";
+
+        }
+        Artist artist = artistRepository.findArtistByNameNotContainsOrSurnameContains(name, surname);
+        map.addAttribute("artist", artist);
+        map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("musics", musicRepository.findOne(artist.getId()));
         map.addAttribute("genres", genreRepository.findAll());
         if (userDetails != null) {
             User user = ((CurrentUser) userDetails).getUser();

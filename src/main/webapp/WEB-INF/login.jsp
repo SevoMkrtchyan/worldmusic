@@ -33,31 +33,31 @@
         <h2>Login to your account</h2>
         <span style="color: red">${message}</span>
         <form action="<c:url value="/loginPage"/> " method="post" name="loginForm">
-            <input type="email" placeholder="email" name="j_email"/>
-            <input type="password" placeholder="password" name="j_password"/>
+            <input type="email" placeholder="email" name="j_email" required/>
+            <input type="password" placeholder="password" name="j_password" required/>
             Remember me:<input type="checkbox" name="rememberMe"/>
-
             <button>Login</button>
         </form>
     </div>
     <div class="form">
         <h2>Create an account</h2>
         <span style="color: red">${message}</span>
-        <spring:form action="/register" modelAttribute="user" method="post" enctype="multipart/form-data">
-            <spring:input path="name" placeholder="name" title="name"/><br>
-            <spring:input path="surname" placeholder="surname" title="surname"/><br>
-            Email:<spring:input path="email" placeholder="email" title="email"/><br>
-            Password<spring:password path="password" placeholder="password" title="password"/><br>
-            Picture<input type="file" name="picture">
-            <input type="submit" value="Save"/>
+        <spring:form action="/register" name="registration" modelAttribute="user" method="post"
+                     enctype="multipart/form-data">
+            Name:<spring:input path="name" placeholder="name" title="name" maxlength="12" required="required"/><br>
+            Surname:<spring:input path="surname" placeholder="surname" title="surname" maxlength="12"
+                                  required="required"/><br>
+            Email:<spring:input path="email" placeholder="email@mail.ru" title="email" required="required"/><br>
+            Password:<spring:password path="password" placeholder="password" title="password" maxlength="8"
+                                      required="required"/><br>
+            Picture:<input type="file" name="picture" >
+            <input type="submit" value="Login"/>
         </spring:form>
     </div>
 </div>
+
 <script src="../login/js/jquery-3.3.1.min.js"></script>
 <script src="../login/js/details.js"></script>
-
-
 <script src="../login/js/login.js"></script>
-
 </body>
 </html>

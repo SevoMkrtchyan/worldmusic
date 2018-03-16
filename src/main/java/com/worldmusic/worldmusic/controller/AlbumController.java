@@ -13,8 +13,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class AlbumController {
@@ -84,5 +87,30 @@ public class AlbumController {
         return "singleAlbum";
     }
 
+    @GetMapping("/searchAlbum")
+    public String search(@RequestParam("name") String name, ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
+        List<Album> albums = albumRepository.findAlbumsByNameContains(name);
+        if (albums.size() > 1) {
+            map.addAttribute("musics", musicRepository.findAll());
+            map.addAttribute("genres", genreRepository.findAll());
+            map.addAttribute("albums", albums);
+            map.addAttribute("genres", genreRepository.findAll());
+            if (userDetails != null) {
+                User user = ((CurrentUser) userDetails).getUser();
+                map.addAttribute("currentUser", user);
+            }
+            return "albumsByContaining";
+        }
+        Album album = albumRepository.findAlbumByNameContains(name);
+        map.addAttribute("musics", musicRepository.findAllByAlbumId(album.getId()));
+        map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
+        return "singleAlbumSearch";
+    }
 
 }

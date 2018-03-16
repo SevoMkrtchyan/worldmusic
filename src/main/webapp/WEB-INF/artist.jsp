@@ -109,6 +109,13 @@
     <div class="page-content back_to_up">
         <div class="row clearfix mbf">
             <div class="music-player-list"></div>
+            <div>
+                <form class="form-wrapper cf" action="/searchArtist">
+                    <input type="text" placeholder="Search here..." name="name" required><br>
+                    <input type="text" placeholder="Search here..." name="surname"><br>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
 
         </div>
         <!-- Scripts -->
@@ -132,8 +139,8 @@
             <div class="span8 posts">
                 <div class="def-block">
                     <ul class="tabs">
-                        <li><a href="/mp3" >All mp3</a></li>
-                        <li><a href="/albums" >Albums</a></li>
+                        <li><a href="/mp3">All mp3</a></li>
+                        <li><a href="/albums">Albums</a></li>
                         <li><a href="/genres">Genres</a></li>
                         <li><a href="/artists" class="active">Artists</a></li>
                         <!--<li><a href="mp3s.html#Soon"> Comming Soon </a></li>-->
