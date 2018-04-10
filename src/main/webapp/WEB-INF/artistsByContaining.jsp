@@ -151,7 +151,7 @@
                         <li id="Latest" class="active">
                             <div class="post no-border no-mp clearfix">
                                 <ul class="tab-content-items">
-                                    <c:forEach items="${artists}" var="artist">
+                                    <c:forEach items="${artistsList}" var="artist">
                                         <li class="grid_6">
                                             <a class="m-thumbnail" href="/artistSingle?artistId=${artist.id}">
                                                 <img width="50" height="50" src="/image?fileName=${artist.photo}"></a>

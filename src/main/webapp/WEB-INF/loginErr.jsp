@@ -118,7 +118,7 @@
             <div class="breadcrumbIn">
                 <ul>
                     <li><a href="/home" class="toptip" original-title="Homepage"> <i class="icon-home"></i> </a></li>
-                    <li>Sorry, but you are not
+                    <li>Login Error
                         <verified></verified>
                     </li>
                 </ul>
@@ -131,8 +131,7 @@
                     <div class="tac error-page clearfix">
                         <i class="icon-warning-sign"></i>
                         <h2 class="tac">Sorry, but you are not verified
-                            <small>To pass the verification, we sent you a verification code to your<a
-                                    href="https://mail.google.com"> mailbox</a></small>
+                            <small>To pass the verification, we sent you a verification code to your mailbox</small>
                         </h2>
                         <a href="/loginPage" class="tbutton medium"><span>Back To Loginpage</span></a>
                     </div>

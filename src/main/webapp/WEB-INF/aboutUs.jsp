@@ -127,7 +127,7 @@
                         </h3>
                         <p>Creator And Developer<br><br>
                             Country: Armenia,Gyumri<br>
-                            Year of birth: 01.11.1995<br>
+                            Year of birth: 18.02.2001<br>
                             Skype: vahan20141<br>
                             Phone: +374 43 454443<br>
                             Inbox: vahan.gti8190@mail.ru<br>
@@ -146,7 +146,7 @@
                         <p>Creator And Developer<br><br>
                             Country: Armenia,Gyumri<br>
                             Year of birth: 01.11.1995<br>
-                            Skype: sevak1995<<br>
+                            Skype: sevak1995<br>
                             Phone: +374 94 199523<br>
                             Inbox: sevada.mkrtchyan.95@gmail.com<br>
                         </p>

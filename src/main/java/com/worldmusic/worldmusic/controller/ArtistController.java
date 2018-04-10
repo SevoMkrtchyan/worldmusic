@@ -87,7 +87,7 @@ public class ArtistController {
     public String musicSingle(@RequestParam("name") String name, @RequestParam("surname") String surname, ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         List<Artist> artists = artistRepository.findArtistsByNameContainsOrSurnameContains(name, surname);
         if (artists.size() > 1) {
-            map.addAttribute("artists", artists);
+            map.addAttribute("artistsList", artists);
             map.addAttribute("genres", genreRepository.findAll());
             if (userDetails != null) {
                 User user = ((CurrentUser) userDetails).getUser();
@@ -96,7 +96,7 @@ public class ArtistController {
             return "artistsByContaining";
 
         }
-        Artist artist = artistRepository.findArtistByNameNotContainsOrSurnameContains(name, surname);
+        Artist artist = artistRepository.findArtistByNameContainsOrSurnameContains(name, surname);
         map.addAttribute("artist", artist);
         map.addAttribute("artists", artistRepository.findAll());
         map.addAttribute("musics", musicRepository.findOne(artist.getId()));

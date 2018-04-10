@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ArtistRepository extends JpaRepository<Artist, Integer> {
 
-    Artist findArtistByNameNotContainsOrSurnameContains(String name, String surname);
+    Artist findArtistByNameContainsOrSurnameContains(String name, String surname);
 
     List<Artist> findArtistsByNameContainsOrSurnameContains(String name, String surname);
 
