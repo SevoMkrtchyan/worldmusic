@@ -31,7 +31,6 @@
     </div>
     <div class="form">
         <h2>Login to your account</h2>
-        <span style="color: red">${message}</span>
         <form action="<c:url value="/loginPage"/> " method="post" name="loginForm">
             <input type="email" placeholder="email" name="j_email" required/>
             <input type="password" placeholder="password" name="j_password" required/>
@@ -41,14 +40,18 @@
     </div>
     <div class="form">
         <h2>Create an account</h2>
-        <span style="color: red">${message}</span>
+        <c:if test="${errorMessage!=null}">
+        <span style="color: red">${errorMessage}</span>
+        </c:if> <c:if test="${mailFormatErr!=null}">
+        <span style="color: red">${mailFormatErr}</span>
+        </c:if>
         <spring:form action="/register" name="registration" modelAttribute="user" method="post"
                      enctype="multipart/form-data">
             Name:<spring:input path="name" placeholder="name" title="name" maxlength="12" required="required"/><br>
             Surname:<spring:input path="surname" placeholder="surname" title="surname" maxlength="12"
                                   required="required"/><br>
             Email:<spring:input path="email" placeholder="email@mail.ru" title="email" required="required"/><br>
-            Password:<spring:password path="password" placeholder="password" title="password" maxlength="8"
+            Password:<spring:password path="password" placeholder="password" title="password" minlenght="6" maxlength="10"
                                       required="required"/><br>
             Picture:<input type="file" name="picture" >
             <input type="submit" value="Login"/>

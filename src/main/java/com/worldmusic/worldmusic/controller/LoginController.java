@@ -25,6 +25,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -40,8 +42,15 @@ public class LoginController {
     private EmailServiceImpl emailService;
 
     @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
-    public String loginPage(ModelMap map) {
+    public String loginPage(ModelMap map,@RequestParam(value = "errorMessage",required = false)String errorMessage,
+                            @RequestParam(value = "mailFormatErr",required = false)String mailFormatErr) {
         map.addAttribute("user", new User());
+        if (errorMessage != null) {
+            map.addAttribute("errorMessage", errorMessage);
+        }
+        if (mailFormatErr != null) {
+            map.addAttribute("mailFormatErr", mailFormatErr);
+        }
         return "login";
     }
 
@@ -52,7 +61,13 @@ public class LoginController {
             for (ObjectError objectError : result.getAllErrors()) {
                 sb.append(objectError.getDefaultMessage() + "<br>");
             }
-            return "redirect:/error/errorMessage/" + sb.toString();
+            return "redirect:/loginPage?errorMessage=" + sb.toString();
+        }
+        List<String> mailFormat= Arrays.asList("@mail.ru","@gmail.com","@inbox.ru","@list.ru","@bk.ru","@yandex.ru");
+        for (String format : mailFormat) {
+            if (!user.getEmail().endsWith(format)){
+                return "redirect:/loginPage?mailFormatErr="+"Your EMail is Incorrect Please Input Correct Email";
+            }
         }
         String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
         File file = new File(imageUploadPath + picName);
@@ -61,12 +76,12 @@ public class LoginController {
         user.setUserType(UserType.USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setVerify(false);
-        userRepository.save(user);
         String token = jwtTokenUtil.generateToken(new CurrentUser(user));
         String message = String.format("Hi %s, You are successfully registered to our cool Music World portal. " +
                         "Please visit by \"http://localhost:8080/verify?token=%s\">this link to verify your account",
                 user.getName(), token);
         emailService.sendSimpleMessage(user.getEmail(), "Welcome", message);
+        userRepository.save(user);
         return "redirect:/home";
     }
 
