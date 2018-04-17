@@ -63,11 +63,10 @@ public class LoginController {
             }
             return "redirect:/loginPage?errorMessage=" + sb.toString();
         }
-        List<String> mailFormat= Arrays.asList("@mail.ru","@gmail.com","@inbox.ru","@list.ru","@bk.ru","@yandex.ru");
-        for (String format : mailFormat) {
-            if (!user.getEmail().endsWith(format)){
-                return "redirect:/loginPage?mailFormatErr="+"Your EMail is Incorrect Please Input Correct Email";
-            }
+        List<String> mailFormat = Arrays.asList("mail.ru", "gmail.com", "inbox.ru", "list.ru", "bk.ru", "yandex.ru");
+        String[] format = user.getEmail().split("@");
+        if (!mailFormat.contains(format[1])) {
+            return "redirect:/login?mailFormatErr=" + "Your Email is Incorrect Please Input Correct Email";
         }
         String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
         File file = new File(imageUploadPath + picName);

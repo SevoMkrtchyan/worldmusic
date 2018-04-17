@@ -81,25 +81,5 @@ public class GenreController {
         return "singleGenre";
     }
 
-    @GetMapping("/searchGenre")
-    public String searchGenre(@RequestParam("name") String name, ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
-        List<Genre> genres = genreRepository.findGenresByNameContains(name);
-        if (genres.size() > 1) {
-            map.addAttribute("genres", genres);
-            if (userDetails != null) {
-                User user = ((CurrentUser) userDetails).getUser();
-                map.addAttribute("currentUser", user);
-            }
-            return "genresByContainig";
-        }
-        Genre genre = genreRepository.findGenreByNameContains(name);
-        List<Music> musics = musicRepository.findAllByGenresContaining(genre);
-        map.addAttribute("musics", musics);
-        map.addAttribute("genres", genreRepository.findAll());
-        if (userDetails != null) {
-            User user = ((CurrentUser) userDetails).getUser();
-            map.addAttribute("currentUser", user);
-        }
-        return "singleGenre";
-    }
+
 }

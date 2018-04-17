@@ -103,31 +103,6 @@ public class MusicController {
         return "singleMusic";
     }
 
-    @GetMapping("/searchMusic")
-    public String searchMusic(@RequestParam("name") String name, ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
-        List<Music> musics = musicRepository.findMusicsByNameContains(name);
-        if (musics.size() > 1) {
-            map.addAttribute("musics", musics);
-            map.addAttribute("genres", genreRepository.findAll());
-            if (userDetails != null) {
-                User user = ((CurrentUser) userDetails).getUser();
-                map.addAttribute("currentUser", user);
-            }
-            return "musicsByContaining";
-
-        }
-        Music music = musicRepository.findMusicByNameContains(name);
-        map.addAttribute("artists", music.getArtists());
-        map.addAttribute("music", music);
-        map.addAttribute("genres", genreRepository.findAll());
-        map.addAttribute("musics", musicRepository.findAll());
-        if (userDetails != null) {
-            User user = ((CurrentUser) userDetails).getUser();
-            map.addAttribute("currentUser", user);
-        }
-        return "singleMusic";
-    }
-
     @RequestMapping(value = "/downloadMusic", method = RequestMethod.GET)
     public void downLoadFile(HttpServletResponse response, @RequestParam("musicName") String fileName) {
         try {

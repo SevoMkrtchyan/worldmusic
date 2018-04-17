@@ -110,7 +110,7 @@
         <div class="row clearfix mbf">
             <div class="music-player-list"></div>
             <div>
-                <form class="form-wrapper cf" action="/searchGenre">
+                <form class="form-wrapper cf" action="/search">
                     <input type="text" placeholder="Search here..." name="name" required><br>
                     <button type="submit">Search</button>
                 </form>

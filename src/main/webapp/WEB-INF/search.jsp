@@ -108,9 +108,9 @@
 
     <div class="page-content back_to_up">
         <div class="row clearfix mbf">
-            <%--<div class="music-player-list"></div>--%>
+            <div class="music-player-list"></div>
             <div>
-                <form class="form-wrapper cf" action="/searchGenre">
+                <form class="form-wrapper cf" action="/search">
                     <input type="text" placeholder="Search here..." name="name" required><br>
                     <button type="submit">Search</button>
                 </form>
@@ -131,6 +131,50 @@
         <script type="text/javascript" src="../js/countdown.js"></script>
         <script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script>
         <script type="text/javascript" src="../js/custom.js"></script>
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            jQuery(document).ready(function () {
+                jQuery('.tp-banner').revolution({
+                    delay: 9000,
+                    startwidth: 1060,
+                    startheight: 610,
+                    hideThumbs: 10,
+                    navigationType: "off",
+                    fullWidth: "on",
+                    forceFullWidth: "on"
+                });
+                jQuery("#event1").countdown({
+                        date: "31 December 2017 23:59:59",
+                        format: "on"
+                    },
+                    function () {
+                        // callback function
+                    });
+            });
+            /* ]]> */
+        </script>
+
+        <script>
+            var myPlaylist = [
+                <c:forEach items="${musics}" var="music">
+                {
+                    mp3: '/image?fileName=${music.music}',
+                    title: '${music.name}',
+                    <c:forEach items="${music.artists}" var="artist">
+                    artist: '${artist.name} ${artist.surname}',
+                    </c:forEach>
+                    <c:if test="${currentUser == null}">
+                    buy: '/loginPage',
+                    </c:if>
+                    <c:if test="${currentUser != null}">
+                    buy: '/downloadMusic?musicName=${music.music}',
+                    </c:if>
+                    cover: '/image?fileName=${music.picture}'
+                }, </c:forEach>
+
+            ];
+            ;
+        </script>
 
         <!-- row music player -->
 
@@ -138,10 +182,12 @@
             <div class="span8 posts">
                 <div class="def-block">
                     <ul class="tabs">
-                        <li><a href="/mp3">All mp3</a></li>
-                        <li><a href="/albums">Albums</a></li>
-                        <li><a href="/genres" class="active">Genres</a></li>
-                        <li><a href="/artists">Artists</a></li>
+                        <c:if test="${message==null}">
+                        <li>Search Results For ${name}</li>
+                        </c:if>
+                        <c:if test="${message!=null}">
+                        <li>${message}</li>
+                        </c:if>
                         <!--<li><a href="mp3s.html#Soon"> Comming Soon </a></li>-->
                     </ul>
                     <!-- tabs -->
@@ -150,12 +196,93 @@
                         <li id="Latest" class="active">
                             <div class="post no-border no-mp clearfix">
                                 <ul class="tab-content-items">
-                                    <c:forEach items="${genres}" var="genre">
+                                    <%--<spring:form action="/musicView" method="post" enctype="multipart/form-data">--%>
+                                    <%--music Results--%>
+                                    <c:if test="${searchMusics!=null}">
+                                        Music
+                                        <c:forEach items="${searchMusics}" var="music">
+                                            <li class="grid_6">
+                                                <a class="m-thumbnail" href="/musicSingle?musicId=${music.id}">
+                                                    <img width="50" height="50" src="/image?fileName=${music.picture}"></a>
+                                                <h3>
+                                                    <a href="/musicSingle?musicId=${music.id}&userId=${currentUser.id}">${music.name}</a>
+                                                </h3>
+                                                <span>
+                                            <c:forEach items="${music.artists}" var="artis">
+                                                ${artis.name}</c:forEach></span>
+                                            </li>
+                                        </c:forEach>
+
+                                     <%--albums Result   --%>
+                                    </c:if><c:if test="${searchAlbums!=null}">
+                                        Album
+                                    <c:forEach items="${searchAlbums}" var="album">
+                                        <%--<c:forEach items="${albums}" var="album">--%>
+                                            <li class="grid_6">
+                                                <a class="m-thumbnail" href="/albumSingle?albumId=${album.id}">
+                                                    <img width="50" height="50" src="/image?fileName=${album.albumImg}"></a>
+                                                <h3><a href="/albumSingle?albumId=${album.id}">${album.name}</a></h3>
+                                            </li>
+                                        </c:forEach>
+                                        <%--<li class="grid_6">--%>
+                                            <%--<a class="m-thumbnail" href="/musicSingle?musicId=${music.id}">--%>
+                                                <%--<img width="50" height="50" src="/image?fileName=${music.picture}"></a>--%>
+                                            <%--<h3>--%>
+                                                <%--<a href="/musicSingle?musicId=${music.id}&userId=${currentUser.id}">${music.name}</a>--%>
+                                            <%--</h3>--%>
+                                            <%--<span>--%>
+                                            <%--<c:forEach items="${music.artists}" var="artis">--%>
+                                                <%--${artis.name}</c:forEach></span>--%>
+                                        <%--</li>--%>
+                                    <%--</c:forEach>--%>
+
+                                        <%--artists result--%>
+                                </c:if>
+                                        <c:if test="${searchArtists!=null}">
+                                    <%--<c:forEach items="${}" var="music">--%>
+                                        <%--<li class="grid_6">--%>
+                                            <%--<a class="m-thumbnail" href="/musicSingle?musicId=${music.id}">--%>
+                                                <%--<img width="50" height="50" src="/image?fileName=${music.picture}"></a>--%>
+                                            <%--<h3>--%>
+                                                <%--<a href="/musicSingle?musicId=${music.id}&userId=${currentUser.id}">${music.name}</a>--%>
+                                            <%--</h3>--%>
+                                            <%--<span>--%>
+                                            <%--<c:forEach items="${music.artists}" var="artis">--%>
+                                                <%--${artis.name}</c:forEach></span>--%>
+                                        <%--</li>--%>
+                                    <%--</c:forEach>--%>
+                                            Artist
+                                        <c:forEach items="${searchArtists}" var="artist">
+                                            <li class="grid_6">
+                                                <a class="m-thumbnail" href="/artistSingle?artistId=${artist.id}">
+                                                    <img width="50" height="50" src="/image?fileName=${artist.photo}"></a>
+                                                <h3><a href="/artistSingle?artistId=${artist.id}">${artist.name}</a></h3>
+                                            </li>
+                                        </c:forEach>
+                                    </c:if>
+                                        <%--genres Results--%>
+                                <c:if test="${searchGenres!=null}">
+                                    Genre
+                                    <%--<c:forEach items="${searchMusics}" var="music">--%>
+                                        <%--<li class="grid_6">--%>
+                                            <%--<a class="m-thumbnail" href="/musicSingle?musicId=${music.id}">--%>
+                                                <%--<img width="50" height="50" src="/image?fileName=${music.picture}"></a>--%>
+                                            <%--<h3>--%>
+                                                <%--<a href="/musicSingle?musicId=${music.id}&userId=${currentUser.id}">${music.name}</a>--%>
+                                            <%--</h3>--%>
+                                            <%--<span>--%>
+                                            <%--<c:forEach items="${music.artists}" var="artis">--%>
+                                                <%--${artis.name}</c:forEach></span>--%>
+                                        <%--</li>--%>
+                                    <%--</c:forEach>--%>
+                                    <c:forEach items="${searchGenres}" var="genre">
                                         <li class="grid_6">
                                             <a class="m-thumbnail" href="/genreSingle?genreId=${genre.id}"></a>
                                             <h3><a href="/genreSingle?genreId=${genre.id}">${genre.name}</a></h3>
                                         </li>
                                     </c:forEach>
+                                </c:if>
+                                    <%--</spring:form>--%>
                                 </ul>
                             </div><!-- latest -->
                         </li><!-- tab content -->
@@ -183,7 +310,6 @@
                 </div><!-- end foot menu -->
             </div><!-- row -->
         </div><!-- end last -->
-
     </footer><!-- end footer -->
 
 </div><!-- end layout -->

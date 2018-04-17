@@ -8,17 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Locale;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -104,4 +106,60 @@ public class MainController {
         }
         return "loginErr";
     }
+
+    @GetMapping("/search")
+    public String searchMusic(@RequestParam("name") String name, ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        User user;
+        if (userDetails != null) {
+            user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
+        if (!name.equals("")) {
+            map.addAttribute("name", name);
+            List<Music> searchMusics = musicRepository.findMusicsByNameContains(name);
+            List<Album> searchAlbums = albumRepository.findAlbumsByNameContains(name);
+            List<Artist> searchArtists = artistRepository.findArtistsByNameContainsOrSurnameContains(name, name);
+            List<Genre> searchGenres = genreRepository.findGenresByNameContains(name);
+            if (searchMusics.size() != 0 || searchAlbums.size() != 0 || searchArtists.size() != 0 || searchGenres.size() != 0) {
+//                assert searchMusics != null;
+                map.addAttribute("searchMusics", searchMusics);
+//                assert searchAlbums != null;
+                map.addAttribute("searchAlbums", searchAlbums);
+//                assert searchArtists != null;
+                map.addAttribute("searchArtists", searchArtists);
+//                assert searchGenres != null;
+                map.addAttribute("searchGenres", searchGenres);
+                return "search";
+            }
+            return "redirect:/emptyData?message=No Results";
+        }
+        return "redirect:/emptyData?message=No Results";
+    }
+
+    @GetMapping("/emptyData")
+    public String emptyData(ModelMap map, @AuthenticationPrincipal UserDetails userDetails,
+                            @RequestParam(value = "message", required = false) String message) {
+        if (message != null) {
+            map.addAttribute("message", message);
+        }
+        List<Music> musics = musicRepository.findAll();
+        List<Album> albums = albumRepository.findAll();
+        List<Artist> artists = artistRepository.findAll();
+        List<Genre> genres = genreRepository.findAll();
+        map.addAttribute("musics", musics);
+        map.addAttribute("albums", albums);
+        map.addAttribute("artists", artists);
+        map.addAttribute("genres", genres);
+        if (userDetails != null) {
+            User user = ((CurrentUser) userDetails).getUser();
+            map.addAttribute("currentUser", user);
+        }
+        return "search";
+    }
+
+
 }
