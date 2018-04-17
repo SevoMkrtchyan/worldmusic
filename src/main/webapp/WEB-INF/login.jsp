@@ -22,7 +22,8 @@
 <!-- Pen Title-->
 <div class="pen-title">
     <h1 style="color: #ffffff">Music Word</h1><span style="color: #ffffff">Pen <i class='fa fa-paint-brush'></i> + <i
-        class='fa fa-code'></i> by <a href='https://www.facebook.com/vahan.khachatryan.3576'>Txekov</a></span>
+        class='fa fa-code'></i> by <a href="https://www.facebook.com/vahan.khachatryan.3576?ref=bookmarks">Vahan</a> and <a href="https://www.facebook.com/sevak.mkrtchyan.777">Sevak</a>
+
 </div>
 <!-- Form Module-->
 <div class="module form-module">

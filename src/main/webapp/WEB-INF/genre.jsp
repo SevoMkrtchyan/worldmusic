@@ -169,7 +169,7 @@
     <footer id="footer">
         <div class="footer-last">
             <div class="row clearfix">
-                <span class="copyright">© 2018 by <a href="http://theme20.com/">Txekov</a></span>
+                <span class="copyright">© 2018 by <a href="https://www.facebook.com/vahan.khachatryan.3576?ref=bookmarks">Vahan</a> and <a href="https://www.facebook.com/sevak.mkrtchyan.777">Sevak</a></span>
                 <div id="toTop"><i class="icon-angle-up"></i></div><!-- Back to top -->
 
                 <div class="foot-menu">

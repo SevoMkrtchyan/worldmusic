@@ -274,7 +274,10 @@
                                     <p>${news.description}</p>
                                     <div class="meta">
                                         <span> <i class="icon-time mi"></i> </span> | <span>
-                                            ${news.timestamp}
+
+                        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                     <fmt:formatDate value="${news.timestamp}" pattern="dd-MM-yyyy"/>
+
                                     </span>
                                     </div><!-- meta -->
                                 </div><!-- span7 -->
@@ -314,7 +317,7 @@
         <footer id="footer">
             <div class="footer-last">
                 <div class="row clearfix">
-                    <span class="copyright">© 2018 by <a href="http://theme20.com/">Txekov</a></span>
+                    <span class="copyright">© 2018 by <a href="https://www.facebook.com/vahan.khachatryan.3576?ref=bookmarks">Vahan</a> and <a href="https://www.facebook.com/sevak.mkrtchyan.777">Sevak</a></span>
                     <div id="toTop"><i class="icon-angle-up"></i></div><!-- Back to top -->
 
                     <div class="foot-menu">

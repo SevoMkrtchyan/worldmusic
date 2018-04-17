@@ -126,16 +126,25 @@
                         <h3 class="news-title">${artist.name} ${artist.surname}
                         </h3>
                         <p>Gender:${artist.gender}<br>
-                            Country:${artist.country}</p>
+                            Country:${artist.country}<br>
+                            Age:${artist.age}
+                        </p>
                     </div><!-- span7 -->
                 </div>
             </div><!-- def block -->
-            <br>
+
         </div><!-- span8 aboutUs -->
 
-
         <div class="row row-fluid clearfix mbf">
+
             <div class="span8 posts">
+                <div class="row clearfix mbf">
+                <form class="form-wrapper cf" action="/searchArtist">
+                    <input type="text" placeholder="Search here..." name="name" required><br>
+                    <input type="text" placeholder="Search here..." name="surname"><br>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
                 <div class="def-block">
                     <ul class="tabs">
                         <li><a href="/mp3" >All mp3</a></li>
@@ -170,7 +179,7 @@
     <footer id="footer">
         <div class="footer-last">
             <div class="row clearfix">
-                <span class="copyright">© 2018 by <a href="http://theme20.com/">Txekov</a></span>
+                <span class="copyright">© 2018 by <a href="https://www.facebook.com/vahan.khachatryan.3576?ref=bookmarks">Vahan</a> and <a href="https://www.facebook.com/sevak.mkrtchyan.777">Sevak</a></span>
                 <div id="toTop"><i class="icon-angle-up"></i></div><!-- Back to top -->
 
                 <div class="foot-menu">
