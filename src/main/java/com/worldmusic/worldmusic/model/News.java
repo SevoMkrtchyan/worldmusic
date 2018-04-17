@@ -3,8 +3,10 @@ package com.worldmusic.worldmusic.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
@@ -24,5 +26,6 @@ public class News {
     @Column(name = "news_image")
     private String newsImage;
     @Column
-    private String timestamp;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private Timestamp timestamp;
 }

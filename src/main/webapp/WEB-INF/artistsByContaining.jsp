@@ -136,6 +136,13 @@
         <!-- row music player -->
 
         <div class="row row-fluid clearfix mbf">
+            <div class="row clearfix mbf">
+                <form class="form-wrapper cf" action="/searchArtist">
+                    <input type="text" placeholder="Search here..." name="name" required><br>
+                    <input type="text" placeholder="Search here..." name="surname"><br>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
             <div class="span8 posts">
                 <div class="def-block">
                     <ul class="tabs">
@@ -171,7 +178,7 @@
     <footer id="footer">
         <div class="footer-last">
             <div class="row clearfix">
-                <span class="copyright">© 2018 by <a href="http://theme20.com/">Txekov</a></span>
+                <span class="copyright">© 2018 by <a href="https://www.facebook.com/vahan.khachatryan.3576?ref=bookmarks">Vahan</a> and <a href="https://www.facebook.com/sevak.mkrtchyan.777">Sevak</a></span>
                 <div id="toTop"><i class="icon-angle-up"></i></div><!-- Back to top -->
 
                 <div class="foot-menu">

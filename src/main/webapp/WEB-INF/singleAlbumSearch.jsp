@@ -107,16 +107,6 @@
     </div><!-- under header -->
 
     <div class="page-content back_to_up">
-        <div>
-            <form class="form-wrapper cf" action="/searchAlbum/string">
-                <input type="text" placeholder="Search here..." name="string" required><br>
-                <button type="submit">Search</button>
-            </form>
-        </div>
-        <div class="row clearfix mbf">
-            <div class="music-player-list"></div>
-
-        </div>
         <!-- Scripts -->
         <script type="text/javascript" src="../js/jquery.min.js"></script>
         <script type="text/javascript" src="../js/theme20.js"></script>
@@ -180,6 +170,12 @@
 
         <div class="row row-fluid clearfix mbf">
             <div class="span8 posts">
+                <div class="row clearfix mbf">
+                    <form class="form-wrapper cf" action="/searchAlbum">
+                        <input type="text" placeholder="Search here..." name="name" required><br>
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
                 <div class="def-block">
                     <ul class="tabs">
                         <li><a href="/mp3">All mp3</a></li>
@@ -194,7 +190,7 @@
                         <li id="Latest" class="active">
                             <div class="post no-border no-mp clearfix">
                                 <ul class="tab-content-items">
-                                    <c:forEach items="${albumsContains}" var="album">
+                                    <c:forEach items="${albums}" var="album">
                                         <li class="grid_6">
                                             <a class="m-thumbnail" href="/albumSingle?albumId=${album.id}">
                                                 <img width="50" height="50" src="/image?fileName=${album.albumImg}"></a>
@@ -214,7 +210,7 @@
     <footer id="footer">
         <div class="footer-last">
             <div class="row clearfix">
-                <span class="copyright">© 2018 by <a href="http://theme20.com/">Txekov</a></span>
+                <span class="copyright">© 2018 by <a href="https://www.facebook.com/vahan.khachatryan.3576?ref=bookmarks">Vahan</a> and <a href="https://www.facebook.com/sevak.mkrtchyan.777">Sevak</a></span>
                 <div id="toTop"><i class="icon-angle-up"></i></div><!-- Back to top -->
 
                 <div class="foot-menu">

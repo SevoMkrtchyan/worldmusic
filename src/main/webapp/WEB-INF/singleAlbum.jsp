@@ -107,16 +107,6 @@
     </div><!-- under header -->
 
     <div class="page-content back_to_up">
-        <div class="row clearfix mbf">
-            <div class="music-player-list"></div>
-            <div>
-                <form class="form-wrapper cf" action="/searchAlbum">
-                    <input type="text" placeholder="Search here..." name="string" required><br>
-                    <button type="submit">Search</button>
-                </form>
-            </div>
-
-        </div>
         <!-- Scripts -->
         <script type="text/javascript" src="../js/jquery.min.js"></script>
         <script type="text/javascript" src="../js/theme20.js"></script>
@@ -179,6 +169,16 @@
         <!-- row music player -->
 
         <div class="row row-fluid clearfix mbf">
+            <div class="row clearfix mbf">
+                <div class="music-player-list"></div>
+
+                    <form class="form-wrapper cf" action="/searchAlbum">
+                        <input type="text" placeholder="Search here..." name="string" required><br>
+                        <button type="submit">Search</button>
+                    </form>
+
+
+            </div>
             <div class="span8 posts">
                 <div class="def-block">
                     <ul class="tabs">
@@ -214,7 +214,7 @@
     <footer id="footer">
         <div class="footer-last">
             <div class="row clearfix">
-                <span class="copyright">© 2018 by <a href="http://theme20.com/">Txekov</a></span>
+                <span class="copyright">© 2018 by <a href="https://www.facebook.com/vahan.khachatryan.3576?ref=bookmarks">Vahan</a> and <a href="https://www.facebook.com/sevak.mkrtchyan.777">Sevak</a></span>
                 <div id="toTop"><i class="icon-angle-up"></i></div><!-- Back to top -->
 
                 <div class="foot-menu">
