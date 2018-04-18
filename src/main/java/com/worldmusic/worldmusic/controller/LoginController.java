@@ -77,7 +77,7 @@ public class LoginController {
         user.setVerify(false);
         String token = jwtTokenUtil.generateToken(new CurrentUser(user));
         String message = String.format("Hi %s, You are successfully registered to our cool Music World portal. " +
-                        "Please visit by \"http://192.168.0.108:8433/verify?token=%s\">this link to verify your account",
+                        "Please visit by \"http://localhost:8080/verify?token=%s\">this link to verify your account",
                 user.getName(), token);
         emailService.sendSimpleMessage(user.getEmail(), "Welcome", message);
         userRepository.save(user);

@@ -118,7 +118,7 @@ public class MainController {
             user = ((CurrentUser) userDetails).getUser();
             map.addAttribute("currentUser", user);
         }
-        if (!name.equals("")) {
+        if (!name.isEmpty()) {
             map.addAttribute("name", name);
             List<Music> searchMusics = musicRepository.findMusicsByNameContains(name);
             List<Album> searchAlbums = albumRepository.findAlbumsByNameContains(name);
